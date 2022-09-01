@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e-Proseso</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/styles.css" > <!-- root path-->
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
+</head>
+<body oncontextmenu="return false">
+    
+    <header>
+        <div class="container-fluid p-0">
+            <nav class="navbar navbar-expand-lg"> <!--removed bg-light-->
+                <div class="container-fluid">
+                  <a class="navbar-brand" href="#">E-Proseso
+                    <img src="../assets/placeholder2.png" alt="" width="30" height="24"> 
+                  </a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarNav">
+                    <div class="ms-auto"></div> <!--aligns bar to right side 13:56-->
+                    <ul class="navbar-nav">
+                        <!--
+                        <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                      </li>
+                      -->
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">About Us</a>
+                      </li>
+                      <li class="nav-item"> <!--<a class="nav-link disabled">Disabled</a>-->
+                        <a class="nav-link" href="#">Gallery</a>
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Request Documents
+                          </a>
+                          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">Login</a></li>
+                            <li><a class="dropdown-item" href="#">Register</a></li>
+                          </ul>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <!--new-->
+                  <!--
+                  <form class="d-flex" role="search">
+                    <button class="btn btn-outline-success" type="submit">Login</button>
+                    <button class="btn btn-outline-success" type="submit">Register</button>
+                  </form>
+                  -->
+                </div>
+              </nav>
+
+
+        </div>
+
+        <!--container to contain elements lol 19:47-->
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-md-7 col-sm-12">
+                    <h1>Welcome to eProseso!</h1>
+                    <h3>Barangay Batis Document Processing</h3>
+                </div>
+                <div class="col-md-5 col-sm-12 h-25">
+                    <img src="../assets/p1.jpg" alt="Placeholder"> <!--pic on side, not bg-->
+                </div>
+            </div>
+            
+        </div>
+    </header>
+
+    <main> <!--about us-->
+        <section class="section-1">
+
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="pray">
+                            <img src="../assets/5.jpg" alt="Prayge">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="panel text-left">
+                            <h1>About Us</h1>
+                            <p class="pt-4">
+                                If you're thinking that filler text seems pretty boring and uncontroversial, you'd be wrong. Surprisingly, there is a very vocal faction of the design community that wants to see filler text banished to the original sources from whence it came. Perhaps not surprisingly, in an era of endless quibbling, there is an equally vocal contingent of designers leaping to defend the use of the time-honored tradition of greeking. The argument in favor of using filler text goes something like this: If you use real content in the design process, anytime you reach a review point you’ll end up reviewing and negotiating the content itself and not the design. This will just slow down the design process. Design first, with real content in mind (of course!), but don’t drop in the real content until the design is well on its way. Using filler text avoids the inevitable argumentation that accompanies the use of real content in the design process. Those opposed to using filler text of any sort counter by saying: The ultimate purpose of any digital product, whether a website, app, or HTML email, is to showcase real content, not to showcase great design. You can't get a true sense for how your content plays with your design unless you use the real thing!
+                            </p>
+                            <p>
+                                Insert Text Here
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--bg 24:38, 26:56-->
+        <section class="section-2 container-fluid p-0">
+            <div class="cover">
+                <div class="content text-center">
+                    <h1>Gallery</h1>
+                </div>
+            </div>
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="../assets/E2.png" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="../assets/E1.png" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="../assets/E2.png" class="d-block w-100" alt="...">
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+        </section>
+
+
+        <!--staff-->
+        <section class="section-4">
+            <div class="row"> <!--new-->
+                <div class="container text-center p-0">
+                    <h1 class="text-dark">BARANGAY MEMBERS</h1>
+                    <p class="text-secondary">meet our staff</p>
+                </div>
+                <div class="col-6 text-right"><!--new-->  
+                    <a class="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
+                        <i class="fa fa-arrow-left"></i>
+                    </a>
+                    <a class="btn btn-primary mb-3 " href="#carouselExampleIndicators2" role="button" data-slide="next">
+                        <i class="fa fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+                    
+                    <div class="col-12">
+                        <div id="carouselExampleIndicators2" class="carousel slide2" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <div class="row">
+
+                                        <div class="col-md-4 col-12 text-center">
+                                            <div class="card mr-2 d-inline-block shadow-lg">
+                                                <div class="card-img-top">
+                                                    <img src="../assets/1.jpg" alt="captain" class="img-fluid"/>
+                                                </div>
+                                                <div class="card-body">
+                                                    <h3 class="card-title">Fancy Lastine</h3>
+                                                    <p class="card-text">this is our captain</p>
+                                                    <a href="#" class="text-secondary text-decoration-none">Go Somewhere</a> <!--something missing 46:10-->
+                                                    <p class="text-black-50">Barangay Captain</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                       <div class="col-md-4 col-12 text-center">
+                                            <div class="card mr-2 d-inline-block shadow-lg">
+                                                <div class="card-img-top">
+                                                    <img src="../assets/1.jpg" alt="captain" class="img-fluid"/>
+                                                </div>
+                                                <div class="card-body">
+                                                    <h3 class="card-title">Fancy Lastine</h3>
+                                                    <p class="card-text">this is our captain</p>
+                                                    <a href="#" class="text-secondary text-decoration-none">Go Somewhere</a> <!--something missing 46:10-->
+                                                    <p class="text-black-50">Barangay Captain</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4 col-12 text-center">
+                                            <div class="card mr-2 d-inline-block shadow-lg">
+                                                <div class="card-img-top">
+                                                    <img src="../assets/1.jpg" alt="captain" class="img-fluid"/>
+                                                </div>
+                                                <div class="card-body">
+                                                    <h3 class="card-title">Fancy Lastine</h3>
+                                                    <p class="card-text">this is our captain</p>
+                                                    <a href="#" class="text-secondary text-decoration-none">Go Somewhere</a> <!--something missing 46:10-->
+                                                    <p class="text-black-50">Barangay Captain</p>
+                                                </div>
+                                            </div>
+                                        </div>
+        
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="row">
+        
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280" src="../assets/4.jpg">
+                                                <div class="card-body">
+                                                    <h4 class="card-title">Lame Lastre</h4>
+                                                    <p class="card-text">Kagawad</p>
+        
+                                                </div>
+        
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280" src="../assets/5.jpg">
+                                                <div class="card-body">
+                                                    <h4 class="card-title">Goodini Tials</h4>
+                                                    <p class="card-text">Kagawad</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280" src="../assets/5.jpg">
+                                                <div class="card-body">
+                                                    <h4 class="card-title">Goodini Tials</h4>
+                                                    <p class="card-text">Kagawad</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+            </div>
+        </section>
+    </main>
+
+
+    <!--51:30-->
+    <footer>
+        <div class="container-fluid p-0">
+            <div class="row text-left">
+                <div class="col-md-5"> <!--about-->
+                    <h1 class="text-light">E-Proseso</h1>
+                    <p class="text-muted">For inquiries, please contact **</p>
+                    <p class="pt-4 text-muted">
+                        Copyright ©2022 All rights reserved
+                    </p>
+                    <a href="#">Privacy Policy</a>
+                </div>
+
+                <!--newsletter-->
+                <div class="col-md-5"></div>
+
+                <!--socials-->
+                <div class="col-md-2 col-sm-12">
+                    <h4 class="text-light">Stay Connected!</h4>
+                    <p class="text-muted">Follow our socials</p>
+                    <div class="column">
+                        <a class="btn btn-social text-white btn-facebook"><i class="fa fa-facebook"></i> Facebook</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+    <script type='text/javascript'></script>
+
+</body>
+</html>
