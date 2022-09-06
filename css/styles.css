@@ -150,4 +150,34 @@ header .container .col-md-7 h1{
 }
 
 /*1:18:06*/
+
+/*footer*/
+footer{
+    background: rgba(0,0,0,0.815);
+    overflow-x: hidden;
+    padding: 14vmin 18vmin;
+}
+
+footer p > span{
+    color: #ff512f;  
+}
+
+/*socials*/
+footer .column i{
+    color: #dd2476;
+}
+
+footer .column i + i{
+    padding: 0 0.5em
+}
+
+/*sticky class*/ /*not working :(*/
+.sticky{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.815);
+    z-index: 9999;
+    transition: all 1.5s ease;
+}
   
