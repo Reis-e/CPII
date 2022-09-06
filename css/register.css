@@ -5,5 +5,5 @@
 }
 
 body{
-    background-image: linear-gradient();
+    background-image: linear-gradient((rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url(../assets/E1.png));
 }
