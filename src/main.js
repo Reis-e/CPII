@@ -6,7 +6,7 @@ $(window).scroll(function(){ /*display navbar when scroll reacher a certain posi
     let oTop = $(".section-2").offset().top - window.innerHeight;
     if($(window).scrollTop() > oTop){
         navbar.addClass("sticky");
-    }/*else{
+    }else{
         navbar.removeClass("sticky");
-    }*/
+    }
 });

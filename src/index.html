@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../css/styles.css" > <!-- root path-->
     <link rel="stylesheet" href="../css/mobile-style.css"> <!--link html to responnsive stylesheet-->
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
+    <link rel="stylesheet" href="css/swiper-bundle.min.css"> <!--stylesheet for cards-->
     <script src="../src/main.js" defer></script> <!--sticky menu working, pero magulo-->
 </head>
 <body oncontextmenu="return false">
@@ -95,11 +96,18 @@
                         <div class="panel text-left">
                             <h1>About Us</h1>
                             <p class="pt-4">
-                                If you're thinking that filler text seems pretty boring and uncontroversial, you'd be wrong. Surprisingly, there is a very vocal faction of the design community that wants to see filler text banished to the original sources from whence it came. Perhaps not surprisingly, in an era of endless quibbling, there is an equally vocal contingent of designers leaping to defend the use of the time-honored tradition of greeking. The argument in favor of using filler text goes something like this: If you use real content in the design process, anytime you reach a review point you’ll end up reviewing and negotiating the content itself and not the design. This will just slow down the design process. Design first, with real content in mind (of course!), but don’t drop in the real content until the design is well on its way. Using filler text avoids the inevitable argumentation that accompanies the use of real content in the design process. Those opposed to using filler text of any sort counter by saying: The ultimate purpose of any digital product, whether a website, app, or HTML email, is to showcase real content, not to showcase great design. You can't get a true sense for how your content plays with your design unless you use the real thing!
+                                Welcome to e-Proseso! This application aims to make
+                                requesting barangay documents easier by allowing the 
+                                residents to do it from their own homes thru their 
+                                web browsers. 
                             </p>
-                            <p>
+                            <p class="pt-4">
+                                
+                            </p>
+                           <!--<p>
                                 Insert Text Here
                             </p>
+                            --> 
                         </div>
                     </div>
                 </div>
@@ -136,116 +144,169 @@
               </div>
         </section>
 
-
-        <!--staff-->
+        <!--
+        <staff
         <section class="section-4">
-            <div class="row"> <!--new-->
-                <div class="container text-center p-0">
-                    <h1 class="text-dark">BARANGAY MEMBERS</h1>
-                    <p class="text-secondary">meet our staff</p>
-                </div>
-                <div class="col-6 text-right"><!--new-->  
-                    <a class="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
-                        <i class="fa fa-arrow-left"></i>
-                    </a>
-                    <a class="btn btn-primary mb-3 " href="#carouselExampleIndicators2" role="button" data-slide="next">
-                        <i class="fa fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-                    
-                    <div class="col-12">
-                        <div id="carouselExampleIndicators2" class="carousel slide2" data-bs-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <div class="row">
-
-                                        <div class="col-md-4 col-12 text-center">
-                                            <div class="card mr-2 d-inline-block shadow-lg">
-                                                <div class="card-img-top">
-                                                    <img src="../assets/1.jpg" alt="captain" class="img-fluid"/>
-                                                </div>
-                                                <div class="card-body">
-                                                    <h3 class="card-title">Fancy Lastine</h3>
-                                                    <p class="card-text">this is our captain</p>
-                                                    <a href="#" class="text-secondary text-decoration-none">Go Somewhere</a> <!--something missing 46:10-->
-                                                    <p class="text-black-50">Barangay Captain</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                       <div class="col-md-4 col-12 text-center">
-                                            <div class="card mr-2 d-inline-block shadow-lg">
-                                                <div class="card-img-top">
-                                                    <img src="../assets/1.jpg" alt="captain" class="img-fluid"/>
-                                                </div>
-                                                <div class="card-body">
-                                                    <h3 class="card-title">Fancy Lastine</h3>
-                                                    <p class="card-text">this is our captain</p>
-                                                    <a href="#" class="text-secondary text-decoration-none">Go Somewhere</a> <!--something missing 46:10-->
-                                                    <p class="text-black-50">Barangay Captain</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-4 col-12 text-center">
-                                            <div class="card mr-2 d-inline-block shadow-lg">
-                                                <div class="card-img-top">
-                                                    <img src="../assets/1.jpg" alt="captain" class="img-fluid"/>
-                                                </div>
-                                                <div class="card-body">
-                                                    <h3 class="card-title">Fancy Lastine</h3>
-                                                    <p class="card-text">this is our captain</p>
-                                                    <a href="#" class="text-secondary text-decoration-none">Go Somewhere</a> <!--something missing 46:10-->
-                                                    <p class="text-black-50">Barangay Captain</p>
-                                                </div>
-                                            </div>
-                                        </div>
-        
-                                    </div>
+            <div class="slide-container swiper">
+                <div class="slide-content">
+                    <div class="card-wrapper swiper-wrapper">
+                        <div class="card swiper-slide">
+                            <div class="image-content">
+                                <span class="overlay"></span>
+    
+                                <div class="card-image">
+                                    <img src="images/profile1.jpg" alt="" class="card-img">
                                 </div>
-                                <div class="carousel-item">
-                                    <div class="row">
-        
-                                        <div class="col-md-4 mb-3">
-                                            <div class="card">
-                                                <img class="img-fluid" alt="100%x280" src="../assets/4.jpg">
-                                                <div class="card-body">
-                                                    <h4 class="card-title">Lame Lastre</h4>
-                                                    <p class="card-text">Kagawad</p>
-        
-                                                </div>
-        
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 mb-3">
-                                            <div class="card">
-                                                <img class="img-fluid" alt="100%x280" src="../assets/5.jpg">
-                                                <div class="card-body">
-                                                    <h4 class="card-title">Goodini Tials</h4>
-                                                    <p class="card-text">Kagawad</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 mb-3">
-                                            <div class="card">
-                                                <img class="img-fluid" alt="100%x280" src="../assets/5.jpg">
-                                                <div class="card-body">
-                                                    <h4 class="card-title">Goodini Tials</h4>
-                                                    <p class="card-text">Kagawad</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
+                            </div>
+                            
+                            <-start --
+                            <div class="card-content">
+                                <h2 class="name">David Dell</h2>
+                                <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
+    
+                                <button class="button">View More</button>
+                            </div>
+                        </div>
+                        <div class="card swiper-slide">
+                            <div class="image-content">
+                                <span class="overlay"></span>
+    
+                                <div class="card-image">
+                                    <img src="images/profile2.jpg" alt="" class="card-img">
                                 </div>
+                            </div>
+                            <!end ->
+    
+                            <div class="card-content">
+                                <h2 class="name">David Dell</h2>
+                                <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
+    
+                                <button class="button">View More</button>
+                            </div>
+                        </div>
+                        <div class="card swiper-slide">
+                            <div class="image-content">
+                                <span class="overlay"></span>
+    
+                                <div class="card-image">
+                                    <img src="images/profile3.jpg" alt="" class="card-img">
+                                </div>
+                            </div>
+    
+                            <div class="card-content">
+                                <h2 class="name">David Dell</h2>
+                                <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
+    
+                                <button class="button">View More</button>
+                            </div>
+                        </div>
+                        <div class="card swiper-slide">
+                            <div class="image-content">
+                                <span class="overlay"></span>
+    
+                                <div class="card-image">
+                                    <img src="images/profile4.jpg" alt="" class="card-img">
+                                </div>
+                            </div>
+    
+                            <div class="card-content">
+                                <h2 class="name">David Dell</h2>
+                                <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
+    
+                                <button class="button">View More</button>
+                            </div>
+                        </div>
+                        <div class="card swiper-slide">
+                            <div class="image-content">
+                                <span class="overlay"></span>
+    
+                                <div class="card-image">
+                                    <img src="images/profile5.jpg" alt="" class="card-img">
+                                </div>
+                            </div>
+    
+                            <div class="card-content">
+                                <h2 class="name">David Dell</h2>
+                                <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
+    
+                                <button class="button">View More</button>
+                            </div>
+                        </div>
+                        <div class="card swiper-slide">
+                            <div class="image-content">
+                                <span class="overlay"></span>
+    
+                                <div class="card-image">
+                                    <img src="images/profile6.jpg" alt="" class="card-img">
+                                </div>
+                            </div>
+    
+                            <div class="card-content">
+                                <h2 class="name">David Dell</h2>
+                                <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
+    
+                                <button class="button">View More</button>
+                            </div>
+                        </div>
+                        <div class="card swiper-slide">
+                            <div class="image-content">
+                                <span class="overlay"></span>
+    
+                                <div class="card-image">
+                                    <img src="images/profile7.jpg" alt="" class="card-img">
+                                </div>
+                            </div>
+    
+                            <div class="card-content">
+                                <h2 class="name">David Dell</h2>
+                                <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
+    
+                                <button class="button">View More</button>
+                            </div>
+                        </div>
+                        <div class="card swiper-slide">
+                            <div class="image-content">
+                                <span class="overlay"></span>
+    
+                                <div class="card-image">
+                                    <img src="images/profile8.jpg" alt="" class="card-img">
+                                </div>
+                            </div>
+    
+                            <div class="card-content">
+                                <h2 class="name">David Dell</h2>
+                                <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
+    
+                                <button class="button">View More</button>
+                            </div>
+                        </div>
+                        <div class="card swiper-slide">
+                            <div class="image-content">
+                                <span class="overlay"></span>
+    
+                                <div class="card-image">
+                                    <img src="images/profile9.jpg" alt="" class="card-img">
+                                </div>
+                            </div>
+    
+                            <div class="card-content">
+                                <h2 class="name">David Dell</h2>
+                                <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
+    
+                                <button class="button">View More</button>
                             </div>
                         </div>
                     </div>
-                
+                </div>
+    
+                <div class="swiper-button-next swiper-navBtn"></div>
+                <div class="swiper-button-prev swiper-navBtn"></div>
+                <div class="swiper-pagination"></div>
             </div>
         </section>
     </main>
+    -->
+    
 
 
     <!--51:30-->
@@ -281,6 +342,8 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
     <script type='text/javascript'></script>
+    <script src="js/swiper-bundle.min.js"></script>
+    <script src="js/script.js"></script>
 
 </body>
 </html>

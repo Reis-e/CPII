@@ -1,24 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Catamaran:wght@100;300;400;500&family=EB+Garamond&family=Manrope:wght@200&family=Slabo+27px&display=swap');
+
+
 :root {
-    --primary-color: rgb(11, 78, 179);
-  }
-  
+    --primary-color: rgb(218, 128, 168);
+    --bggradient: linear-gradient(
+        to bottom,
+        #7EA1AC, #C5C5C2, #D6A89F, #C88A84, #7A7989
+    );
+}
+
   *,
   *::before,
   *::after {
     box-sizing: border-box;
+    
   }
+
   
   body {
-    font-family: Montserrat, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--bggradient);
+    font-family: "Manrope",sans-serif;
     margin: 0;
     display: grid;
     place-items: center;
     min-height: 100vh;
+    
+    
+    
   }
   /* Global Stylings */
   label {
     display: block;
     margin-bottom: 0.5rem;
+    background-color: var(--bggradient);
   }
   
   input {
@@ -27,6 +41,7 @@
     padding: 0.75rem;
     border: 1px solid #ccc;
     border-radius: 0.25rem;
+    background-color: var(--bggradient);
   }
   
   .width-50 {
@@ -103,6 +118,7 @@
     border: 1px solid #ccc;
     border-radius: 0.35rem;
     padding: 1.5rem;
+    background: #9bafb6;
   }
   
   .form-step {
