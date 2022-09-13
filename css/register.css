@@ -114,6 +114,7 @@
   /* Form */
   .form {
     width: clamp(320px, 30%, 430px);
+    /*max-height: clamp(720px, 30%, 430px);*/
     /*overflow-y: scroll;*/
     margin: 0 auto;
     border: 1px solid #ccc;

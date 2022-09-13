@@ -1,0 +1,39 @@
+.form-step {
+    width: clamp(600px, 30%, 430px);
+    /*max-height: clamp(720px, 30%, 430px);*/
+    /*overflow-y: scroll;*/
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    border-radius: 0.35rem;
+    padding: 1.5rem;
+    background: #9bafb6;
+    display: block;
+    margin-bottom: 0.5rem;
+    
+  }
+
+  .input-group {
+    margin: 2rem 0;
+    display: block;
+  }
+
+  .btns-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .btn {
+    padding: 0.75rem;
+    display: block;
+    text-decoration: none;
+    background-color: #e086b3;
+    color: #f3f3f3;
+    text-align: center;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .btn:hover {
+    box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--primary-color);
+  }
