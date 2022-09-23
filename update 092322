@@ -1,0 +1,7 @@
+changelog 9/23/22
+
+- login functional
+- register functional
+- logout functional
+- optimized navbar in dashboard
+- implemented user db
