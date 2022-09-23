@@ -21,10 +21,19 @@ const firebaseConfig = {
 //const analytics = getAnalytics(app);
 
 initializeApp(firebaseConfig)
-const db = getFirestore() //db connection
-const ref = collection(db, 'admin')//refer to collection
-getDocs(ref) //retireve docs 
-  .then((snapshot)=>{
-    console.log(snapshot.docs)
 
-  })
+const db = getFirestore() //db connection
+
+const ref = collection(db, 'admin')//refer to collection
+
+getDocs(ref) //retireve docs 
+  .then((snapshot) => {
+    let admin = []
+    snapshot.docs.forEach((doc) => {
+        admin.push({...doc.data(), id: doc.id})
+    })
+    console.log(books)
+})
+.catch(err => {
+    console.log(err.message)
+})
