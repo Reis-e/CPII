@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js";
-import { getAuth, createUserWithEmailAndPassword, connectAuthEmulator, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, connectAuthEmulator, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
 import { doc, setDoc, getDoc, getFirestore, connectFirestoreEmulator,updateDoc, increment } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js';
 //remove emulator for live
 
@@ -28,33 +28,12 @@ connectAuthEmulator(auth, "http://localhost:9099"); //remove for live testing
 const db = getFirestore();
 connectFirestoreEmulator(db, 'localhost', 8080); //remove for live testing
 
-document.getElementById("login").addEventListener('click', (e) => {
-    const email = document.getElementById("email").value
-    const password = document.getElementById("password").value
-
-    signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-        // Signed in 
-        const user = userCredential.user;
-        console.log(user);
-
-        getDoc(doc(db, "users", user.uid)).then(docSnap => {
-            if (docSnap.exists()) {
-                console.log(docSnap.data())
-            }
-        }).then(function() {
-            location.href = "../admin/dashboard.html";
-        });
-
-        
-        // ...
-    })
-    .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorMessage);
-    });
-
-
-    
+document.getElementById("logout").addEventListener('click', (e) => {
+    signOut(auth).then(() => {
+        location.href = "index.html";
+      }).catch((error) => {
+        // An error happened.
+      });
+      
+    console.log("logout");
 }); 

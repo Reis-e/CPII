@@ -14,9 +14,10 @@ try {
                 class="fas fa-shopping-cart me-2"></i>Transactions</a>
             <a href="chat.html" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                 class="fas fa-gift me-2"></i>Support</a>
-            <a href="./index.html" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
-                class="fas fa-power-off me-2"></i>Logout</a>
+            <a class="list-group-item list-group-item-action bg-transparent text-danger fw-bold " id="logout"><i
+                class="fas fa-power-off me-2"  ></i>Logout</a>
     </div>`;
 } catch (error) {
     console.log(error);
 }
+
