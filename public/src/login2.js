@@ -37,13 +37,27 @@ document.getElementById("login").addEventListener('click', (e) => {
         // Signed in 
         const user = userCredential.user;
         console.log(user);
+        var admin = "";
 
         getDoc(doc(db, "users", user.uid)).then(docSnap => {
             if (docSnap.exists()) {
                 console.log(docSnap.data())
+                admin = docSnap.data().role;
             }
         }).then(function() {
-            location.href = "../admin/dashboard.html";
+            switch (admin) {
+                case "admin":
+                    location.href = "../admin/dashboard.html";
+                    break;
+
+                case "staff":
+                    location.href = "../admin/dashboard.html"; //staff dashboard
+                    break;
+            
+                default:
+                    location.href = "./userdash.html";
+                    break;
+            }
         });
 
         
