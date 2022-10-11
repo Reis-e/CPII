@@ -51,7 +51,7 @@ document.getElementById("login").addEventListener('click', (e) => {
                     break;
 
                 case "staff":
-                    location.href = "../admin/dashboard.html"; //staff dashboard
+                    location.href = "../staff/dashboard.html"; 
                     break;
             
                 default:
