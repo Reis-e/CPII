@@ -72,6 +72,7 @@ document.getElementById("btnsave").addEventListener('click', (e) => {
                 add: add,
                 phone: phone,
                 email: email,
+                password: password
                 }, { merge: true }) //pag wala to, madedelete ung ibang fields
 
                 console.log("Success");

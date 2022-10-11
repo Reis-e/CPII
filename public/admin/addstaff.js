@@ -1,8 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
+import { getAuth, createStaffWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js";
-import { getAuth, createUserWithEmailAndPassword, connectAuthEmulator } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
+import { getAuth, createStaffWithEmailAndPassword, connectAuthEmulator } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
 import { doc, setDoc, getDoc, getFirestore, connectFirestoreEmulator,updateDoc, increment } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js';
 //remove emulator for live
 
@@ -29,34 +29,31 @@ const auth = getAuth();
 const db = getFirestore();
 //connectFirestoreEmulator(db, 'localhost', 8080); //remove for live testing
 
-document.getElementById("signup").addEventListener('click', (e) => {
+document.getElementById("save").addEventListener('click', (e) => {
     const username = document.getElementById("username").value
-    const email = document.getElementById("email").value
     const password = document.getElementById("password").value
-    //confirmpass?
     const fname = document.getElementById("fname").value
-    const lname = document.getElementById("lname").value
-    const add = document.getElementById("add").value
+    const lname = document.getElementById("lname").value  
+    const email = document.getElementById("email").value
     const phone = document.getElementById("phone").value
-    const precinct = document.getElementById("precinct").value
+    const add = document.getElementById("add").value
   
-    createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
+    createStaffWithEmailAndPassword(auth, email, password)
+    .then((staffCredential) => {
       // Signed in 
-      const user = userCredential.user;
+      const staff = staffCredential.staff;
       // ...
       console.log("acc creation success")
-      getDoc(doc(db, "users", user.uid)).then(docSnap => {
+      getDoc(doc(db, "staffs", staff.uid)).then(docSnap => {
         if (!docSnap.exists()) {
-          const userDBRef = doc(db, "users", user.uid);
-            setDoc(userDBRef, {
+          const staffDBRef = doc(db, "staffs", staff.uid);
+            setDoc(staffDBRef, {
               username: username,
-              email: email,
               fname: fname,
               lname: lname,
-              add: add,
+              email: email,
               phone: phone,
-              precinct: precinct
+              add: add,
             }, { merge: true }) 
 
             console.log("success");
