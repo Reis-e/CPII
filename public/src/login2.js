@@ -24,9 +24,9 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 //const analytics = getAnalytics(app);
 const auth = getAuth();
-connectAuthEmulator(auth, "http://localhost:9099"); //remove for live testing
+//connectAuthEmulator(auth, "http://localhost:9099"); //remove for live testing
 const db = getFirestore();
-connectFirestoreEmulator(db, 'localhost', 8080); //remove for live testing
+//connectFirestoreEmulator(db, 'localhost', 8080); //remove for live testing
 
 document.getElementById("login").addEventListener('click', (e) => {
     const email = document.getElementById("email").value
@@ -55,7 +55,7 @@ document.getElementById("login").addEventListener('click', (e) => {
                     break;
             
                 default:
-                    location.href = "./userdash.html";
+                    location.href = "../user/userdash.html";
                     break;
             }
         });

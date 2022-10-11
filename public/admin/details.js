@@ -24,9 +24,9 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 //const analytics = getAnalytics(app);
 const auth = getAuth();
-connectAuthEmulator(auth, "http://localhost:9099"); //remove for live testing
+//connectAuthEmulator(auth, "http://localhost:9099"); //remove for live testing
 const db = getFirestore();
-connectFirestoreEmulator(db, 'localhost', 8080); //remove for live testing
+//connectFirestoreEmulator(db, 'localhost', 8080); //remove for live testing
 
 
 onAuthStateChanged(auth, async (user) => {
@@ -38,6 +38,7 @@ onAuthStateChanged(auth, async (user) => {
             var lname = userdata.data().lname;
             var phone = userdata.data().phone;
             var add = userdata.data().add;
+            var email = userdata.data().email;
 
             console.log(fname);
             console.log(lname);
@@ -48,6 +49,7 @@ onAuthStateChanged(auth, async (user) => {
             document.getElementById('lname').value = lname;
             document.getElementById('add').value = add;
             document.getElementById('phone').value = phone;
+            document.getElementById('email').value = email;
         } catch (error) {
             
         }
@@ -61,6 +63,7 @@ document.getElementById("btnsave").addEventListener('click', (e) => {
             var lname = document.getElementById('lname').value;
             var add = document.getElementById('add').value;
             var phone = document.getElementById('phone').value;
+            var email = document.getElementById('email').value; //?
 
             const userDBRef = doc(db, "users", user.uid);
                 setDoc(userDBRef, {
@@ -68,7 +71,10 @@ document.getElementById("btnsave").addEventListener('click', (e) => {
                 lname: lname,
                 add: add,
                 phone: phone,
+                email: email,
                 }, { merge: true }) //pag wala to, madedelete ung ibang fields
+
+                console.log("Success");
             
         } catch (error){
 
