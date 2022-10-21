@@ -10,6 +10,8 @@ import { doc, setDoc, getDoc, getFirestore, connectFirestoreEmulator,updateDoc, 
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+
 const firebaseConfig = {
   apiKey: "AIzaSyBZggo2OL7cKkn9tgPSCjkl7ys2kxJz7RQ",
   authDomain: "eproseso-3f013.firebaseapp.com",

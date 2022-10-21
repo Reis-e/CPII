@@ -5,13 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/register.css" />
+    <link rel="stylesheet" href="../css/snackbar.css" />
     <script src="../src/reg.js" defer></script>
+    <script src="../src/regtoast.js" defer></script>
     <script type = "module" src="../src/register.js" defer></script>
     <title>Registration Form</title>
   </head>
 
   <body style="background-color: #fff"> <!--sectioning bad-->
-    <form action="#" class="form">
+    <form action="../src/login.html" class="form">
       <h1 class="text-center">Registration Form</h1>
       <!-- Progress bar -->
       <div class="progressbar">
@@ -121,10 +123,6 @@
                  and that they consent to the use of that data. This is to assure the users that their data is in good hands.
 
                  In case of a breach, please contact the following staff:
-                
-
-
-
                 </div>
             </div>
         </div>
@@ -137,21 +135,30 @@
         </div>
       </div>
 
+
       <!--Done-->
       <div class="form-step">
         <div class="input-group">
           <h3>Registration Complete</h3>
         </div>
 
-        <p>You may now <a href="login.html">login</a>.</p> <!---->
+        <!--<p>You may now <a href="login.html">login</a>.</p> -->
 
         <div class="btns-group">
           <a href="#" class="btn btn-prev">Previous</a>
-          <a class="btn btn-prev" id="signup">Submit</a>
+          <!--a class="btn btn-next" data-bs-toggle="modal" data-bs-target="#cert" id="signup">Submit</a-->
+          <button type="submit" class="btn" onclick="myFunction()" id="signup">Submit</button>
           <!--<input type="submit" value="Submit" class="btn" id="signup"/> ????? form needs submit right?-->
         </div>
+
+        <div id="snackbar">Signup success!</div>
+
       </div>
     </form>
+
+    <script>
+      
+  </script>
 
   </body>
 </html>

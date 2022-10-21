@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js";
-import { getAuth, createUserWithEmailAndPassword, connectAuthEmulator } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, connectAuthEmulator, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
 import { doc, setDoc, getDoc, getFirestore, connectFirestoreEmulator,updateDoc, increment } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js';
 //remove emulator for live
 
@@ -31,7 +31,7 @@ const db = getFirestore();
 
 //BARANGAY ID
 
-const form = document.querySelector("form");
+/*const form = document.querySelector("form");
 const fullName = document.querySelector("fullName");
 const add = document.querySelector("add");
 const bday = document.querySelector("bday");
@@ -41,11 +41,47 @@ const precinct = document.querySelector("precinct");
 const batisNum = document.querySelector("batisNum");
 const emergencyName = document.querySelector("emergencyName");
 const relation = document.querySelector("relation");
-const emergencyPhone = document.querySelector("emergencyPhone");
+const emergencyPhone = document.querySelector("emergencyPhone");*/
 
+document.getElementById("idSubmit").addEventListener('click', (e) => {
+    onAuthStateChanged(auth, async (user) => {
+        try {
+            var form = document.getElementById('form').value;
+            var fullName = document.getElementById('fullName').value;
+            var add = document.getElementById('add').value;
+            var bday = document.getElementById('bday').value;
+            var birthPlace = document.getElementById('birthPlace').value;
+            var civilStatus = document.getElementById('civilStatus').value;
+            var precinct = document.getElementById('precinct').value;
+            var batisNum = document.getElementById('batisNum').value;
+            var emergencyName = document.getElementById('emergencyName').value;
+            var relation = document.getElementById('relation').value;
+            var emergencyPhone = document.getElementById('emergencyPhone').value;
 
+            const userDBRef = doc(db, "transactions", user.uid);
+                setDoc(userDBRef, {
+                form: form,
+                fullName: fullName,
+                add: add,
+                bday: bday,
+                birthPlace: birthPlace,
+                civilStatus: civilStatus,
+                precinct: precinct,
+                batisNum: batisNum,
+                emergencyName: emergencyName,
+                relation: relation,
+                emergencyPhone: emergencyPhone,
+                }, { merge: true }) //pag wala to, madedelete ung ibang fields
 
-submit.addEventListener("click", (e) => {
+                console.log("sent");
+            
+        } catch (error){
+            console.log("something isn't right");
+        }
+    });
+});
+
+/*submit.addEventListener("click", (e) => {
     e.preventDefault();
     db.collection('transactions')
     .doc()
@@ -70,6 +106,6 @@ submit.addEventListener("click", (e) => {
 
     });
 }); 
-    
+*/    
   
   
