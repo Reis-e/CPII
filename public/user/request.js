@@ -44,9 +44,10 @@ const relation = document.querySelector("relation");
 const emergencyPhone = document.querySelector("emergencyPhone");*/
 
 document.getElementById("idSubmit").addEventListener('click', (e) => {
-    onAuthStateChanged(auth, async (user) => {
+    onAuthStateChanged(auth, async (transac) => {
         try {
-            var form = document.getElementById('form').value;
+            console.log("okay");
+            //var form = document.getElementById('form').value;
             var fullName = document.getElementById('fullName').value;
             var add = document.getElementById('add').value;
             var bday = document.getElementById('bday').value;
@@ -58,9 +59,9 @@ document.getElementById("idSubmit").addEventListener('click', (e) => {
             var relation = document.getElementById('relation').value;
             var emergencyPhone = document.getElementById('emergencyPhone').value;
 
-            const userDBRef = doc(db, "transactions", user.uid);
-                setDoc(userDBRef, {
-                form: form,
+            const transacDB = doc(db, "transactions");
+                setDoc(transacDB, {
+                //form: form,
                 fullName: fullName,
                 add: add,
                 bday: bday,
@@ -71,8 +72,7 @@ document.getElementById("idSubmit").addEventListener('click', (e) => {
                 emergencyName: emergencyName,
                 relation: relation,
                 emergencyPhone: emergencyPhone,
-                }, { merge: true }) //pag wala to, madedelete ung ibang fields
-
+                }, { merge: true }) 
                 console.log("sent");
             
         } catch (error){

@@ -9,10 +9,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="../admin-css/dashboard.css" />
     <script src = "./admin-nav.js" defer></script>
-    <title>Dashboard</title>
+
+    <link rel="icon" href="to-do-list.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="finish_task.css" type="text/css">
+    <script type = "module" src="finish_task.js" defer> </script>
+
+    <title>Announcements</title>
 </head>
 
 <body>
+<!--body onload="create_unfinished_task(), create_finished_task() ==> for archive"></body-->
     <div class="d-flex" id="wrapper">
         <!-- Sidebar -->
         <div class="bg-white" id="sidebar-wrapper">
@@ -31,8 +38,8 @@
                         class="fas fa-shopping-cart me-2"></i>Transactions</a>
                 <a href="chat.html" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-comment-dots me-2"></i>Chat</a>
-                <a class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
-                        class="fas fa-power-off me-2" id = "logout"></i>Logout</a>
+                <a href="../src/index.html" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
+                        class="fas fa-power-off me-2"></i>Logout</a>
             </div>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -42,7 +49,7 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                 <div class="d-flex align-items-center">
                     <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-                    <h2 class="fs-2 m-0">Dashboard</h2>
+                    <h2 class="fs-2 m-0">Announcements</h2>
                 </div>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -72,16 +79,47 @@
             <!--paayos lods-->
             <div class="container px-4">
                 <div class="row g-3 my-2">
-                    <div class="col-md-3">
+                    <div class="col-md-6">
                         <div class="p-3">
                             <div> <!--MARK-->
-                                <h2 class="fs-2">Quick Shortcuts</h2>
-                                <p class="fs-5"><a href="profiledeets.html">Change Profile Settings</a></p>
-                                <p class="fs-5"><a href="addannounce.html">Create an Anouncement</a></p>
-                                <p class="fs-5"><a href="#">Edit Users</a></p>
-                                <p class="fs-5"><a href="#">View Transactions</a></p>
+                                <h2 class="fs-2">Archived Announcements</h2>
+
+                                    <div id="content_container">
+                                      <div id="finish_task_header">
+                                        <!--p> Finish Task. </p-->
+                                      </div>
+                                
+                                
+                                      <!-- Task Finished Yay -->
+                                      <!--p class="header"> Finished </p-->
+                                      <div class="container">
+                                
+                                
+                                        <div class="task_container">
+                                          <div id="task_data">
+                                            <p id="task_title" contenteditable="false"> Announcement 1 </p>
+                                            <p id="task_date" contenteditable="false"> 10/23/22 </p>
+                                          </div>
+                                        </div>
+
+                                        <div class="task_container">
+                                          <div id="task_data">
+                                            <p id="task_title" contenteditable="false"> Announcement 2 </p>
+                                            <p id="task_date" contenteditable="false"> 10/23/22 </p>
+                                          </div>
+                                        </div>
+
+                                        <div class="task_container">
+                                          <div id="task_data">
+                                            <p id="task_title" contenteditable="false"> Announcement 3 </p>
+                                            <p id="task_date" contenteditable="false"> 10/23/22 </p>
+                                          </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
                             </div>
-                            <!--<i class="fas fa-gift fs-1 primary-text border rounded-full secondary-bg p-3"></i>-->
                         </div>
                     </div>
                 </div>
