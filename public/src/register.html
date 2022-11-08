@@ -4,161 +4,79 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstraps -->
+	  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/register.css" />
     <link rel="stylesheet" href="../css/snackbar.css" />
+
+    <!-- bootstrap js -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
     <script src="../src/reg.js" defer></script>
     <script src="../src/regtoast.js" defer></script>
     <script type = "module" src="../src/register.js" defer></script>
     <title>Registration Form</title>
-  </head>
-
-  <body style="background-color: #fff"> <!--sectioning bad-->
-    <form class="form">
-      <h1 class="text-center">Registration Form</h1>
-      <!-- Progress bar -->
-      <div class="progressbar">
-        <div class="progress" id="progress"></div>
+      <body>
         
-        <div
-          class="progress-step progress-step-active"
-          data-title="Account"
-        ></div>
-        <div class="progress-step" data-title="Details"></div>
-        <div class="progress-step" data-title="Policies"></div>
-        <div class="progress-step" data-title="Completed"></div>
-      </div>
+        <div class="container">
+          <div id="errormsg" class="alert alert-danger alert-dismissible fade show" role="alert" style="display:none">
+            <strong>Registration cannot be completed.</strong></br>
+            <span id="errortxt" ></span>.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
 
-      <!-- Steps -->
-
-      <!--account-->
-      <div class="form-step form-step-active">
-        <div class="input-group">
-          <label for="username">Username</label>
-          <input type="text" name="username" id="username" />
-        </div>
-
-        <div class="input-group">
-          <label for="position">Email</label>
-          <input type="text" name="email" id="email" />
-        </div>
-
-        <div class="input-group">
-            <label for="position">Password</label>
-            <input type="password" name="password" id="password" />
-        </div>
-
-        <div class="input-group">
-            <label for="position">Confirm Password</label>
-            <input type="password" name="confirmpass" id="confirmpass" />
-        </div>
+          <div class="form">
+          <h1><center>Register</center></h1>
+          <p>Please fill in this form to create an account.</p>
           
-        <div class="">
-            <a href="#" class="btn btn-next width-50 ml-auto">Next</a>
-        </div>
-      </div>
-
-      <!--Details-->
-      <div class="form-step">
-        <!--<div class="deets">-->
-          <div class="input-group">
-              <label for="fname">First Name</label>
-              <input type="text" name="fname" id="fname" />
-          </div>
-
-          <div class="input-group">
-              <label for="lname">Last Name</label>
-              <input type="text" name="lname" id="lname" />
-          </div>
-
-          <div class="input-group">
-              <label for="home">Home Address</label>
-              <input type="text" name="add" id="add" />
-          </div>
-
-          <div class="input-group">
-              <label for="phone">Phone Number</label>
-              <input type="text" name="phone" id="phone" />
-          </div>
-
-          <div class="input-group">
-              <label for="precinct">Precinct Number</label>
-              <input type="text" name="precinct" id="precinct" />
-          </div>
-        <!--</div>-->
-
-        <div class="btns-group">
-            <a href="#" class="btn btn-prev">Previous</a>
-            <a href="#" class="btn btn-next">Next</a>
-        </div>
-      </div>
-
-      <!--Policies-->
-      <div class="form-step">
-        <!--
-        <div class="input-group">
-            <label for="dob">Date of Birth</label>
-            <input type="date" name="dob" id="dob" />
-        </div>
-        -->
-        <div class="input-group">
-        </div>
-        
-        <!--policy-->
-        <div class="scrollbg">
-            <h1>Privacy Policy</h1>
-            <div class="scroll-div">
-                <div class="scroll-object">
-                 <h1>E-PROSESO PRIVACY POLICY</h1>
-                 In accordance with RA 10173 Data Privacy Act, it is important for the users to know what their data will be used for, 
-                 and that they consent to the use of that data. This is to assure the users that their data is in good hands.
-
-                 In case of a breach, please contact the following staff:
-
-                 In accordance with RA 10173 Data Privacy Act, it is important for the users to know what their data will be used for, 
-                 and that they consent to the use of that data. This is to assure the users that their data is in good hands.
-
-                 In case of a breach, please contact the following staff:
-
-                 In accordance with RA 10173 Data Privacy Act, it is important for the users to know what their data will be used for, 
-                 and that they consent to the use of that data. This is to assure the users that their data is in good hands.
-
-                 In case of a breach, please contact the following staff:
-                </div>
-            </div>
-        </div>
-
-        <br>
-
-        <div class="btns-group">
-            <a href="#" class="btn btn-prev">Previous</a>
-            <a href="#" class="btn btn-next">Next</a>
-        </div>
-      </div>
+          <hr>
 
 
-      <!--Done-->
-      <div class="form-step">
-        <div class="input-group">
-          <h3>Registration Complete</h3>
-        </div>
-
-        <!--<p>You may now <a href="login.html">login</a>.</p> -->
-
-        <div class="btns-group">
-          <a href="#" class="btn btn-prev">Previous</a>
-          <!--a class="btn btn-next" data-bs-toggle="modal" data-bs-target="#cert" id="signup">Submit</a-->
-          <button type="button" class="btn" id="signup">Submit</button>
-          <!--<input type="submit" value="Submit" class="btn" id="signup"/> ????? form needs submit right?-->
-        </div>
-
-        <div id="snackbar">Signup success!</div>
-
-      </div>
-    </form>
-
-    <script>
+          <label for="username"><b>Username</b></label>
+          <input type="text" placeholder="Enter Username" name="username" id="username" required>
       
-  </script>
+          <label for="email"><b>Email</b></label>
+          <input type="text" placeholder="Enter Email" name="email" id="email" required>
+      
+          <label for="password"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="password" id="password" required>
+      
+          <label for="confirmPass"><b>Confirm Password</b></label>
+          <input type="password" placeholder="Confirm Password" name="confirmPass" id="confirmPass" required>
+
+          <label for="fname"><b>First Name</b></label>
+          <input type="text" placeholder="Enter First Name" name="fname" id="fname" required>
+
+          <label for="lname"><b>Last Name</b></label>
+          <input type="text" placeholder="Enter Last Name" name="lname" id="lname" required>
+
+          <label for="add"><b>Address</b></label>
+          <input type="text" placeholder="Enter Address" name="add" id="add" required>
+
+          <label for="phone"><b>Mobile Number</b></label>
+          <input type="text" placeholder="Enter Mobile No." name="phone" id="phone" required>
+
+          <label for="precinct"><b>Precinct No.</b></label>
+          <input type="text" placeholder="Enter Precinct No." name="precinct" id="precinct" required>
+
+          <hr>
+      
+          <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+          
+          <button class="registerbtn" id="signup">Register</button>
+          
+          <div class="container signin">
+            <p>Already have an account? <a href="#">Sign in</a>.</p>
+          </div>
+        </div>
+      
+      </div>
 
   </body>
 </html>
