@@ -3,6 +3,9 @@ const nextBtns = document.querySelectorAll(".btn-next");
 const progress = document.getElementById("progress");
 const formSteps = document.querySelectorAll(".form-step");
 const progressSteps = document.querySelectorAll(".progress-step");
+const input = document.getElementsByTagName("input");
+
+var x = document.getElementsByClassName("tab");
 
 let formStepsNum = 0;
 
