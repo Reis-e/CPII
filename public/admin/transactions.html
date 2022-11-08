@@ -9,10 +9,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="../admin-css/dashboard.css" />
     <script src = "./admin-nav.js" defer></script>
-    <title>Transactions</title>
+
+    <link rel="icon" href="to-do-list.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="finish_task.css" type="text/css">
+    <script type = "module" src="finish_task.js" defer> </script>
+
+    <title>Manage Transactions</title>
 </head>
 
 <body>
+<!--body onload="create_unfinished_task(), create_finished_task() ==> for archive"></body-->
     <div class="d-flex" id="wrapper">
         <!-- Sidebar -->
         <div class="bg-white" id="sidebar-wrapper">
@@ -42,7 +49,7 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                 <div class="d-flex align-items-center">
                     <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-                    <h2 class="fs-2 m-0">Transactions</h2>
+                    <h2 class="fs-2 m-0">Manage Transactions</h2>
                 </div>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -75,13 +82,40 @@
                     <div class="col-md-3">
                         <div class="p-3">
                             <div> <!--MARK-->
-                                <p class="fs-5"><a href="#">Update Transaction</a></p>
-                                <p class="fs-5"><a href="#">Archive Transaction</a></p>
-                                <p class="fs-5"><a href="#">Generate Report</a></p>
+
+                                <div class="container mx-auto mt-1"> <!--headroom?-->
+                                    <div class="col-md-12" style="width: 50rem;">
+
+                                        <div class="btns">
+                                            <a href="#" class="btn">Update Transaction Status</a>
+                                            <a href="#" class="btn">Archive Transaction</a>
+                                            <a href="#" class="btn">Generate Report</a>
+                                        </div>
+
+                                    </div>
+                                    
+                                </div>
+
                             </div>
-                            <!--<i class="fas fa-gift fs-1 primary-text border rounded-full secondary-bg p-3"></i>-->
                         </div>
                     </div>
+
+                    <div class="contain">
+                        <div id="content_container2">
+                            <div id="finish_task_header">
+                              <!--p> Finish Task. </p-->
+                            </div>
+                      
+                      
+                            
+                            <div class="container">
+                                <p>No transactions yet...</p>
+                      
+                            </div>
+                            
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -90,8 +124,7 @@
 
         </div>
     </div>
-    <!-- /#page-content-wrapper -->
-    </div>
+</div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
