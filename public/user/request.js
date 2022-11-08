@@ -60,7 +60,7 @@ document.getElementById("idSubmit").addEventListener('click', (e) => {
             var emergencyPhone = document.getElementById('emergencyPhone').value;
 
             const transacDB = doc(db, "transactions");
-                setDoc(transacDB, {
+                /*setDoc*/(transacDB, {
                 //form: form,
                 fullName: fullName,
                 add: add,
@@ -73,7 +73,7 @@ document.getElementById("idSubmit").addEventListener('click', (e) => {
                 relation: relation,
                 emergencyPhone: emergencyPhone,
                 }, { merge: true }) 
-                console.log("sent");
+                console.log(transacDB);
             
         } catch (error){
             console.log("something isn't right");
