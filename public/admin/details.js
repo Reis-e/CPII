@@ -58,6 +58,7 @@ onAuthStateChanged(auth, async (user) => {
 
 document.getElementById("btnsave").addEventListener('click', (e) => {
     onAuthStateChanged(auth, async (user) => {
+        alert("Profile Saved");
         try {
             var fname = document.getElementById('fname').value;
             var lname = document.getElementById('lname').value;
