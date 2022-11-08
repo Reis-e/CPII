@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Catamaran:wght@100;300;400;500&family=EB+Garamond&family=Manrope:wght@200&family=Slabo+27px&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Catamaran:wght@100;300;400;500&family=EB+Garamond&family=Manrope:wght@200&family=Slabo+27px&display=swap'); */
 
 
-:root {
+/* :root {
     --primary-color: rgb(218, 128, 168);
     --bggradient: linear-gradient(
         to bottom,
@@ -27,7 +27,7 @@
     
     
     
-  }
+  } */
   /* Global Stylings */
   label {
     display: block;
