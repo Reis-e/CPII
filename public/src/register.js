@@ -11,7 +11,6 @@ document.getElementById("signup").addEventListener("click", (e) => {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
   const confirmpassword = document.getElementById("confirmpassword").value;
-
   const fname = document.getElementById("firstname").value;
   const lname = document.getElementById("lastname").value;
   const add = document.getElementById("address").value;
@@ -61,10 +60,6 @@ document.getElementById("signup").addEventListener("click", (e) => {
         let messageHtml = "";
 
         console.log(errorCode + errorMessage);
-        // alert("error");
-        // document.getElementById("errormsg").style.display = "block";
-        // document.getElementById("errortxt").innerHTML = errorMessage;
-
         if (errorCode === "auth/email-already-in-use") {
           errorMessage.push("email already in use!");
         }

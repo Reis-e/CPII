@@ -43,10 +43,17 @@ document.getElementById("login").addEventListener("click", (e) => {
     })
     .catch((error) => {
       const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log("Error: " + errorMessage);
+      let errorMessage = new Array();
+      console.log(errorCode + errorMessage);
+      if (errorCode === "auth/wrong-password") {
+        errorMessage.push("Incorrect Password!");
+      }else if (errorCode === "auth/invalid-email") {
+        errorMessage.push("Incorrect Email Address or Password");
+      }else{
+        errorMessage.push(errorCode);
+      }
       document.getElementById("errormsg").style.display = "block";
-      document.getElementById("errortxt").innerHTML =
-        "Invalid Username or Password";
+      document.getElementById("errortxt").innerHTML = errorMessage;
+
     });
 });
