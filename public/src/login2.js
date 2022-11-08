@@ -4,15 +4,6 @@ import {
   getDoc,
 } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
 import { db, auth } from "./firebaseConfig/firebaseConfig.js";
-import {
-  doc,
-  setDoc,
-  getDoc,
-  getFirestore,
-  connectFirestoreEmulator,
-  updateDoc,
-  increment,
-} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
 
 document.getElementById("login").addEventListener("click", (e) => {
   const email = document.getElementById("email").value;
@@ -55,6 +46,7 @@ document.getElementById("login").addEventListener("click", (e) => {
       const errorMessage = error.message;
       console.log("Error: " + errorMessage);
       document.getElementById("errormsg").style.display = "block";
-      document.getElementById("errortxt").innerHTML ="Invalid Username or Password";
+      document.getElementById("errortxt").innerHTML =
+        "Invalid Username or Password";
     });
 });
