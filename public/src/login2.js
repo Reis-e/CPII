@@ -1,4 +1,8 @@
 import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
+import {
+  doc,
+  getDoc,
+} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
 import { db, auth } from "./firebaseConfig/firebaseConfig.js";
 
 document.getElementById("login").addEventListener("click", (e) => {
