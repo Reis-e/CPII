@@ -10,155 +10,267 @@
     <script src="../src/regtoast.js" defer></script>
     <script type = "module" src="../src/register.js" defer></script>
     <title>Registration Form</title>
-  </head>
-
-  <body style="background-color: #fff"> <!--sectioning bad-->
-    <form action="../src/login.html" class="form">
-      <h1 class="text-center">Registration Form</h1>
-      <!-- Progress bar -->
-      <div class="progressbar">
-        <div class="progress" id="progress"></div>
-        
-        <div
-          class="progress-step progress-step-active"
-          data-title="Account"
-        ></div>
-        <div class="progress-step" data-title="Details"></div>
-        <div class="progress-step" data-title="Policies"></div>
-        <div class="progress-step" data-title="Completed"></div>
-      </div>
-
-      <!-- Steps -->
-
-      <!--account-->
-      <div class="form-step form-step-active">
-        <div class="input-group">
-          <label for="username">Username</label>
-          <input type="text" name="username" id="username" />
-        </div>
-
-        <div class="input-group">
-          <label for="position">Email</label>
-          <input type="text" name="email" id="email" />
-        </div>
-
-        <div class="input-group">
-            <label for="position">Password</label>
-            <input type="password" name="password" id="password" />
-        </div>
-
-        <div class="input-group">
-            <label for="position">Confirm Password</label>
-            <input type="password" name="confirmpass" id="confirmpass" />
-        </div>
-          
-        <div class="">
-            <a href="#" class="btn btn-next width-50 ml-auto">Next</a>
-        </div>
-      </div>
-
-      <!--Details-->
-      <div class="form-step">
-        <!--<div class="deets">-->
-          <div class="input-group">
-              <label for="fname">First Name</label>
-              <input type="text" name="fname" id="fname" />
+    <style>
+      
+      /* Mark input boxes that gets an error on validation: */
+      input.invalid {
+        background-color: #ffdddd;
+      }
+      
+      /* Hide all steps by default: */
+      .tab {
+        display: none;
+      }
+      
+      
+      button:hover {
+        opacity: 0.8;
+      }
+      
+      /* #prevBtn {
+        background-color: #bbbbbb;
+      } */
+      
+      /* Make circles that indicate the steps of the form: */
+      /* .step {
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbbbbb;
+        border: none;  
+        border-radius: 50%;
+        display: inline-block;
+        opacity: 0.5;
+      } */
+      
+      /* .step.active {
+        opacity: 1;
+      }
+      
+      /* Mark the steps that are finished and valid: */
+      .step.finish {
+        background-color: #04AA6D;
+      } */
+      </style>
+      <body>
+      
+        <form action="../src/login.html" class="form">
+          <h1 class="text-center">Registration Form</h1>
+          <!-- Progress bar -->
+          <div class="progressbar">
+            <div class="progress" id="progress"></div>
+            
+            <div
+              class="progress-step progress-step-active"
+              data-title="Account"
+            ></div>
+            <div class="progress-step" data-title="Details"></div>
+            <div class="progress-step" data-title="Policies"></div>
+            <div class="progress-step" data-title="Completed"></div>
           </div>
-
-          <div class="input-group">
-              <label for="lname">Last Name</label>
-              <input type="text" name="lname" id="lname" />
+    
+          <!-- Steps -->
+    
+          <!--account-->
+          <div class="form-step form-step-active">
+            <div class="input-group">
+              <label for="username">Username</label>
+              <input type="text" name="username" id="username" required />
+            </div>
+    
+            <div class="input-group">
+              <label for="position">Email</label>
+              <input type="text" name="email" id="email" required/>
+            </div>
+    
+            <div class="input-group">
+                <label for="position">Password</label>
+                <input type="password" name="password" id="password" required/>
+            </div>
+    
+            <div class="input-group">
+                <label for="position">Confirm Password</label>
+                <input type="password" name="confirmpass" id="confirmpass" required/>
+            </div>
+              
+            <div class="">
+                <button  class="btn btn-next width-50 ml-auto" onclick="checkValue()" >Next</button>
+            </div>
           </div>
-
-          <div class="input-group">
-              <label for="home">Home Address</label>
-              <input type="text" name="add" id="add" />
+    
+          <!--Details-->
+          <div class="form-step">
+            <!--<div class="deets">-->
+              <div class="input-group">
+                  <label for="fname">First Name</label>
+                  <input type="text" name="fname" id="fname" />
+              </div>
+    
+              <div class="input-group">
+                  <label for="lname">Last Name</label>
+                  <input type="text" name="lname" id="lname" />
+              </div>
+    
+              <div class="input-group">
+                  <label for="home">Home Address</label>
+                  <input type="text" name="add" id="add" />
+              </div>
+    
+              <div class="input-group">
+                  <label for="phone">Phone Number</label>
+                  <input type="text" name="phone" id="phone" />
+              </div>
+    
+              <div class="input-group">
+                  <label for="precinct">Precinct Number</label>
+                  <input type="text" name="precinct" id="precinct" />
+              </div>
+            <!--</div>-->
+    
+            <div class="btns-group">
+                <a href="#" class="btn btn-prev">Previous</a>
+                <a href="#" class="btn btn-next">Next</a>
+            </div>
           </div>
-
-          <div class="input-group">
-              <label for="phone">Phone Number</label>
-              <input type="text" name="phone" id="phone" />
-          </div>
-
-          <div class="input-group">
-              <label for="precinct">Precinct Number</label>
-              <input type="text" name="precinct" id="precinct" />
-          </div>
-        <!--</div>-->
-
-        <div class="btns-group">
-            <a href="#" class="btn btn-prev">Previous</a>
-            <a href="#" class="btn btn-next">Next</a>
-        </div>
-      </div>
-
-      <!--Policies-->
-      <div class="form-step">
-        <!--
-        <div class="input-group">
-            <label for="dob">Date of Birth</label>
-            <input type="date" name="dob" id="dob" />
-        </div>
-        -->
-        <div class="input-group">
-        </div>
-        
-        <!--policy-->
-        <div class="scrollbg">
-            <h1>Privacy Policy</h1>
-            <div class="scroll-div">
-                <div class="scroll-object">
-                 <h1>E-PROSESO PRIVACY POLICY</h1>
-                 In accordance with RA 10173 Data Privacy Act, it is important for the users to know what their data will be used for, 
-                 and that they consent to the use of that data. This is to assure the users that their data is in good hands.
-
-                 In case of a breach, please contact the following staff:
-
-                 In accordance with RA 10173 Data Privacy Act, it is important for the users to know what their data will be used for, 
-                 and that they consent to the use of that data. This is to assure the users that their data is in good hands.
-
-                 In case of a breach, please contact the following staff:
-
-                 In accordance with RA 10173 Data Privacy Act, it is important for the users to know what their data will be used for, 
-                 and that they consent to the use of that data. This is to assure the users that their data is in good hands.
-
-                 In case of a breach, please contact the following staff:
+    
+          <!--Policies-->
+          <div class="form-step">
+            <!--
+            <div class="input-group">
+                <label for="dob">Date of Birth</label>
+                <input type="date" name="dob" id="dob" />
+            </div>
+            -->
+            <div class="input-group">
+            </div>
+            
+            <!--policy-->
+            <div class="scrollbg">
+                <h1>Privacy Policy</h1>
+                <div class="scroll-div">
+                    <div class="scroll-object">
+                     <h1>E-PROSESO PRIVACY POLICY</h1>
+                     In accordance with RA 10173 Data Privacy Act, it is important for the users to know what their data will be used for, 
+                     and that they consent to the use of that data. This is to assure the users that their data is in good hands.
+    
+                     In case of a breach, please contact the following staff:
+    
+                     In accordance with RA 10173 Data Privacy Act, it is important for the users to know what their data will be used for, 
+                     and that they consent to the use of that data. This is to assure the users that their data is in good hands.
+    
+                     In case of a breach, please contact the following staff:
+    
+                     In accordance with RA 10173 Data Privacy Act, it is important for the users to know what their data will be used for, 
+                     and that they consent to the use of that data. This is to assure the users that their data is in good hands.
+    
+                     In case of a breach, please contact the following staff:
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <br>
-
-        <div class="btns-group">
-            <a href="#" class="btn btn-prev">Previous</a>
-            <a href="#" class="btn btn-next">Next</a>
-        </div>
-      </div>
-
-
-      <!--Done-->
-      <div class="form-step">
-        <div class="input-group">
-          <h3>Registration Complete</h3>
-        </div>
-
-        <!--<p>You may now <a href="login.html">login</a>.</p> -->
-
-        <div class="btns-group">
-          <a href="#" class="btn btn-prev">Previous</a>
-          <!--a class="btn btn-next" data-bs-toggle="modal" data-bs-target="#cert" id="signup">Submit</a-->
-          <button type="submit" class="btn" onclick="myFunction()" id="signup">Submit</button>
-          <!--<input type="submit" value="Submit" class="btn" id="signup"/> ????? form needs submit right?-->
-        </div>
-
-        <div id="snackbar">Signup success!</div>
-
-      </div>
-    </form>
-
-    <script>
+    
+            <br>
+    
+            <div class="btns-group">
+                <a href="#" class="btn btn-prev">Previous</a>
+                <a href="#" class="btn btn-next">Next</a>
+            </div>
+          </div>
+    
+    
+          <!--Done-->
+          <div class="form-step">
+            <div class="input-group">
+              <h3>Registration Complete</h3>
+            </div>
+    
+            <!--<p>You may now <a href="login.html">login</a>.</p> -->
+    
+            <div class="btns-group">
+              <a href="#" class="btn btn-prev">Previous</a>
+              <!--a class="btn btn-next" data-bs-toggle="modal" data-bs-target="#cert" id="signup">Submit</a-->
+              <button type="submit" class="btn" onclick="myFunction()" id="signup">Submit</button>
+              <!--<input type="submit" value="Submit" class="btn" id="signup"/> ????? form needs submit right?-->
+            </div>
+    
+            <div id="snackbar">Signup success!</div>
+    
+          </div>
+        </form>
       
-  </script>
+      <script>
+      var currentTab = 0; // Current tab is set to be the first tab (0)
+      showTab(currentTab); // Display the current tab
+      
+      function showTab(n) {
+        // This function will display the specified tab of the form...
+        var x = document.getElementsByClassName("tab");
+        x[n].style.display = "block";
+        //... and fix the Previous/Next buttons:
+        if (n == 0) {
+          document.getElementById("prevBtn").style.display = "none";
+        } else {
+          document.getElementById("prevBtn").style.display = "inline";
+        }
+        if (n == (x.length - 1)) {
+          document.getElementById("nextBtn").innerHTML = "Submit";
+        } else {
+          document.getElementById("nextBtn").innerHTML = "Next";
+        }
+        //... and run a function that will display the correct step indicator:
+        fixStepIndicator(n)
+      }
+      
+      function nextPrev(n) {
+        // This function will figure out which tab to display
+        var x = document.getElementsByClassName("tab");
+        // Exit the function if any field in the current tab is invalid:
+        if (n == 1 && !validateForm()) return false;
+        // Hide the current tab:
+        x[currentTab].style.display = "none";
+        // Increase or decrease the current tab by 1:
+        currentTab = currentTab + n;
+        // if you have reached the end of the form...
+        if (currentTab >= x.length) {
+          // ... the form gets submitted:
+          document.getElementById("regForm").submit();
+          return false;
+        }
+        // Otherwise, display the correct tab:
+        showTab(currentTab);
+      }
+      
+      function validateForm() {
+        // This function deals with validation of the form fields
+        var x, y, i, valid = true;
+        x = document.getElementsByClassName("tab");
+        y = x[currentTab].getElementsByTagName("input");
+        // A loop that checks every input field in the current tab:
+        for (i = 0; i < y.length; i++) {
+          // If a field is empty...
+          if (y[i].value == "") {
+            // add an "invalid" class to the field:
+            y[i].className += " invalid";
+            // and set the current valid status to false
+            valid = false;
+          }
+        }
+        // If the valid status is true, mark the step as finished and valid:
+        if (valid) {
+          document.getElementsByClassName("step")[currentTab].className += " finish";
+        }
+        return valid; // return the valid status
+      }
+      
+      function fixStepIndicator(n) {
+        // This function removes the "active" class of all steps...
+        var i, x = document.getElementsByClassName("step");
+        for (i = 0; i < x.length; i++) {
+          x[i].className = x[i].className.replace(" active", "");
+        }
+        //... and adds the "active" class on the current step:
+        x[n].className += " active";
+      }
+      </script>
 
   </body>
 </html>

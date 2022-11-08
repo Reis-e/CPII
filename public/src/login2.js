@@ -29,7 +29,6 @@ const db = getFirestore();
 //connectFirestoreEmulator(db, 'localhost', 8080); //remove for live testing
 
 document.getElementById("login").addEventListener('click', (e) => {
-    alert("test login");
     const email = document.getElementById("email").value
     const password = document.getElementById("password").value
 
@@ -38,15 +37,17 @@ document.getElementById("login").addEventListener('click', (e) => {
         // Signed in 
         const user = userCredential.user;
         console.log(user);
-        var admin = "";
+        var role = "";
 
         getDoc(doc(db, "users", user.uid)).then(docSnap => {
             if (docSnap.exists()) {
                 console.log(docSnap.data())
-                admin = docSnap.data().role;
+                //fname = docSnap.data().fname;
+                role = docSnap.data().role;
+                
             }
         }).then(function() {
-            switch (admin) {
+            switch (role) {
                 case "admin":
                     location.href = "../admin/dashboard.html";
                     break;
@@ -67,7 +68,9 @@ document.getElementById("login").addEventListener('click', (e) => {
     .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorMessage);
+        console.log("Error: " + errorMessage);
+        document.getElementById("errormsg").style.display = "block";
+        document.getElementById("errortxt").innerHTML = "Invalid Username or Password";
     });
 
 

@@ -57,27 +57,28 @@ onAuthStateChanged(auth, async (user) => {
   });
 
 document.getElementById("btnsave").addEventListener('click', (e) => {
-    onAuthStateChanged(auth, async (user) => {
-        try {
-            var fname = document.getElementById('fname').value;
-            var lname = document.getElementById('lname').value;
-            var add = document.getElementById('add').value;
-            var phone = document.getElementById('phone').value;
-            var email = document.getElementById('email').value; //?
+    alert("button save");
+    // onAuthStateChanged(auth, async (user) => {
+    //     try {
+    //         var fname = document.getElementById('fname').value;
+    //         var lname = document.getElementById('lname').value;
+    //         var add = document.getElementById('add').value;
+    //         var phone = document.getElementById('phone').value;
+    //         var email = document.getElementById('email').value; //?
 
-            const userDBRef = doc(db, "users", user.uid);
-                setDoc(userDBRef, {
-                fname: fname,
-                lname: lname,
-                add: add,
-                phone: phone,
-                email: email,
-                }, { merge: true }) //pag wala to, madedelete ung ibang fields
+    //         const userDBRef = doc(db, "users", user.uid);
+    //             setDoc(userDBRef, {
+    //             fname: fname,
+    //             lname: lname,
+    //             add: add,
+    //             phone: phone,
+    //             email: email,
+    //             }, { merge: true }) //pag wala to, madedelete ung ibang fields
 
-                console.log("Success");
+    //             console.log("Success");
             
-        } catch (error){
+    //     } catch (error){
 
-        }
-    });
+    //     }
+    // });
 });
