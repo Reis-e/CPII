@@ -10,21 +10,19 @@ document.getElementById("signup").addEventListener("click", (e) => {
   const username = document.getElementById("username").value;
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
-  //confirmpass?
-  const confirmPass = document.getElementById("confirmPass").value;
+  const confirmpassword = document.getElementById("confirmpassword").value;
 
-  const fname = document.getElementById("fname").value;
-  const lname = document.getElementById("lname").value;
-  const add = document.getElementById("add").value;
-  const phone = document.getElementById("phone").value;
-  const precinct = document.getElementById("precinct").value;
+  const fname = document.getElementById("firstname").value;
+  const lname = document.getElementById("lastname").value;
+  const add = document.getElementById("address").value;
+  const phone = document.getElementById("mobileno").value;
+  const precinct = document.getElementById("precinctno").value;
 
-  if(password !== confirmPass){
-
+  if (password !== confirmpassword) {
     document.getElementById("errormsg").style.display = "block";
-    document.getElementById("errortxt").innerHTML = "Password and Confirm Password Do not Match.";
-
-  }else{
+    document.getElementById("errortxt").innerHTML =
+      "Password and Confirm Password Do not Match.";
+  } else {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         alert("Signed in");
@@ -33,7 +31,7 @@ document.getElementById("signup").addEventListener("click", (e) => {
         // ...
         location.href = "../user/userdash.html";
         console.log("acc creation success");
-        
+
         getDoc(doc(db, "users", user.uid)).then((docSnap) => {
           alert(docSnap.data());
           if (!docSnap.exists()) {
@@ -51,37 +49,47 @@ document.getElementById("signup").addEventListener("click", (e) => {
               },
               { merge: true }
             );
-  
+
             console.log("success");
           }
         });
       })
-  
+
       .catch((error) => {
         const errorCode = error.code;
-        let errorMessage = "";
-        let fullErrorMsg = "";
-        
+        let errorMessage = new Array();
+        let messageHtml = "";
+
         console.log(errorCode + errorMessage);
         // alert("error");
         // document.getElementById("errormsg").style.display = "block";
         // document.getElementById("errortxt").innerHTML = errorMessage;
-        
-        if (errorCode === 'auth/email-already-in-use') {
-          errorMessage ='email already in use!';
-        } else if (errorCode === 'auth/network-request-failed') {
-          errorMessage ='without network connection!';
-        } else if (errorCode === 'auth/invalid-email') {
-          errorMessage ='invalid E-mail!';
-        } else if (errorCode === 'auth/invalid-password' || errorCode === 'auth/weak-password') {
-          errorMessage ='Weak Password';
+
+        if (errorCode === "auth/email-already-in-use") {
+          errorMessage.push("email already in use!");
         }
+
+        if (errorCode === "auth/network-request-failed") {
+          errorMessage.push("without network connection!");
+        }
+
+        if (errorCode === "auth/invalid-email") {
+          errorMessage.push("invalid E-mail!");
+        }
+
+        if (
+          errorCode === "auth/invalid-password" ||
+          errorCode === "auth/weak-password"
+        ) {
+          errorMessage.push("Weak Password");
+        }
+
+        errorMessage.forEach(function (message) {
+          messageHtml += "<li>" + message + "</li>";
+        });
+
         document.getElementById("errormsg").style.display = "block";
-        document.getElementById("errortxt").innerHTML = errorMessage;
+        document.getElementById("errortxt").innerHTML = messageHtml;
       });
-    
   }
-
-
 });
-
