@@ -29,6 +29,7 @@ const db = getFirestore();
 //connectFirestoreEmulator(db, 'localhost', 8080); //remove for live testing
 
 document.getElementById("login").addEventListener('click', (e) => {
+    alert("test login");
     const email = document.getElementById("email").value
     const password = document.getElementById("password").value
 
