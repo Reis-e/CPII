@@ -25,11 +25,11 @@ document.getElementById("signup").addEventListener("click", (e) => {
   } else {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        alert("Signed in");
+
         // Signed in
         const user = userCredential.user;
         // ...
-        location.href = "../user/userdash.html";
+        
         console.log("acc creation success");
 
         getDoc(doc(db, "users", user.uid)).then((docSnap) => {
@@ -50,6 +50,7 @@ document.getElementById("signup").addEventListener("click", (e) => {
               { merge: true }
             );
 
+            location.href = "../user/userdash.html";
             console.log("success");
           }
         });
