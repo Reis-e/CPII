@@ -26,6 +26,7 @@ document.getElementById("signup").addEventListener("click", (e) => {
   } else {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
+        
         // Signed in
         const user = userCredential.user;
         // ...
@@ -51,7 +52,7 @@ document.getElementById("signup").addEventListener("click", (e) => {
             ).then((value) => {
               
               console.log("acc creation success");
-              alert("Signed in");
+              
               location.href = "../user/userdash.html";
               // expected output: "Success!"
             });
@@ -67,10 +68,6 @@ document.getElementById("signup").addEventListener("click", (e) => {
         let messageHtml = "";
 
         console.log(errorCode + errorMessage);
-        // alert("error");
-        // document.getElementById("errormsg").style.display = "block";
-        // document.getElementById("errortxt").innerHTML = errorMessage;
-
         if (errorCode === "auth/email-already-in-use") {
           errorMessage.push("email already in use!");
         }
