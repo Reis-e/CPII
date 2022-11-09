@@ -25,7 +25,7 @@ document.getElementById("signup").addEventListener("click", (e) => {
   } else {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        alert("Signed in");
+        
         // Signed in
         const user = userCredential.user;
         // ...
