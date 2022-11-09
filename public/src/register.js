@@ -29,11 +29,11 @@ document.getElementById("signup").addEventListener("click", (e) => {
         // Signed in
         const user = userCredential.user;
         // ...
-        location.href = "../user/userdash.html";
+        
         console.log("acc creation success");
 
         getDoc(doc(db, "users", user.uid)).then((docSnap) => {
-          alert(docSnap.data());
+          //alert(docSnap.data());
           if (!docSnap.exists()) {
             const userDBRef = doc(db, "users", user.uid);
             setDoc(
@@ -48,9 +48,12 @@ document.getElementById("signup").addEventListener("click", (e) => {
                 precinct: precinct,
               },
               { merge: true }
-            );
-
-            console.log("success");
+            ).then((value) => {
+              console.log("success");
+              location.href = "../user/userdash.html";
+              // expected output: "Success!"
+            });
+            
           }
         });
       })
