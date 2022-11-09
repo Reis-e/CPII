@@ -17,6 +17,7 @@ document.getElementById("signup").addEventListener("click", (e) => {
   const add = document.getElementById("address").value;
   const phone = document.getElementById("mobileno").value;
   const precinct = document.getElementById("precinctno").value;
+  const role = "user";
 
   if (password !== confirmpassword) {
     document.getElementById("errormsg").style.display = "block";
@@ -44,6 +45,7 @@ document.getElementById("signup").addEventListener("click", (e) => {
                 add: add,
                 phone: phone,
                 precinct: precinct,
+                role: role,
               },
               { merge: true }
             ).then((value) => {
