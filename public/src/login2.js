@@ -26,7 +26,7 @@ document.getElementById("login").addEventListener("click", (e) => {
         .then(function () {
           switch (role) {
             case "admin":
-              location.href = "../admin/dashboard.html";
+              location.href = "./admin/dashboard.html";
               break;
 
             case "staff":
