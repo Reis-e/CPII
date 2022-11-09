@@ -29,8 +29,7 @@ document.getElementById("signup").addEventListener("click", (e) => {
         // Signed in
         const user = userCredential.user;
         // ...
-        location.href = "../user/userdash.html";
-        console.log("acc creation success");
+        
 
         getDoc(doc(db, "users", user.uid)).then((docSnap) => {
           //alert(docSnap.data());
@@ -48,7 +47,12 @@ document.getElementById("signup").addEventListener("click", (e) => {
                 precinct: precinct,
               },
               { merge: true }
-            );
+            ).then((value) => {
+              
+              console.log("acc creation success");
+              location.href = "../user/userdash.html";
+              // expected output: "Success!"
+            });
 
             console.log("success");
           }
