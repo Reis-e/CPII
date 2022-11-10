@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, connectAuthEmulator, updateEmail, onAuthStateChanged} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
-import { doc, setDoc, getDoc, getFirestore, connectFirestoreEmulator,updateDoc, increment } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js';
+import { getAuth, updateEmail, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
+import { doc, setDoc, getDoc, getFirestore } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js';
 //remove emulator for live
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -65,12 +65,13 @@ document.getElementById("btnsave").addEventListener('click', (e) => {
                         alert("Email Changed");
                         console.log("Email Updated in Auth");
                         console.log("Success");
+                        window.location.reload();
                     }) 
 
             }).catch((error) => {
                 
                 console.log(error);
-                alert("Email can only be changed once every log in");
+                alert("Please logout and login again to change email");
             });
 
                 

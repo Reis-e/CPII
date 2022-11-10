@@ -1,26 +1,32 @@
-import { signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
-import {
-  doc,
-  getDoc,
-} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
-import { db, auth } from "./firebaseConfig/firebaseConfig.js";
+import { sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
+import { auth } from "./firebaseConfig/firebaseConfig.js";
 
 document.getElementById("resetPassword").addEventListener("click", (e) => {
   var email = document.getElementById("email").value;
-  // var userdata = getDoc(doc(db, "users", user.uid));
-
   console.log(email);
-  // const auth = getAuth();
-  // sendPasswordResetEmail(auth, email)
-  //   .then(() => {
-  //     // Password reset email sent!
-  //     // ..
-  //   })
-  //   .catch((error) => {
-  //     const errorCode = error.code;
-  //     const errorMessage = error.message;
-  //     // ..
-  //   });
+  if(email != "") {
+    
+    sendPasswordResetEmail(auth, email)
+  .then(() => {
+    // Password reset email sent!
+    // ..
+    alert("Email has been sent to your email.")
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.log(errorCode);
+    console.log(errorMessage);
+
+    document.getElementById("errormsg").style.display = "block";
+    document.getElementById("errortxt").innerHTML = "User Not Found";
+    // ..
+  });
+    
+  } else {
+    alert("Please enter your email.")
+  }
+  
 
 
 });
