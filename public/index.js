@@ -1,39 +1,38 @@
-console.log('send help')
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js";
-import{
-    collection,
-    getFirestore, getDocs
-} from 'firebase/firestore'
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
+import { auth ,db } from "./src/firebaseConfig/firebaseConfig.js";
+import {
+  doc,
+  getDoc,
+} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
+ 
+ onAuthStateChanged(auth, async (user) => {
+  
+  if (user) {
+    var userdata = await getDoc(doc(db, "users", user.uid));
+    
+    try {
+      var role = userdata.data().role;
+      switch (role) {
+        case "admin":
+          location.href = "./admin/dashboard.html";
+          break;
 
-const firebaseConfig = {
-    apiKey: "AIzaSyBZggo2OL7cKkn9tgPSCjkl7ys2kxJz7RQ",
-    authDomain: "eproseso-3f013.firebaseapp.com",
-    projectId: "eproseso-3f013",
-    storageBucket: "eproseso-3f013.appspot.com",
-    messagingSenderId: "249415128217",
-    appId: "1:249415128217:web:a17123c8c36298aa699408",
-    measurementId: "G-Z83PXPVEXT"
-  };
+        case "staff":
+          location.href = "./staff/dashboard.html";
+          break;
 
-//const app = initializeApp(firebaseConfig);
-//const analytics = getAnalytics(app);
+        default:
+          location.href = "./user/userdash.html";
+          break;
+      }
+      
+      
+    } catch (error) {
+      console.log(error);   
+    }
+  }
 
-initializeApp(firebaseConfig)
 
-const db = getFirestore() //db connection
+});
 
-const ref = collection(db, 'admin')//refer to collection
 
-getDocs(ref) //retireve docs 
-  .then((snapshot) => {
-    let admin = []
-    snapshot.docs.forEach((doc) => {
-        admin.push({...doc.data(), id: doc.id})
-    })
-    console.log(books)
-})
-.catch(err => {
-    console.log(err.message)
-})

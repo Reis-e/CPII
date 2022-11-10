@@ -30,7 +30,7 @@ const db = getFirestore();
 
 document.getElementById("logout").addEventListener('click', (e) => {
     signOut(auth).then(() => {
-        location.href = "index.html";
+      location.href = "../index.html";
       }).catch((error) => {
         // An error happened.
       });
