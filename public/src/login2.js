@@ -45,21 +45,20 @@ onAuthStateChanged(auth, async (user) => {
           // ...
         })
         .catch((error) => {
+          console.log(error);
+          var errorCode = error.code;
+          console.log(errorCode);
+          var messageHtml;
+  
+          if (errorCode == "auth/wrong-password") {
+            messageHtml ="Incorrect Password";
           
-          const errorCode = error.code;
-            let errorMessage = new Array();
-            let messageHtml = "";
-    
-            if (errorCode === "auth/invalid-password") {
-              errorMessage.push("Invalid Password");
-            }
-    
-            errorMessage.forEach(function (message) {
-              messageHtml += "<li>" + message + "</li>";
-            });
-    
-            document.getElementById("errormsg").style.display = "block";
-            document.getElementById("emailValidation").innerHTML = "Verify your email address";
+          } else {
+            messageHtml = "Incorrect Email or Password"
+          }
+  
+          document.getElementById("errormsg").style.display = "block";
+          document.getElementById("errortxt").innerHTML = messageHtml;
         });
     });
 
@@ -72,14 +71,18 @@ onAuthStateChanged(auth, async (user) => {
       switch (role) {
         case "admin":
           location.href = "../admin/dashboard.html";
+          console.log("proceeding to admin");
           break;
 
         case "staff":
           location.href = "../staff/dashboard.html";
+          console.log("proceeding to staff");
           break;
 
         default:
           location.href = "../user/userdash.html";
+          console.log("proceeding to user");
+
           break;
       }
     } catch (error) {

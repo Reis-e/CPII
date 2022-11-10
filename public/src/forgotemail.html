@@ -9,6 +9,8 @@
 
 	<!-- CSS -->
 	<link rel="stylesheet" href="../css/forgotpass.css">
+
+	<script type = "module" src = "./forgotemail.js" defer></script>
 </head>
 
 <body>
@@ -21,17 +23,16 @@
 					<img src="../assets/brgylogo.png" class="img-fluid" alt="Logo">
 				</div>
 
-                <!--login form-->
-				<form class="rounded bg-white shadow py-5 px-4" action="forgotpass.html"> <!--dashboard temp-->
-					
+                <!--Forgotform-->
+				<div class="rounded bg-white shadow py-5 px-4">
 					<h3 class="text-dark fw-bolder fs-4 mb-2">Reset Password</h3>
 					<div class="fw-normal text-muted mb-4"> Please enter your email below to receive a password reset link.
 						<a href="register.html" class="text-primary fw-bold text-decoration-none"></a>
 					</div>
 
 					<div class="form-floating mb-3"> <!--email-->
-						<input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-						<label for="floatingInput">Email</label>
+						<input type="email" class="form-control" id="email" placeholder="name@example.com">
+						<label for="email">Email</label>
 					</div>
 
 
@@ -39,8 +40,8 @@
 						<a href="#" class="text-primary fw-bold text-decoration-none"></a>
 					</div>
 					
-					<button type="submit" class="btn btn-primary submit_btn w-100 my-4">Reset Password</button>
-				</form>
+					<button type="submit" id="resetPassword" class="btn btn-primary submit_btn w-100 my-4">Reset Password</button>
+				</div>
 			</div>
 		</div>
 	</section>

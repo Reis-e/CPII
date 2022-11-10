@@ -14,11 +14,11 @@ import {
       var role = userdata.data().role;
       switch (role) {
         case "admin":
-          location.href = "./admin/dashboard.html";
+          //location.href = "./admin/dashboard.html";
           break;
 
         case "staff":
-          location.href = "./staff/dashboard.html";
+          location.href = "./dashboard.html";
           break;
 
         default:

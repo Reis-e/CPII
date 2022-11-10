@@ -1,6 +1,5 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js";
 import { getAuth, createUserWithEmailAndPassword, connectAuthEmulator, updateEmail, onAuthStateChanged} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
 import { doc, setDoc, getDoc, getFirestore, connectFirestoreEmulator,updateDoc, increment } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js';
 //remove emulator for live
@@ -34,22 +33,11 @@ onAuthStateChanged(auth, async (user) => {
         var userdata = await getDoc(doc(db, "users", user.uid));
         try {
             console.log(userdata);
-            var fname = userdata.data().fname;
-            var lname = userdata.data().lname;
-            var phone = userdata.data().phone;
-            var add = userdata.data().add;
-            var precinct = userdata.data().precinct;
+            var email = userdata.data().email;
 
-            console.log(fname);
-            console.log(lname);
-            console.log(phone);
-            console.log(add);
+            console.log(email);
 
-            document.getElementById('fname').value = fname;
-            document.getElementById('lname').value = lname;
-            document.getElementById('add').value = add;
-            document.getElementById('phone').value = phone;
-            document.getElementById('precinct').value = precinct;
+            document.getElementById('currentEmail').value = email;
         } catch (error) {
             console.log(error);
             
@@ -61,34 +49,29 @@ document.getElementById("btnsave").addEventListener('click', (e) => {
     onAuthStateChanged(auth, async (user) => {
 
         try {
-            var fname = document.getElementById('fname').value;
-            var lname = document.getElementById('lname').value;
-            var add = document.getElementById('add').value;
-            var phone = document.getElementById('phone').value;
-            var precinct = document.getElementById('precinct').value; 
+            var newEmail = document.getElementById('NewEmail').value;
             
             console.log("Button Save");
-            
-            const userDBRef = doc(db, "users", user.uid);
-                setDoc(userDBRef, {
-                fname: fname,
-                lname: lname,
-                add: add,
-                phone: phone,
-                precinct: precinct,
-                }, { merge: true } //pag wala to, madedelete ung ibang fields
-                ).then((value) => {
+
+            updateEmail(auth.currentUser, newEmail).then(() => {
+                // Email updated!
+                
+                const userDBRef = doc(db, "users", user.uid);
+                    setDoc(userDBRef, {
+                    email: newEmail,
+                    }, { merge: true } //pag wala to, madedelete ung ibang fields
+                    ).then((value) => {
                     
-                // updateEmail(auth.currentUser, email).then(() => {
-                //     // Email updated!
-                //     // ...
-                //     console.log("Email Updated in Auth");
-                //     }).catch((error) => {
-                //         console.log(error);
-                //         alert("Email can only be changed ")
-                //     });
-                console.log("Success");
-                }) 
+                        alert("Email Changed");
+                        console.log("Email Updated in Auth");
+                        console.log("Success");
+                    }) 
+
+            }).catch((error) => {
+                
+                console.log(error);
+                alert("Email can only be changed once every log in");
+            });
 
                 
             
