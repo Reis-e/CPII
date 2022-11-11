@@ -1,0 +1,14 @@
+#announcementsDiv{
+    border: solid;
+    border-color: black;
+    border-width: 2px;
+    height: 30rem;
+    width: 80%;
+    overflow: auto;
+    background-color: whitesmoke;
+}
+.announcement{
+    border-bottom: solid;
+    border-width: 2px;
+    height: 10rem;
+}
