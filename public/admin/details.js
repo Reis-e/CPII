@@ -78,15 +78,7 @@ document.getElementById("btnsave").addEventListener('click', (e) => {
                 precinct: precinct,
                 }, { merge: true } //pag wala to, madedelete ung ibang fields
                 ).then((value) => {
-                    
-                // updateEmail(auth.currentUser, email).then(() => {
-                //     // Email updated!
-                //     // ...
-                //     console.log("Email Updated in Auth");
-                //     }).catch((error) => {
-                //         console.log(error);
-                //         alert("Email can only be changed ")
-                //     });
+               
                 console.log("Success");
                 }) 
 

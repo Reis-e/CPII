@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
-import { getAuth, reauthenticateWithCredential, updatePassword, onAuthStateChanged} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
-import { doc, setDoc, getDoc, getFirestore, connectFirestoreEmulator,updateDoc, increment } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js';
+import { getAuth, sendPasswordResetEmail , onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
+import { doc, getDoc, getFirestore, } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js';
 //remove emulator for live
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -28,29 +28,35 @@ const db = getFirestore();
 //connectFirestoreEmulator(db, 'localhost', 8080); //remove for live testing
 
 
-document.getElementById("btnSave").addEventListener('click', (e) => {
-    onAuthStateChanged(auth, async (user) => {
-        
 
-        
+onAuthStateChanged(auth, async (user) => {
 
+    if (user) {
+        var userdata = await getDoc(doc(db, "users", user.uid));
         try {
-            var oldPassword = document.getElementById('oldPassword').value;
-            var newPassword = document.getElementById('newPassword').value;
-            var confirmPassword = document.getElementById('confirmPassword').value;
+            console.log(userdata.data().email);
+            var email = userdata.data().email;
+            localStorage.setItem("email" , email);
 
+            document.getElementById('email').innerHTML = email;
             
-            
-
-            
-            console.log("Button Save");
-
-            
-                
-            
-        } catch (error){
+        } catch (error) {
             console.log(error);
-
+            
         }
-    });
+        }
+});
+
+document.getElementById("btnSend").addEventListener('click', (e) => {
+    var email = localStorage.getItem("email");
+    sendPasswordResetEmail(auth, email)
+  .then(() => {
+    alert("Password reset has been sent to your email.")
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    console.log(errorCode)
+    // ..
+  });
+    
 });
