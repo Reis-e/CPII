@@ -1730,7 +1730,7 @@ PopUp
 
 .popupContainer {
   position: absolute;
-  width: 400px;
+  width: 350px;
   height: auto;
   left: 45%;
   top: 60px;
@@ -1806,6 +1806,7 @@ a.btn_red {
 }
 
 .popupBody {
+  background-color: transparent;
   padding: 20px;
 }
 

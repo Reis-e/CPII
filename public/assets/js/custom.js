@@ -45,6 +45,7 @@
     $("#modal_trigger").click(function () {
       $(".user_register_first").hide();
       $(".user_register_next").hide();
+      $(".forgot_password_card").hide();
       $(".user_login").show();
       return false;
     });
@@ -52,6 +53,7 @@
     $("#user_login_form").click(function () {
       $(".user_register_first").hide();
       $(".user_register_next").hide();
+      $(".forgot_password_card").hide();
       $(".user_login").show();
       return false;
     });
@@ -60,6 +62,12 @@
     $("#register_form_start").click(function () {
       $(".user_login").hide();
       $(".user_register_first").show();
+
+      $("#username").removeClass("is-invalid");
+      $("#email_register").removeClass("is-invalid");
+      $("#password_register").removeClass("is-invalid");
+      $("#confirmpassword").removeClass("is-invalid");
+
       return false;
     });
 
@@ -68,6 +76,23 @@
       let email = $("#email_register").val();
       let password = $("#password_register").val();
       let confirmpassword = $("#confirmpassword").val();
+
+      if (!username) {
+        $("#username").addClass("is-invalid");
+      }
+
+      if (!email) {
+        $("#email_register").addClass("is-invalid");
+      }
+
+      if (!password) {
+        $("#password_register").addClass("is-invalid");
+      }
+
+      if (!confirmpassword) {
+        $("#confirmpassword").addClass("is-invalid");
+      }
+
       if (password != confirmpassword) {
         $("#errormsg_register").css("display", "block");
         $("#errortxt_register").html(
@@ -95,6 +120,21 @@
       $(".user_register").hide();
       $(".social_login").show();
       $(".header_title").text("Login");
+      return false;
+    });
+
+    // Forgot Password
+    $("#forgot_password").click(function () {
+      $(".user_login").hide();
+      $(".user_register").hide();
+      $(".forgot_password_card").show();
+      return false;
+    });
+
+    // Reset Password
+    $("#reset_password").click(function () {
+      $(".user_login").show();
+      $(".forgot_password_card").hide();
       return false;
     });
   });
