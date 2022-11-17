@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>eProseso - Users</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+        
+    <!-- Custom styles for this template-->
+        
+    <!-- Custom styles for this page -->
+    <link href="../assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <!-- <link href="../../assets/css/templatemo-chain-app-dev.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="../../assets/css/owl.css">
+    
+    <link href="../assets/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../assets/css/common.css" rel="stylesheet">
+
+    <style>
+        .img_logo {
+            width: 6rem;
+            margin-left: -15px;
+        }
+        .sidebar-brand {
+            text-transform: none !important;
+            font-size: 1.3rem !important;
+            margin: 10px;
+        }
+        .modal-body > .img-responsive {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 90%;
+            height: 90%;
+        }
+        /* .dataTables_length {
+            text-align: left;
+        }
+        .dataTables_info {
+            text-align: left !important;
+        } */
+    </style>
+
+</head>
+
+<body id="page-top">
+
+    <!-- ***** Preloader Start ***** -->
+    <div id="js-preloader" class="js-preloader">
+        <div class="preloader-inner">
+        <span class="dot"></span>
+        <div class="dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        </div>
+    </div>
+    <!-- ***** Preloader End ***** -->
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small" id="profile_name"></span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small" id="profile_role"></span>
+                                <img class="img-profile rounded-circle"
+                                    src="../assets/img/undraw_profile.svg">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="../pages/profile.html">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Profile
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </nav>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Users</h1>
+                    </div>
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <!-- <h6 class="m-0 font-weight-bold text-primary">Edit Profile</h6> -->
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive" id="table">
+                                <table class="table table-bordered hover" id="dataTable" width="100%" cellspacing="0">
+                                    <thead id="table_head">
+                                        <tr>
+                                            <!-- <th>Username</th> -->
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Email</th>
+                                            <!-- <th>Address</th>
+                                                <th>Mobile No.</th>
+                                                <th>Precinct No.</th> -->
+                                            <th>Role</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; eProseso 2021</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content text-center">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body align-items-center">
+                    <div class="h5 mb-0 font-weight-bold text-primary my-3">Select "Logout" below if you are ready<br>to end your current session.</div>
+                    <img src="../assets/img/logout.jpg" class="img-responsive" />
+                </div>
+                
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button id="logout" class="btn btn-primary">Logout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Details Modal-->
+    <div class="modal fade" id="userDetailsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">User Details</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            <img class="img-profile rounded-circle"
+                                    src="../assets/img/undraw_profile.svg">
+                        </div>
+                        <div class="col-md-9">
+                            <h2 class="text-primary" id="fullname"></h2>
+                            <h6 class="text-primary" id="status"></h6>
+                        </div>
+                    </div>
+                    <div class="row mt-4 mb-3">
+                        <div class="col-md-3">
+                            Role:
+                        </div>
+                        <div class="col-md-9" id="role">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            Email:
+                        </div>
+                        <div class="col-md-9" id="email">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            Address:
+                        </div>
+                        <div class="col-md-9" id="address">
+                        </div>
+                    </div>
+                    <div class="row mt-3 mb-3">
+                        <div class="col-md-3">
+                            Birth Place:
+                        </div>
+                        <div class="col-md-9" id="birthplace">
+                        </div>
+                    </div>
+                    <div class="row mt-3 mb-3">
+                        <div class="col-md-3">
+                            Birthdate:
+                        </div>
+                        <div class="col-md-9" id="birthdate">
+                        </div>
+                    </div>
+                    <div class="row mt-3 mb-3">
+                        <div class="col-md-3">
+                            Civil Status:
+                        </div>
+                        <div class="col-md-9" id="civilstatus">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            Mobile No.:
+                        </div>
+                        <div class="col-md-9" id="mobileno">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            Precinct No.:
+                        </div>
+                        <div class="col-md-9" id="precinctno">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+                    <!-- <button id="logout" class="btn btn-primary">Logout</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Role Modal-->
+    <div class="modal fade" id="editRoleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Role</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            <img class="img-profile rounded-circle"
+                                    src="../assets/img/undraw_profile.svg">
+                        </div>
+                        <div class="col-md-9">
+                            <h2 class="text-primary" id="edit_role_fullname"></h2>
+                            <h6 class="text-primary" id="edit_role_status"></h6>
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="colFormLabel" class="col-sm-3 col-form-label">Role</label>
+                        <div class="col-sm-9" id="edit_role">
+                            <select class="form-control" id="edit_role_value">
+                                <option value="">Choose...</option>
+                                <option value="user">User</option>
+                                <option value="staff">Staff</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <input id="edit_uid" hidden/>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+                    <button id="updateRole" class="btn btn-primary">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Deactivate Modal-->
+    <div class="modal fade" id="deactivateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">                    
+                    <h5 class="modal-title" id="exampleModalLabel">Update Status</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            <img class="img-profile rounded-circle"
+                                    src="../assets/img/undraw_profile.svg">
+                        </div>
+                        <div class="col-md-9">
+                            <h2 class="text-primary" id="update_status_fullname"></h2>
+                            <h6 class="text-primary" id="update_status_status"></h6>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            Role:
+                        </div>
+                        <div class="col-md-9" id="deactivate_role">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="colFormLabel" class="col-sm-3 col-form-label">Status</label>
+                        <div class="col-sm-9" id="deactivate_status">
+                            <select class="form-control" id="deactivate_status_value">
+                                <option value="">Choose...</option>
+                                <option value="Active">Activate</option>
+                                <option value="Deactivated">Deactivate</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <input id="deactivate_uid" hidden/>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+                    <button id="updateStatus" class="btn btn-primary">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal-->
+    <div class="modal hide fade" id="success_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Success!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body align-items-center">
+              <!-- <strong>Email Not Verified!</strong>&nbsp;&nbsp;Please verify your email address. -->
+              <img src="../assets/img/success.jpg" class="img-responsive" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal" onclick="window.location.reload()">Ok</button>
+                <!-- <a href="./profile.html" type="button" class="btn btn-info" data-dismiss="modal">Ok</a> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!-- Deactivated Modal-->
+    <div class="modal hide fade" id="deactivated_modal" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content text-center">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Restricted!</h5>
+              <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button> -->
+            </div>
+            <div class="modal-body align-items-center">
+              <!-- <strong>Email Not Verified!</strong>&nbsp;&nbsp;Please verify your email address. -->
+              <div class="h5 mb-0 font-weight-bold text-danger my-3">Your account has been deactivated.<br>Please contact admin.</div>
+              <img src="../assets/img/banned.jpg" class="img-responsive" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" id="deactivate_logout">Back to login</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!-- Components -->
+    <script src="../components/sidebar.js"></script>
+    <script type="module" src="../components/common.js"></script>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="../assets/vendor/jquery/jquery.min.js"></script>
+    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="../assets/js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="../assets/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="../assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <!-- <script src="../assets/js/demo/datatables-demo.js"></script> -->
+  <script src="../../assets/js/owl-carousel.js"></script>
+  <script src="../../assets/js/popup.js"></script>
+  <!-- <script src="../../assets/js/custom.js"></script> -->
+
+
+    <!-- Firebase -->
+    <script type="module" src="./users.js"></script>
+
+    <script type="text/javascript">
+        userDetails = (user) => {
+            // console.log(user)
+            $("#userDetailsModal").modal("show")
+            $(".modal-body #fullname").html( user.fname + " " + user.middlename + " " + user.lname + " " + user.suffixname );
+            if (user.status === "Active") {
+                $(".modal-body #status").html( user.status );
+                $(".modal-body #status").addClass("text-success");
+            }else{
+                $(".modal-body #status").html( user.status );
+                $(".modal-body #status").addClass("text-danger");
+            }
+
+            let birthdate = new Date(user.birthdate.seconds * 1000 + user.birthdate.nanoseconds/1000000)
+            let mm = birthdate.toLocaleString("default", { month: "long" });
+            let dd = birthdate.getDate();
+            let yyyy = birthdate.getFullYear();
+            let view_birthdate = mm + " " + dd + ", " + yyyy;
+
+            $(".modal-body #email").html( user.email );
+            $(".modal-body #address").html( user.add );
+            $(".modal-body #birthplace").html( user.birthplace );
+            $(".modal-body #birthdate").html( view_birthdate );
+            $(".modal-body #civilstatus").html( user.civilstatus );
+            $(".modal-body #mobileno").html( user.phone );
+            $(".modal-body #precinctno").html( user.precinct );
+            if (user.role === "admin"){
+                $(".modal-body #role").html( "Admin" );
+            } else if (user.role === "user"){
+                $(".modal-body #role").html( "User" );
+            } else {
+                $(".modal-body #role").html( "Staff" );
+            }
+        };
+
+        editRole = (user) => {
+            $("#editRoleModal").modal("show")
+            $(".modal-body #edit_role_fullname").html( user.fname + " " + user.lname );
+            if (user.status === "Active") {
+                $(".modal-body #edit_role_status").html( user.status );
+                $(".modal-body #edit_role_status").addClass("text-success");
+            }else{
+                $(".modal-body #edit_role_status").html( user.status );
+                $(".modal-body #edit_role_status").addClass("text-danger");
+            }
+            $("#edit_role select").val( user.role );
+            $("#edit_uid").val( user.uid )
+        };
+
+        deactivateAccount = (user) => {
+            $("#deactivateModal").modal("show")
+            $(".modal-body #update_status_fullname").html( user.fname + " " + user.lname );
+            if (user.status === "Active") {
+                $(".modal-body #update_status_status").html( user.status );
+                $(".modal-body #update_status_status").addClass("text-success");
+            }else{
+                $(".modal-body #update_status_status").html( user.status );
+                $(".modal-body #update_status_status").addClass("text-danger");
+            }
+            if (user.role === "admin"){
+                $(".modal-body #role").html( "Admin" );
+            } else if (user.role === "user"){
+                $(".modal-body #deactivate_role").html( "User" );
+            } else {
+                $(".modal-body #deactivate_role").html( "Staff" );
+            }
+            $("#deactivate_status select").val( user.status );
+            $("#deactivate_uid").val( user.uid )
+        };
+    </script>
+
+</body>
+
+</html>

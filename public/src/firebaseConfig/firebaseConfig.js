@@ -1,22 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  connectAuthEmulator,
-  signInWithEmailAndPassword,
-} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
-import {
-  doc,
-  setDoc,
-  getDoc,
-  getFirestore,
-  connectFirestoreEmulator,
-  updateDoc,
-  increment,
-} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
-//remove emulator for live
+import { getFirestore } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -35,8 +19,4 @@ const firebaseConfig = {
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
-//const analytics = getAnalytics(app);
-export const auth = getAuth();
-//connectAuthEmulator(auth, "http://localhost:9099"); //remove for live testing
 export const db = getFirestore();
-//connectFirestoreEmulator(db, 'localhost', 8080); //remove for live testing
