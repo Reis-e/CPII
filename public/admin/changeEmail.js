@@ -71,7 +71,9 @@ document.getElementById("btnsave").addEventListener('click', (e) => {
             }).catch((error) => {
                 
                 console.log(error);
+                alert(error);
                 alert("Please logout and login again to change email");
+
             });
 
                 
