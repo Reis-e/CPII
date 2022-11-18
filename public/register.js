@@ -30,7 +30,7 @@ onAuthStateChanged(auth, async (user) => {
     localStorage.setItem("verified", emailVerify);
     localStorage.setItem("status", docSnap.data().status);
     
-    location.href = "../../public/src/pages/dashboard.html";
+    location.href = "./src/pages/dashboard.html";
   }
 });
 

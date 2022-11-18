@@ -196,8 +196,10 @@ document.getElementById("update_email").addEventListener("click", (e) => {
 });
 
 document.getElementById("sendLink").addEventListener("click", (e) => {
+  $("#js-preloader").removeClass("loaded");
   var user = auth.currentUser;
   sendEmailVerification(user).then(() => {
+    $("#js-preloader").addClass("loaded");
     document.getElementById("warningmsg").style.display = "block";
     document.getElementById("warning_msg_title").innerHTML =
       "Email validation sent!";

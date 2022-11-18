@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>eProseso - Dashboard</title>
+    <title>eProseso - Profile</title>
 
     <!-- Custom fonts for this template-->
     <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -18,6 +18,9 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
+    <!-- <link href="../../assets/css/templatemo-chain-app-dev.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="../../assets/css/owl.css">
+
     <link href="../assets/css/sb-admin-2.min.css" rel="stylesheet">
     <link href="../assets/css/common.css" rel="stylesheet">
 
@@ -39,7 +42,7 @@
             height: 90%;
         }
         .chat-body {
-            height: 300px;
+            height: 400px;
             display: flex;
             flex-direction: column;
             padding: 8px 10px;
@@ -91,6 +94,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
+        <!-- <div id="sidebar"></div> -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
         </ul>
         <!-- End of Sidebar -->
@@ -111,35 +115,6 @@
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
-
-                        <!-- Nav Item - Chatbot -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle text-primary" href="#" id="messagesDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-comments"></i>
-                                <!-- Counter - Messages -->
-                                <!-- <span class="badge badge-danger badge-counter">7</span> -->
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="messagesDropdown">
-                                <h3 class="dropdown-header" style="text-transform: none !important; font-size: 1rem !important;">
-                                    eProseso Chatbot
-                                </h3>
-                                <div class="chat-body">
-
-                                </div>
-                                <div class="chat-input">
-                                    <div class="input-sec">
-                                      <input type="text" id="txtInput" placeholder="Type here" autofocus />
-                                    </div>
-                                    <div class="send">
-                                      <img src="../assets/img/send.svg" alt="send" />
-                                    </div>
-                                </div>
-                                <!-- <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a> -->
-                            </div>
-                        </li>
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -177,7 +152,7 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Chat</h1>
                     </div>
 
                     <div class="alert alert-danger alert-dismissible fade show" id="errormsg" role="alert" style="display: none;">
@@ -187,8 +162,65 @@
                         </button>
                     </div>
 
-                    <div class="row" id="announcementsList">
-                        
+                    <div class="alert alert-warning alert-dismissible fade show" id="warningmsg" role="alert" style="display: none;">
+                        <strong id="warning_msg_title">Success</strong> <span id="warning_msg_desc"></span>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="row">
+
+                        <!-- Chatbot -->
+                        <!-- <div class="col-lg-6 mb-4" id="profileDetails">
+                            <div class="card shadow mb-4 border-bottom-primary">
+                                <div class="card-header text-center bg-gradient-primary">
+                                    <h2 class="text-primary text-gray-400" id="transaction_name">eProseso Chatbot</h2>
+                                </div>
+
+                                <div class="card-body p-0">
+                                    <div class="chat-body">
+
+                                    </div>
+                                    <div class="chat-input">
+                                        <div class="input-sec">
+                                          <input type="text" id="txtInput" placeholder="Type here" autofocus />
+                                        </div>
+                                        <div class="send">
+                                          <img src="../assets/img/send.svg" alt="send" />
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div> -->
+
+                        <!-- Admin Chat -->
+                        <div class="col-lg-5 mb-4" id="profileDetails">
+                            <div class="card shadow mb-4 border-bottom-primary">
+                                <div class="card-header text-center bg-gradient-primary">
+                                    <h3 class="text-gray-400" id="transaction_name">Admin Support</h3>
+                                </div>
+                                
+                                <!-- Card Body -->
+                                <div class="card-body p-0">
+                                    <div class="chat-body">
+
+                                    </div>
+                                    <div class="chat-input">
+                                        <div class="input-sec">
+                                          <input type="text" id="txtInput" placeholder="Type here" autofocus />
+                                        </div>
+                                        <div class="send">
+                                          <img src="../assets/img/send.svg" alt="send" />
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
 
                 </div>
@@ -242,6 +274,49 @@
         </div>
     </div>
 
+    <!-- Verified Modal-->
+    <div class="modal hide fade" id="verify_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Email Not Verified!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body align-items-center">
+              <!-- <strong>Email Not Verified!</strong>&nbsp;&nbsp;Please verify your email address. -->
+              <img src="../assets/img/email_warning.jpg" class="img-responsive" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal" id="sendLink">Send Link</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Success Modal-->
+    <div class="modal hide fade" id="success_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Success!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body align-items-center">
+              <!-- <strong>Email Not Verified!</strong>&nbsp;&nbsp;Please verify your email address. -->
+              <img src="../assets/img/success.jpg" class="img-responsive" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal" onclick="window.location.reload()">Ok</button>
+                <!-- <a href="./profile.html" type="button" class="btn btn-info" data-dismiss="modal">Ok</a> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
     <!-- Deactivated Modal-->
     <div class="modal hide fade" id="deactivated_modal" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog" role="document">
@@ -265,7 +340,7 @@
       </div>
 
     <!-- Components -->
-    <script type="text/javascript" src="../components/sidebar.js"></script>
+    <script src="../components/sidebar.js"></script>
     <script type="module" src="../components/common.js"></script>
 
     <!-- Bootstrap core JavaScript-->
@@ -278,17 +353,15 @@
     <!-- Custom scripts for all pages-->
     <script src="../assets/js/sb-admin-2.min.js"></script>
 
-    <!-- Firebase -->
-    <script type="module" src="./dashboard.js"></script>
+    <!-- Page level plugins -->
 
-    <!-- <script type="text/javascript">
-        $( document ).ready(function() {
-            var status = localStorage.getItem("status")
-            if (status === "Deactivated") {
-                $("#deactivated_modal").modal("show");
-            }
-        });
-    </script> -->
+    <!-- Page level custom scripts -->
+    <script src="../../assets/js/owl-carousel.js"></script>
+    <script src="../../assets/js/popup.js"></script>
+    <!-- <script src="../../assets/js/custom.js"></script> -->
+
+    <!-- Firebase -->
+    <script type="module" src="./chat.js"></script>
 
 </body>
 

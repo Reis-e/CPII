@@ -51,7 +51,7 @@ switch (role) {
         </li>
 
         <li class="nav-item" id="chat">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="../pages/chat.html">
                 <i class="fas fa-fw fa-comments"></i>
                 <span>Chat</span></a>
         </li>
@@ -111,7 +111,7 @@ switch (role) {
                         </li>
     
                         <li class="nav-item" id="chat">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="../pages/chat.html">
                                 <i class="fas fa-fw fa-comments"></i>
                                 <span>Chat</span></a>
                         </li>
@@ -177,7 +177,7 @@ switch (role) {
             </li>
 
             <li class="nav-item" id="chat">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="../pages/chat.html">
                     <i class="fas fa-fw fa-comments"></i>
                     <span>Chat</span></a>
             </li>
@@ -274,7 +274,7 @@ if (sidenav.includes("dashboard")) {
     announcements.classList.remove("active");
   }
   if (role === "user"){
-    request.classList.add("active");
+    request.classList.remove("active");
   }
 } else {
   dashboard.classList.remove("active");
@@ -286,6 +286,6 @@ if (sidenav.includes("dashboard")) {
     announcements.classList.remove("active");
   }
   if (role === "user"){
-    request.classList.add("active");
+    request.classList.remove("active");
   }
 }
