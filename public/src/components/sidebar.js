@@ -51,7 +51,7 @@ switch (role) {
         </li>
 
         <li class="nav-item" id="chat">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="../pages/chat.html">
                 <i class="fas fa-fw fa-comments"></i>
                 <span>Chat</span></a>
         </li>
