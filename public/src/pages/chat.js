@@ -1,0 +1,1 @@
+$("#js-preloader").addClass("loaded");
