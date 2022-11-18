@@ -96,23 +96,21 @@ onAuthStateChanged(auth, async (user) => {
       announcement += `<div class="col-lg-9 mb-4" id="profileDetails">
           <div class="card shadow mb-2 border-bottom-primary">
 
-              <div class="card-header py-3">
-                  <div class="d-sm-flex justify-content-between">
-                    <h5 class="m-0 font-weight-bold text-primary">` + arrAnnouncements[i].title + `</h5>
-                    <div class="dropdown no-arrow">
-                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink" style="">
-                            <div class="dropdown-header">Posted By:&nbsp;` + arrAnnouncements[i].postedBy + `</div>
-                            <div class="dropdown-header">Posted Date:&nbsp;` + display_posted_date + `</div>
-                            <div class="dropdown-divider"></div>
-                            <div class="dropdown-header">Updated By:&nbsp;` + display_updated_by + `</div>
-                            <div class="dropdown-header">Updated Date:&nbsp;` + display_updated_date + `</div>
-                        </div>
-                    </div>
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h5 class="m-0 font-weight-bold text-primary">` + arrAnnouncements[i].title + `</h5>
+                  <div class="dropdown no-arrow">
+                      <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink" style="">
+                          <div class="dropdown-header">Posted By:&nbsp;` + arrAnnouncements[i].postedBy + `</div>
+                          <div class="dropdown-header">Posted Date:&nbsp;` + display_posted_date + `</div>
+                          <div class="dropdown-divider"></div>
+                          <div class="dropdown-header">Updated By:&nbsp;` + display_updated_by + `</div>
+                          <div class="dropdown-header">Updated Date:&nbsp;` + display_updated_date + `</div>
+                      </div>
                   </div>
-              </div>
+            </div>
               
               <!-- Card Body -->
               <div class="card-body px-5">

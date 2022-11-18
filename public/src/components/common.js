@@ -1,10 +1,30 @@
 import {
   getAuth,
   signOut,
+  onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
 import { db } from "../firebaseConfig/firebaseConfig.js";
+import {
+  getDocs,
+  collection
+} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
 
 const auth = getAuth();
+let responseObj = null;
+
+onAuthStateChanged(auth, async (user) => {
+  if(user){
+    let newResponseObj = {};
+    const responses = await getDocs(collection(db, "chatResponses"));
+    responses.forEach((response) => {
+      let responseData = response.data();
+      delete responseData.status;
+      responseObj = Object.assign(newResponseObj, responseData);
+    });
+    console.log(responseObj);
+  }
+});
+
 
 document.getElementById("logout").addEventListener("click", (e) => {
   // var table = $("#example").DataTable();
@@ -51,3 +71,82 @@ $(document).ready(function () {
 
   // $("#dataTable").DataTable();
 });
+
+
+
+//Chatbot
+const chatBody = document.querySelector(".chat-body");
+const txtInput = document.querySelector("#txtInput");
+const send = document.querySelector(".send");
+
+send.addEventListener("click", () => renderUserMessage());
+
+txtInput.addEventListener("keyup", (event) => {
+  if (event.keyCode === 13) {
+    renderUserMessage();
+  }
+});
+
+const renderUserMessage = () => {
+  const userInput = txtInput.value;
+  renderMessageEle(userInput, "user");
+  txtInput.value = "";
+  setTimeout(() => {
+    renderChatbotResponse(userInput);
+    setScrollPosition();
+  }, 600);
+};
+
+const renderChatbotResponse = (userInput) => {
+  const res = getChatbotResponse(userInput);
+  renderMessageEle(res);
+};
+
+const renderMessageEle = (txt, type) => {
+  let className = "user-message";
+  if (type !== "user") {
+    className = "chatbot-message";
+  }
+  const messageEle = document.createElement("div");
+  const txtNode = document.createTextNode(txt);
+  messageEle.classList.add(className);
+  messageEle.append(txtNode);
+  chatBody.append(messageEle);
+};
+
+const getChatbotResponse = (userInput) => {
+  if (responseObj[userInput] == undefined) {
+    let arrKeys = Object.keys(responseObj);
+    let response = "";
+    arrKeys.every((key) => {
+      if (userInput.includes(key)) {
+        response = responseObj[key];
+      } else {
+        response = "Please try something else";
+      }
+    });
+    return response;
+  } else {
+    return responseObj[userInput];
+  }
+};
+
+
+
+const setScrollPosition = () => {
+  if (chatBody.scrollHeight > 0) {
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+};
+
+
+
+// const responseObj = {
+//   hello: "Hi sd?",
+//   hey: "Hey! What's Up",
+//   today: new Date().toDateString(),
+//   time: new Date().toLocaleTimeString(),
+//   request: "what request?",
+//   id: "are you requesting for a barangay id?",
+//   certificate: "what certificate",
+// };

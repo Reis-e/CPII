@@ -35,13 +35,13 @@ onAuthStateChanged(auth, async (user) => {
       document.getElementById("profile_name").innerHTML = fullname;
       document.getElementById("profile_role").innerHTML = role_name;
       if (role === "user") {
-        window.history.back();
+        // window.history.back();
       }
     } catch (error) {
       console.log(error);
     }
     $("#js-preloader").addClass("loaded");
   } else {
-    location.href = "../index.html";
+    // location.href = "../index.html";
   }
 });

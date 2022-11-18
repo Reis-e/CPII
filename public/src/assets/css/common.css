@@ -134,3 +134,23 @@ chatbot
     font-size: 1rem;
     width: 100%;
 }
+.chatbot-message,
+.user-message {
+    padding: 8px;
+    background: #4e73df;
+    color: white;
+    margin: 5px;
+    width: max-content;
+    border-radius: 10px 3px 10px 10px;
+    width: 70%;
+    word-wrap: break-word;
+}
+.chatbot-message {
+  
+    background: rgb(193, 193, 193);
+    color: black;
+    align-self: flex-start;
+    border-radius: 10px 10px 3px 10px;
+    width: 70%;
+    word-wrap: break-word;
+}
