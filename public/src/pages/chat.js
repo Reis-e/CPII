@@ -2,17 +2,16 @@ import { db } from "../firebaseConfig/firebaseConfig.js";
 import {
   doc,
   getDoc,
-  addDoc,
   getDocs,
   collection,
   arrayUnion,
+  setDoc,
   updateDoc,
   Timestamp,
 } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
 import {
   getAuth,
   signOut,
-  sendEmailVerification,
   onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
 
@@ -42,84 +41,100 @@ onAuthStateChanged(auth, async (user) => {
       console.log(error);
     }
     $("#js-preloader").addClass("loaded");
+    
+
+    var inbox = "";
+    if(role === "admin"||role === "staff"){
+
+      const usersList = await getDocs(collection(db, "users"));
+      var arrUsers = [];
+      usersList.forEach((user) => {
+        var fullname = user.data().fname + " " + user.data().lname + " " + user.data().suffixname;
+        var objUser = {fullname: fullname.trim(), uid: user.id}
+        arrUsers.push(objUser);
+        
+      });
+
+      //search user inbox
+      console.log(arrUsers);
+
+      var receiver = "";
+      var receiverName =  prompt("Please enter receiver", "receiver's name'");
+      
+      let receiverinit = arrUsers.find(user => user.fullname === receiverName);
+      receiver = receiverinit.uid
+      inbox = receiver;
+
+      //archive messages
+      document.getElementById("archive_message").addEventListener("click", (e) => {
+        
+      });
+
+      
+
+    }else{
+      inbox = user.uid;
+    }
+
+    //view messages
+    getDoc(doc(db, "messages", inbox)).then(chatData => {
+      if(chatData.exists()){
+        var chatContent = chatData.data().message;
+        chatContent.forEach((message) => {
+          const chatBody = document.querySelector(".chatsupport-body");
+          var className = ""
+          if(message.senderUid === user.uid){
+            className = "user-message"
+          }else{
+            className = "chatbot-message"
+          }
+            const messageEle = document.createElement("div");
+            const txtNode = document.createTextNode(message.content);
+            messageEle.classList.add(className);
+            messageEle.append(txtNode);
+            chatBody.append(messageEle);
+            
+        });
+        
+      }
+    });
+    
 
 
+    //send message
     document.getElementById("send_message").addEventListener("click", (e) => {
       var senderUid = user.uid;
       var txt_message = document.getElementById("txt_message").value;
       var sentAt = Timestamp.fromDate(new Date());
       
-      
-      try {
-        const chatRef = doc(db, "messages", user.uid);
-        
-        set(chatRef, {
-          message: arrayUnion({senderUid:senderUid, content: txt_message, sentAt:sentAt}),
-          uid: user.uid
+      getDoc(doc(db, "messages", inbox)).then(docSnap => {
+        const chatRef = doc(db, "messages", inbox);
+        try {
+          if(!docSnap.exists()){
+            setDoc(chatRef, {
+            message: arrayUnion({senderUid:senderUid, content: txt_message, sentAt:sentAt}),
+            uid: receiver,
+            status: "Active"
+            });
+  
+          }else{
+            updateDoc(chatRef, {
+            message: arrayUnion({senderUid:senderUid, content: txt_message, sentAt:sentAt})
+            }); 
+          }
 
-        });
-        
-      }
-      catch(error) {
-        console.error('Error writing new message to Firebase Database', error);
-      }
+        }catch(error) {
+          console.error('Error writing new message to Firebase Database', error);
+        }
+      });
+
+    });
+
+
 
     
-    });
-
-    var chatData = await getDoc(doc(db, "messages", user.uid));
-    var chatContent = chatData.data().message
-    const chatBody = document.querySelector(".chat-body");
-
-    chatContent.forEach((message) => {
-      console.log(message.senderUid === user.uid);
-      if(message.senderUid === user.uid){
-        let className = "user-message"
-      
-        const messageEle = document.createElement("div");
-        const txtNode = document.createTextNode(message.content);
-         messageEle.classList.add(className);
-        messageEle.append(txtNode);
-        chatBody.append(messageEle);
-      }else{
-        let className = "chatbot-message"
-      
-        const messageEle = document.createElement("div");
-        const txtNode = document.createTextNode(message.content);
-         messageEle.classList.add(className);
-        messageEle.append(txtNode);
-        chatBody.append(messageEle);
-      }
-      
-      // let messageData = response.data();
-      // delete responseData.status;
-
-    });
-
-
-
-    // const renderMessageEle = (txt, type) => {
-    //   let className = "user-message";
-    //   if (type !== "user") {
-    //     className = "chatbot-message";
-    //   }
-    //   const messageEle = document.createElement("div");
-    //   const txtNode = document.createTextNode(txt);
-    //   messageEle.classList.add(className);
-    //   messageEle.append(txtNode);
-    //   chatBody.append(messageEle);
-    // };
-
-
-
-
-
-
-
-
-
 
   } else {
-    // location.href = "../index.html";
+    location.href = "../../index.html";
   }
 });

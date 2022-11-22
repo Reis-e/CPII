@@ -146,7 +146,7 @@ onAuthStateChanged(auth, async (user) => {
     document.getElementById("announcementsList").innerHTML = announcement
 
   } else {
-    location.href = "../index.html";
+    location.href = "../../index.html";
   }
   $("#js-preloader").addClass("loaded");
 });
