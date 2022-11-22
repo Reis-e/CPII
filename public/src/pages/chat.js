@@ -53,7 +53,7 @@ onAuthStateChanged(auth, async (user) => {
       try {
         const chatRef = doc(db, "messages", user.uid);
         
-        addDoc(chatRef, {
+        set(chatRef, {
           message: arrayUnion({senderUid:senderUid, content: txt_message, sentAt:sentAt}),
           uid: user.uid
 
