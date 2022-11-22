@@ -49,6 +49,14 @@
             align-items: flex-end;
             overflow-y: auto;
         }
+        .chatsupport-body {
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            padding: 8px 10px;
+            align-items: flex-end;
+            overflow-y: auto;
+        }
         .chat-input {
             height: 60px;
             display: flex;
@@ -59,6 +67,10 @@
             flex: 9;
         }
         .send {
+            flex: 1;
+            padding-right: 4px;
+        }
+        .sendchatSupport {
             flex: 1;
             padding-right: 4px;
         }
@@ -199,19 +211,19 @@
                         <div class="col-lg-5 mb-4" id="profileDetails">
                             <div class="card shadow mb-4 border-bottom-primary">
                                 <div class="card-header text-center bg-gradient-primary">
-                                    <h3 class="text-gray-400" id="transaction_name">Chat Support</h3>
+                                    <h3 class="text-gray-400" id="">Chat Support</h3>
                                 </div>
                                 
                                 <!-- Card Body -->
                                 <div class="card-body p-0">
-                                    <div class="chat-body">
+                                    <div class="chatsupport-body">
 
                                     </div>
                                     <div class="chat-input">
                                         <div class="input-sec">
                                           <input type="text" id="txt_message" placeholder="Type here" autofocus />
                                         </div>
-                                        <div class="send">
+                                        <div class="sendchatSupport">
                                           <img id="send_message" src="../assets/img/send.svg" />
                                         </div>
                                     </div>
@@ -341,7 +353,7 @@
 
     <!-- Components -->
     <script src="../components/sidebar.js"></script>
-    <!-- <script type="module" src="../components/common.js"></script> -->
+    <script type="module" src="../components/common.js"></script>
 
     <!-- Bootstrap core JavaScript-->
     <script src="../assets/vendor/jquery/jquery.min.js"></script>
