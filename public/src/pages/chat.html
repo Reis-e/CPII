@@ -62,7 +62,7 @@
             flex: 1;
             padding-right: 4px;
         }
-        #txtInput {
+        #txt_message {
             line-height: 30px;
             padding: 8px 10px;
             border: none;
@@ -199,7 +199,7 @@
                         <div class="col-lg-5 mb-4" id="profileDetails">
                             <div class="card shadow mb-4 border-bottom-primary">
                                 <div class="card-header text-center bg-gradient-primary">
-                                    <h3 class="text-gray-400" id="transaction_name">Admin Support</h3>
+                                    <h3 class="text-gray-400" id="transaction_name">Chat Support</h3>
                                 </div>
                                 
                                 <!-- Card Body -->
@@ -209,10 +209,10 @@
                                     </div>
                                     <div class="chat-input">
                                         <div class="input-sec">
-                                          <input type="text" id="txtInput" placeholder="Type here" autofocus />
+                                          <input type="text" id="txt_message" placeholder="Type here" autofocus />
                                         </div>
                                         <div class="send">
-                                          <img src="../assets/img/send.svg" alt="send" />
+                                          <img id="send_message" src="../assets/img/send.svg" />
                                         </div>
                                     </div>
                                     
@@ -341,7 +341,7 @@
 
     <!-- Components -->
     <script src="../components/sidebar.js"></script>
-    <script type="module" src="../components/common.js"></script>
+    <!-- <script type="module" src="../components/common.js"></script> -->
 
     <!-- Bootstrap core JavaScript-->
     <script src="../assets/vendor/jquery/jquery.min.js"></script>
