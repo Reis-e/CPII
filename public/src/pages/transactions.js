@@ -103,8 +103,55 @@ onAuthStateChanged(auth, async (user) => {
         onprocessQSnapArr.length;
       document.getElementById("completed_requests").innerHTML =
         completedQSnapArr.length;
-      $("#dataTable").DataTable({
+
+      var minDate, maxDate;
+      $.fn.dataTable.ext.search.push(
+        function( settings, data, dataIndex ) {
+          var min = minDate.val();
+          var max = maxDate.val();
+          var date = new Date( data[6] );
+          date.setHours(8,0,0,0)
+      
+          if (
+            ( min === null && max === null ) ||
+            ( min === null && date <= max ) ||
+            ( min <= date && max === null ) ||
+            ( min <= date && date <= max )
+          ) {
+            return true;
+          }
+          return false;
+        }
+      );
+
+      minDate = new DateTime($('#min'), {
+        format: 'MMMM Do YYYY'
+      });
+      maxDate = new DateTime($('#max'), {
+        format: 'MMMM Do YYYY'
+      });
+
+      var table = $("#dataTable").DataTable({
         data: submittedQSnapArr,
+        dom: 'Bfrtip',
+        lengthMenu: [
+          [10, 25, 50, -1],
+          ['10 rows', '25 rows', '50 rows', 'Show all']
+        ],
+        buttons: [
+          // { 
+          //   extend: "pageLength",
+          //   className: "btn btn-primary no-arrow",
+          // },
+          {
+            extend: "pdfHtml5",
+            text: "Generate Report",
+            className: "btn btn-secondary",
+            exportOptions: {
+              columns: [0, 1, 2, 3, 4, 5, 6]
+            }
+          }
+        ],
         columns: [
           {
             data: "transactionId",
@@ -187,6 +234,11 @@ onAuthStateChanged(auth, async (user) => {
             },
           },
         ],
+      });
+
+      // Refilter the table
+      $('#min, #max').on('change', function () {
+        table.draw();
       });
 
       document.getElementById("archiveCard").innerHTML = `

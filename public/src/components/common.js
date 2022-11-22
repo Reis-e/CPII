@@ -21,7 +21,7 @@ onAuthStateChanged(auth, async (user) => {
       delete responseData.status;
       responseObj = Object.assign(newResponseObj, responseData);
     });
-    console.log(responseObj);
+    // console.log(responseObj);
   }
 });
 
