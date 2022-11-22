@@ -237,6 +237,7 @@ onAuthStateChanged(auth, async (user) => {
       }
     });
   }
+  $("#js-preloader").addClass("loaded");
 });
 
 

@@ -10,7 +10,7 @@ preloader
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #fff;
+    background-color: rgba(255, 252, 252, 0.708);
     display: -webkit-box;
     display: flex;
     -webkit-box-align: center;
@@ -62,7 +62,7 @@ preloader
     position: relative;
     width: 142px;
     height: 40px;
-    background: #fff;
+    background: rgba(255, 252, 252, 0.708);
 }
 
 .preloader-inner .dot {
@@ -141,16 +141,16 @@ chatbot
     color: white;
     margin: 5px;
     width: max-content;
-    border-radius: 10px 3px 10px 10px;
+    border-radius: 10px 10px 3px 10px;
     width: 70%;
     word-wrap: break-word;
 }
 .chatbot-message {
   
-    background: rgb(193, 193, 193);
-    color: black;
+    background: #36b9cc;
+    color: white;
     align-self: flex-start;
-    border-radius: 10px 10px 3px 10px;
+    border-radius: 10px 10px 10px 3px;
     width: 70%;
     word-wrap: break-word;
 }
