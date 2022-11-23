@@ -45,59 +45,48 @@ onAuthStateChanged(auth, async (user) => {
 
     var inbox = "";
     if(role === "admin"||role === "staff"){
-
-      const usersList = await getDocs(collection(db, "users"));
-      var arrUsers = [];
-      usersList.forEach((user) => {
-        var fullname = user.data().fname + " " + user.data().lname + " " + user.data().suffixname;
-        var objUser = {fullname: fullname.trim(), uid: user.id}
-        arrUsers.push(objUser);
-        
+      $("#chat-admin").css("display", "block")
+      $("#chat-user").css("display", "none")
+      const messagesList = await getDocs(collection(db, "messages"));
+      var contactList = "";
+      messagesList.forEach((message) => {
+        contactList += `<button class="list-group-item list-group-item-action border-0" onclick="displayChat('`+message.id+`')">
+            <div class="d-flex align-items-start">
+                <img src="https://ui-avatars.com/api/?background=random&name=`+ message.data().fullname +`" class="rounded-circle mr-1" alt="`+ message.data().fullname +`" width="40" height="40">
+                <div class="flex-grow-1 ml-3">
+                    ` + message.data().fullname + `
+                </div>
+            </div>
+        </button>`
       });
+
+      document.getElementById("contacts-list").innerHTML = contactList
 
       //search user inbox
-      console.log(arrUsers);
+      // console.log(arrMessages);
 
-      var receiver = "";
-      var receiverName =  prompt("Please enter receiver", "receiver's name'");
+      // var receiver = "";
+      // var receiverName =  prompt("Please enter receiver", "receiver's name'");
       
-      let receiverinit = arrUsers.find(user => user.fullname === receiverName);
-      receiver = receiverinit.uid
-      inbox = receiver;
+      // let receiverinit = arrUsers.find(user => user.fullname === receiverName);
+      // receiver = receiverinit.uid
+      // inbox = receiver;
 
       //archive messages
-      document.getElementById("archive_message").addEventListener("click", (e) => {
+      // document.getElementById("archive_message").addEventListener("click", (e) => {
         
-      });
+      // });
 
       
 
     }else{
       inbox = user.uid;
+      // $("#contact-container").css("display", "none")
+      $("#chat-admin").css("display", "none")
+      $("#chat-user").css("display", "block")
     }
 
-    //view messages
-    getDoc(doc(db, "messages", inbox)).then(chatData => {
-      if(chatData.exists()){
-        var chatContent = chatData.data().message;
-        chatContent.forEach((message) => {
-          const chatBody = document.querySelector(".chatsupport-body");
-          var className = ""
-          if(message.senderUid === user.uid){
-            className = "user-message"
-          }else{
-            className = "chatbot-message"
-          }
-            const messageEle = document.createElement("div");
-            const txtNode = document.createTextNode(message.content);
-            messageEle.classList.add(className);
-            messageEle.append(txtNode);
-            chatBody.append(messageEle);
-            
-        });
-        
-      }
-    });
+    
     
 
 
@@ -130,11 +119,40 @@ onAuthStateChanged(auth, async (user) => {
 
     });
 
-
-
-    
-
   } else {
     location.href = "../../index.html";
   }
 });
+
+var clicked = 0;
+window.displayChat = (senderId) => {
+  //view messages
+  if (localStorage.getItem("sender") !== senderId){
+    clicked = 0
+    $(".chatsupport-body").html("")
+  }
+  if(clicked < 1){
+    localStorage.setItem("sender", senderId)
+    getDoc(doc(db, "messages", senderId)).then(chatData => {
+      if(chatData.exists()){
+        var chatContent = chatData.data().message;
+        var user = auth.currentUser;
+        chatContent.forEach((message) => {
+          const chatBody = document.querySelector(".chatsupport-body");
+          var className = ""
+          if(message.senderUid === user.uid){
+            className = "user-message"
+          }else{
+            className = "chatbot-message"
+          }
+            const messageEle = document.createElement("div");
+            const txtNode = document.createTextNode(message.content);
+            messageEle.classList.add(className);
+            messageEle.append(txtNode);
+            chatBody.append(messageEle); 
+        });  
+      }
+    });
+  }
+  clicked++;
+}
