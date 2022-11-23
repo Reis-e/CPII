@@ -114,14 +114,22 @@ const getChatbotResponse = (userInput) => {
     let arrKeys = Object.keys(responseObj);
     let response = "";
     console.log(arrKeys)
-    arrKeys.some((key) => {
-      console.log(userInput.includes(key))
+    // arrKeys.some((key) => {
+    //   console.log(userInput.includes(key))
+    //   if (userInput.includes(key)) {
+    //     response = responseObj[key];
+    //   } else {
+    //     response = "Please try something else";
+    //   }
+    // });
+    for (const key of arrKeys) {
       if (userInput.includes(key)) {
         response = responseObj[key];
+        break;
       } else {
         response = "Please try something else";
       }
-    });
+    }
     return response;
   } else {
     return responseObj[userInput];

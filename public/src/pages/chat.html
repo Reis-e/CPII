@@ -443,7 +443,7 @@
             const txtInput = document.querySelector("#txt_message");
             const send = document.querySelector(".sendchatSupport");
 
-            send.addEventListener("click", () => alert("send"));
+            send.addEventListener("click", () => renderUserMessage());
 
             txtInput.addEventListener("keyup", (event) => {
                 if (event.keyCode === 13) {
