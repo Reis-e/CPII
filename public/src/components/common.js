@@ -21,14 +21,11 @@ onAuthStateChanged(auth, async (user) => {
       delete responseData.status;
       responseObj = Object.assign(newResponseObj, responseData);
     });
-    // console.log(responseObj);
   }
 });
 
 
 document.getElementById("logout").addEventListener("click", (e) => {
-  // var table = $("#example").DataTable();
-  // table.clear().draw();
   signOut(auth)
     .then(() => {
       location.href = "../../index.html";
@@ -68,8 +65,6 @@ $(document).ready(function () {
   if (status === "Deactivated") {
     $("#deactivated_modal").modal("show");
   }
-
-  // $("#dataTable").DataTable();
 });
 
 
@@ -138,15 +133,3 @@ const setScrollPosition = () => {
     chatBody.scrollTop = chatBody.scrollHeight;
   }
 };
-
-
-
-// const responseObj = {
-//   hello: "Hi sd?",
-//   hey: "Hey! What's Up",
-//   today: new Date().toDateString(),
-//   time: new Date().toLocaleTimeString(),
-//   request: "what request?",
-//   id: "are you requesting for a barangay id?",
-//   certificate: "what certificate",
-// };

@@ -11,7 +11,6 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
 import {
   getAuth,
-  signOut,
   onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
 
@@ -41,14 +40,21 @@ onAuthStateChanged(auth, async (user) => {
       console.log(error);
     }
     $("#js-preloader").addClass("loaded");
-    
+
+    localStorage.removeItem("sender")
 
     var inbox = "";
-    if(role === "admin"||role === "staff"){
+    if (role === "admin"||role === "staff") {
+      
+
+      if (localStorage.getItem("sender") === null || localStorage.getItem("sender") === ""){
+        $("#chat-thread").css("display", "none")
+      }
+
       const messagesList = await getDocs(collection(db, "messages"));
       var contactList = "";
       messagesList.forEach((message) => {
-        contactList += `<button class="list-group-item list-group-item-action border-0" onclick="displayChat('`+message.id+`')">
+        contactList += `<button class="list-group-item list-group-item-action border-0" onclick="displayChat('`+message.id+`', '`+message.data().fullname+`')">
             <div class="d-flex align-items-start">
                 <img src="https://ui-avatars.com/api/?background=random&name=`+ message.data().fullname +`" class="rounded-circle mr-1" alt="`+ message.data().fullname +`" width="40" height="40">
                 <div class="flex-grow-1 ml-3">
@@ -59,28 +65,11 @@ onAuthStateChanged(auth, async (user) => {
       });
 
       document.getElementById("contacts-list").innerHTML = contactList
-      
-      //search user inbox
-      // console.log(arrMessages);
 
-      // var receiver = "";
-      // var receiverName =  prompt("Please enter receiver", "receiver's name'");
-      
-      // let receiverinit = arrUsers.find(user => user.fullname === receiverName);
-      // receiver = receiverinit.uid
-      // inbox = receiver;
-
-      //archive messages
-      // document.getElementById("archive_message").addEventListener("click", (e) => {
-        
-      // });
-
+    } else {
       
 
-    }else{
       inbox = user.uid;
-      var receiver = inbox;
-      // $("#contact-container").css("display", "none")
 
       getDoc(doc(db, "messages", inbox)).then(chatData => {
         if(chatData.exists()){
@@ -104,53 +93,26 @@ onAuthStateChanged(auth, async (user) => {
       });
     }
 
-    
-    
-
-
-    //send message
-    document.getElementById("send_message").addEventListener("click", (e) => {
-      var senderUid = user.uid;
-      var inboxFullname = localStorage.getItem("fullname");
-      var txt_message = document.getElementById("txt_message").value;
-      var sentAt = Timestamp.fromDate(new Date());
-      
-      getDoc(doc(db, "messages", inbox)).then(docSnap => {
-        const chatRef = doc(db, "messages", inbox);
-        try {
-          if(!docSnap.exists()){
-            setDoc(chatRef, {
-            message: arrayUnion({senderUid:senderUid, content: txt_message, sentAt:sentAt}),
-            uid: receiver,
-            fullname: inboxFullname,
-            status: "Active"
-            });
-  
-          }else{
-            updateDoc(chatRef, {
-            message: arrayUnion({senderUid:senderUid, content: txt_message, sentAt:sentAt})
-            }); 
-          }
-
-        }catch(error) {
-          console.error('Error writing new message to Firebase Database', error);
-        }
-      });
-
-    });
-
   } else {
     location.href = "../../index.html";
   }
 });
 
 var clicked = 0;
-window.displayChat = (senderId) => {
+window.displayChat = (senderId, fullname) => {
   //view messages
   if (localStorage.getItem("sender") !== senderId){
     clicked = 0
     $(".chatsupport-body").html("")
+    $("#chat-thread").css("display", "block")
+    $("#chat-header").html(`<div class="position-relative">
+        <img src="https://ui-avatars.com/api/?background=random&name=`+ fullname +`" class="rounded-circle mr-1" alt="`+fullname+`" width="40" height="40">
+    </div>
+    <div class="flex-grow-1 pl-3">
+        <strong>`+fullname+`</strong>
+    </div>`)
   }
+
   if(clicked < 1){
     localStorage.setItem("sender", senderId)
     getDoc(doc(db, "messages", senderId)).then(chatData => {
@@ -175,4 +137,39 @@ window.displayChat = (senderId) => {
     });
   }
   clicked++;
+}
+
+window.sendMessage = (txtInput) => {
+  var user = auth.currentUser;
+  var inbox = null
+  if (localStorage.getItem("role") === "admin" || localStorage.getItem("role") === "staff") {
+    inbox = localStorage.getItem("sender") 
+  }else{
+    inbox = user.uid
+  }
+  var senderUid = user.uid;
+  var inboxFullname = localStorage.getItem("fullname");
+  var sentAt = Timestamp.fromDate(new Date());
+  
+  getDoc(doc(db, "messages", inbox)).then(docSnap => {
+    const chatRef = doc(db, "messages", inbox);
+    try {
+      if(!docSnap.exists()){
+        setDoc(chatRef, {
+        message: arrayUnion({senderUid:senderUid, content: txtInput, sentAt:sentAt}),
+        uid: inbox,
+        fullname: inboxFullname,
+        status: "Active"
+        });
+
+      }else{
+        updateDoc(chatRef, {
+        message: arrayUnion({senderUid:senderUid, content: txtInput, sentAt:sentAt})
+        }); 
+      }
+
+    }catch(error) {
+      console.error('Error writing new message to Firebase Database', error);
+    }
+  });
 }
