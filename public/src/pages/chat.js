@@ -66,6 +66,61 @@ onAuthStateChanged(auth, async (user) => {
 
       document.getElementById("contacts-list").innerHTML = contactList
 
+      document.getElementById("addResponse_button").innerHTML = '<button class="btn btn-primary shadow-sm" id="addResponse">Add Response</button>'
+
+      document.getElementById("chatbot-responseCard").innerHTML = `
+      <div class="card shadow mb-4">
+          <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-gray-500">Chatbot Response</h6>
+          </div>
+          <div class="card-body">
+              <div class="table-responsive" id="chatbotResponseTable">
+              </div>
+          </div>
+      </div>
+      `;
+
+      document.getElementById("chatbotResponseTable").innerHTML = `
+      <table class="table table-bordered" id="dataTableChatbotResponse" width="100%" cellspacing="0">
+        <thead id="table_head">
+            <tr>
+                <th>Chat Key</th>
+                <th>Chatbot Response</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+      </table>`;
+
+      const responsesQ = await getDocs(collection(db, "chatResponses"));
+      
+      const responsesArr = [];
+      responsesQ.forEach((response) => {
+        var objBotresponse = response.data();
+        responsesArr.push(objBotresponse);
+      });
+      console.log(responsesArr);
+
+      $("#dataTableChatbotResponse").DataTable({
+        data:responsesArr,
+        columns:[
+          
+          { data: "" },
+
+          { data: "" },
+
+          { data: "" },
+
+          { data: null }
+        ]
+      });
+
+
+
+
+
+
+
     } else {
       
 
