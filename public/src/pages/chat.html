@@ -61,7 +61,7 @@
             height: 60px;
             display: flex;
             align-items: center;
-            border-top: 1px solid #ccc;
+            border-top: 1px solid #e3e6f0 !important;
         }
         .input-sec {
             flex: 9;
@@ -374,7 +374,7 @@
             if (role === "admin" || role === "staff") {
                 document.getElementById("chat-admin").innerHTML = `
                 <div class="row">
-                    <div class="col-12 col-lg-5 col-xl-3 border-right" id="contact-container">
+                    <div class="col-12 col-lg-5 col-xl-3 border-right" id="contact-container" style="height: 576px;overflow: auto;">
 
                         <div class="px-4 d-none d-md-block">
                             <div class="d-flex align-items-center">
@@ -453,12 +453,14 @@
 
             const renderUserMessage = () => {
                 const userInput = txtInput.value;
-                sendMessage(userInput);
-                renderMessageEle(userInput, "user");
-                txtInput.value = "";
-                setTimeout(() => {
-                    setScrollPosition();
-                }, 600);
+                if (userInput) {
+                    sendMessage(userInput);
+                    renderMessageEle(userInput, "user");
+                    txtInput.value = "";
+                    setTimeout(() => {
+                        setScrollPosition();
+                    }, 600);
+                }
             }
 
             const renderMessageEle = (txt, type) => {
@@ -474,9 +476,9 @@
             };
 
             const setScrollPosition = () => {
-            if (chatBody.scrollHeight > 0) {
-                chatBody.scrollTop = chatBody.scrollHeight;
-            }
+                if (chatBody.scrollHeight > 0) {
+                    chatBody.scrollTop = chatBody.scrollHeight;
+                }
             };
         });
     </script>

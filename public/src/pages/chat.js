@@ -137,6 +137,13 @@ window.displayChat = (senderId, fullname) => {
     });
   }
   clicked++;
+
+  setTimeout(() => {
+    const chatBody = document.querySelector(".chatsupport-body");
+    if (chatBody.scrollHeight > 0) {
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }
+  }, 200);
 }
 
 window.sendMessage = (txtInput) => {
