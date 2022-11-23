@@ -59,7 +59,7 @@ onAuthStateChanged(auth, async (user) => {
       });
 
       document.getElementById("contacts-list").innerHTML = contactList
-
+      
       //search user inbox
       // console.log(arrMessages);
 
@@ -79,7 +79,29 @@ onAuthStateChanged(auth, async (user) => {
 
     }else{
       inbox = user.uid;
+      var receiver = inbox;
       // $("#contact-container").css("display", "none")
+
+      getDoc(doc(db, "messages", inbox)).then(chatData => {
+        if(chatData.exists()){
+          var chatContent = chatData.data().message;
+          var user = auth.currentUser;
+          chatContent.forEach((message) => {
+            const chatBody = document.querySelector(".chatsupport-body");
+            var className = ""
+            if(message.senderUid === user.uid){
+              className = "user-message"
+            }else{
+              className = "chatbot-message"
+            }
+              const messageEle = document.createElement("div");
+              const txtNode = document.createTextNode(message.content);
+              messageEle.classList.add(className);
+              messageEle.append(txtNode);
+              chatBody.append(messageEle); 
+          });  
+        }
+      });
     }
 
     
@@ -89,6 +111,7 @@ onAuthStateChanged(auth, async (user) => {
     //send message
     document.getElementById("send_message").addEventListener("click", (e) => {
       var senderUid = user.uid;
+      var inboxFullname = localStorage.getItem("fullname");
       var txt_message = document.getElementById("txt_message").value;
       var sentAt = Timestamp.fromDate(new Date());
       
@@ -99,6 +122,7 @@ onAuthStateChanged(auth, async (user) => {
             setDoc(chatRef, {
             message: arrayUnion({senderUid:senderUid, content: txt_message, sentAt:sentAt}),
             uid: receiver,
+            fullname: inboxFullname,
             status: "Active"
             });
   

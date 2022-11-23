@@ -30,14 +30,13 @@ onAuthStateChanged(auth, async (user) => {
     localStorage.setItem("verified", emailVerify);
     localStorage.setItem("status", docSnap.data().status);
     
-    location.href = "./src/pages/dashboard.html";
+    // location.href = "./src/pages/dashboard.html";
     
   }
 });
 
 // Registration Function
 document.getElementById("signup").addEventListener("click", (e) => {
-  // const username = document.getElementById("username").value;
   const firstname = document.getElementById("firstname").value;
   const lastname = document.getElementById("lastname").value;
   const middlename = document.getElementById("middlename").value;
@@ -52,40 +51,32 @@ document.getElementById("signup").addEventListener("click", (e) => {
   const mobileno = document.getElementById("mobileno").value;
   const precinctno = document.getElementById("precinctno").value;
 
-  // let valid = true;
-  // $('[required]').each(function() {
-  //   if ($(this).is(':invalid') || !$(this).val()) valid = false;
-  // })
-  // if (!valid) {
-  //   // alert("error please fill all fields!");
-  //   $("#firstname").addClass("is-invalid");
-  //   $("#lastname").addClass("is-invalid");
-  //   // $("#middlename").addClass("is-invalid");
-  //   // $("#suffixname").addClass("is-invalid");
-  //   $("#email_register").addClass("is-invalid");
-  //   $("#password_register").addClass("is-invalid");
-  //   $("#confirmpassword").addClass("is-invalid");
-  //   $("#address").addClass("is-invalid");
-  //   $("#birthplace").addClass("is-invalid");
-  //   $("#birthdate").addClass("is-invalid");
-  //   $("#civilstatus").addClass("is-invalid");
-  //   $("#mobileno").addClass("is-invalid");
-  //   $("#precinctno").addClass("is-invalid");
-  // } else {
+  let valid = true;
+  $('[required]').each(function() {
+    if ($(this).is(':invalid') || !$(this).val()) valid = false;
+  })
+  if (!valid) {
+    // alert("error please fill all fields!");
+    $("#firstname").addClass("is-invalid");
+    $("#lastname").addClass("is-invalid");
+    // $("#middlename").addClass("is-invalid");
+    // $("#suffixname").addClass("is-invalid");
+    $("#email_register").addClass("is-invalid");
+    $("#password_register").addClass("is-invalid");
+    $("#confirmpassword").addClass("is-invalid");
+    $("#address").addClass("is-invalid");
+    $("#birthplace").addClass("is-invalid");
+    $("#birthdate").addClass("is-invalid");
+    $("#civilstatus").addClass("is-invalid");
+    $("#mobileno").addClass("is-invalid");
+    $("#precinctno").addClass("is-invalid");
+  } else {
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
       const userDBRef = doc(db, "users", user.uid);
       const emailVerify = user.emailVerified;
-
-      localStorage.setItem("role", "user");
-      localStorage.setItem("verified", emailVerify);
-      localStorage.setItem("status", "Active");
-      localStorage.setItem(
-        "fullname",
-        firstname + " " + lastname + " " + suffixname
-      );
 
       setDoc(
         userDBRef,
@@ -107,7 +98,21 @@ document.getElementById("signup").addEventListener("click", (e) => {
         { merge: true }
       ).then((value) => {
         var user = auth.currentUser;
-        sendEmailVerification(user);
+        sendEmailVerification(user).then(() => {
+          // Email verification sent!
+          // ...
+          console.log("email verification sent");
+        });
+
+        
+
+        localStorage.setItem("role", "user");
+        localStorage.setItem("verified", emailVerify);
+        localStorage.setItem("status", "Active");
+        localStorage.setItem(
+        "fullname",
+        firstname + " " + lastname + " " + suffixname
+      );
         location.href = "./src/pages/dashboard.html";
       });
     })
@@ -145,6 +150,6 @@ document.getElementById("signup").addEventListener("click", (e) => {
       document.getElementById("errormsg").style.display = "block";
       document.getElementById("errormsg").innerHTML = messageHtml;
     });
-  // };
+  };
 
 });

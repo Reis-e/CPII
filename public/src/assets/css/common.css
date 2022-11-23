@@ -141,8 +141,9 @@ chatbot
     color: white;
     margin: 5px;
     width: max-content;
+    max-width: 70%;
     border-radius: 10px 10px 3px 10px;
-    width: 70%;
+    width: auto;
     word-wrap: break-word;
 }
 .chatbot-message {
@@ -151,6 +152,7 @@ chatbot
     color: white;
     align-self: flex-start;
     border-radius: 10px 10px 10px 3px;
-    width: 70%;
+    width: auto;
+    max-width: 70%;
     word-wrap: break-word;
 }
