@@ -113,7 +113,9 @@ const getChatbotResponse = (userInput) => {
   if (responseObj[userInput] == undefined) {
     let arrKeys = Object.keys(responseObj);
     let response = "";
-    arrKeys.every((key) => {
+    console.log(arrKeys)
+    arrKeys.some((key) => {
+      console.log(userInput.includes(key))
       if (userInput.includes(key)) {
         response = responseObj[key];
       } else {
