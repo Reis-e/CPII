@@ -45,8 +45,6 @@ onAuthStateChanged(auth, async (user) => {
 
     var inbox = "";
     if(role === "admin"||role === "staff"){
-      $("#chat-admin").css("display", "block")
-      $("#chat-user").css("display", "none")
       const messagesList = await getDocs(collection(db, "messages"));
       var contactList = "";
       messagesList.forEach((message) => {
@@ -82,8 +80,6 @@ onAuthStateChanged(auth, async (user) => {
     }else{
       inbox = user.uid;
       // $("#contact-container").css("display", "none")
-      $("#chat-admin").css("display", "none")
-      $("#chat-user").css("display", "block")
     }
 
     
