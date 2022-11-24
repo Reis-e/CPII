@@ -113,20 +113,12 @@ const renderMessageEle = (txt, type) => {
 };
 
 const getChatbotResponse = (userInput) => {
-  if (responseObj[userInput] == undefined) {
+  var lowerCaseTxtInput = userInput.toLowerCase()
+  if (responseObj[lowerCaseTxtInput] == undefined) {
     let arrKeys = Object.keys(responseObj);
     let response = "";
-    console.log(arrKeys)
-    // arrKeys.some((key) => {
-    //   console.log(userInput.includes(key))
-    //   if (userInput.includes(key)) {
-    //     response = responseObj[key];
-    //   } else {
-    //     response = "Please try something else";
-    //   }
-    // });
     for (const key of arrKeys) {
-      if (userInput.includes(key) || key.includes(userInput)) {
+      if (lowerCaseTxtInput.includes(key) || key.includes(lowerCaseTxtInput)) {
         response = responseObj[key];
         break;
       } else {
@@ -135,7 +127,7 @@ const getChatbotResponse = (userInput) => {
     }
     return response;
   } else {
-    return responseObj[userInput];
+    return responseObj[lowerCaseTxtInput];
   }
 };
 

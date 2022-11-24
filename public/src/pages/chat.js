@@ -268,7 +268,7 @@ window.saveResponse = () => {
     let responseMessage = $("#add_response_message").val()
 
     addDoc(collection(db, "chatResponses"), {
-      [responseKey]: responseMessage,
+      [responseKey]: responseMessage.toLowerCase(),
       status: "Active",
     }).then((value) => {
       console.log(value)
@@ -292,7 +292,7 @@ window.updateResponse = () => {
     setDoc(
       chatResponseDBRef,
       {
-        [responseKey]: responseMessage,
+        [responseKey]: responseMessage.toLowerCase(),
         status: "Active",
       },
       { merge: true }

@@ -56,11 +56,8 @@ document.getElementById("signup").addEventListener("click", (e) => {
     if ($(this).is(':invalid') || !$(this).val()) valid = false;
   })
   if (!valid) {
-    // alert("error please fill all fields!");
     $("#firstname").addClass("is-invalid");
     $("#lastname").addClass("is-invalid");
-    // $("#middlename").addClass("is-invalid");
-    // $("#suffixname").addClass("is-invalid");
     $("#email_register").addClass("is-invalid");
     $("#password_register").addClass("is-invalid");
     $("#confirmpassword").addClass("is-invalid");
