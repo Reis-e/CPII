@@ -57,8 +57,6 @@
               <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
               <li class="scroll-to-section"><a href="#services">Services</a></li>
               <li class="scroll-to-section"><a href="#about">About</a></li>
-              <!-- <li class="scroll-to-section"><a href="#pricing">Pricing</a></li> -->
-              <!-- <li class="scroll-to-section"><a href="#newsletter">Newsletter</a></li> -->
               <li><div class="gradient-button"><a id="modal_trigger" href="./login.html"><i class="fa fa-sign-in-alt"></i> Log In Now</a></div></li> 
             </ul>        
             <a class='menu-trigger'>
@@ -72,196 +70,7 @@
   </header>
   <!-- ***** Header Area End ***** -->
   
-  <div id="modal" class="popupContainer" style="display:none; margin-left: -175px !important;">
-    
-    <div class="pricing-item-pro">
-        <div class="user_login">
-            <h2 style="position: relative; z-index: 2;">Log In</h2>
-            <div class="fw-normal text-muted mt-2 mb-4" style="position: relative; z-index: 2;"> No account yet? 
-                <a href="#" id="register_form_start" class="text-primary text-decoration-none">Register</a>
-            </div>
-    
-            <div id="errormsg" class="alert alert-danger alert-dismissible fade show" role="alert" style="display:none">
-                <strong>Wrong Credentials</strong></br>
-                <span id="errortxt" ></span>.
-                <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
-            </div>
-    
-            <div class="form-floating mt-5 mb-3">
-                <input type="email" class="form-control" id="email" placeholder="name@example.com">
-                <label for="floatingInput">Email</label>
-            </div>
-    
-            <div class="form-floating">
-                <input type="password" class="form-control" id="password" placeholder="Password">
-                <label for="floatingPassword">Password</label>
-            </div>
-    
-            <div class="mt-3 text-end">
-                <a href="#" class="text-primary text-decoration-none" id="forgot_password" style="position: relative; z-index: 2;">Forgot Password?</a>
-            </div>
-    
-            <div class="border-button">
-              <button id="login" class="" style="width: 100%;">Log In</button>
-            </div>
-        </div>
-
-        <!-- Registration -->
-        <div class="user_register_first" style="display: none;">
-            <h2 style="position: relative; z-index: 2;">Register</h2>
-
-            <div class="fw-normal text-muted mt-2 mb-4" style="position: relative; z-index: 2;">Already have an account?  
-                <a href="#" id="user_login_form" class="text-primary text-decoration-none">Log In</a>
-            </div>
-
-            <div id="errormsg_register" class="alert alert-danger alert-dismissible fade show" role="alert" style="display:none">
-                <span id="errortxt_register" ></span>.
-                <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
-            </div>
-
-            <div class="form-floating mt-5 mb-3">
-                <input type="text" class="form-control" id="username" placeholder="Enter Username" name="username">
-                <label for="floatingInput">Username</label>
-            </div>
-    
-            <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="email_register" placeholder="Enter Email" name="email">
-                <label for="floatingInput">Email</label>
-            </div>
-    
-            <div class="form-floating mb-3">
-                <input type="password" class="form-control" id="password_register" placeholder="Enter Password" type="password">
-                <label for="floatingPassword">Password</label>
-            </div>
-    
-            <div class="form-floating mb-3" style="position: relative; z-index: 2;">
-                <input type="password" class="form-control" id="confirmpassword" placeholder="Enter Confirm Password" name="confirmpassword">
-                <label for="floatingPassword">Confirm Password</label>
-            </div>
-
-            <div class="border-button">
-                <a href="#" id="register_form_next" class="" style="width: 100%;">Next</a>
-            </div>
-        </div>
-        <div class="user_register_next" style="display: none;">
-            <h2 style="position: relative; z-index: 2;">Register</h2>
-
-            <div id="errormsg_register_last" class="alert alert-danger alert-dismissible fade show mt-2" role="alert" style="display:none">
-                <strong>Registration cannot be completed.</strong></br>
-                <span id="errortxt_register_last" ></span>.
-                <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
-            </div>
-
-            <div class="form-floating mt-5 mb-3">
-                <input type="firstname" class="form-control" id="firstname" placeholder="Enter First Name" name="firstname">
-                <label for="floatingInput">First Name</label>
-            </div>
-
-            <div class="form-floating mb-3">
-              <input type="firstname" class="form-control" id="middlename" placeholder="Enter Middle Name" name="middlename">
-              <label for="floatingInput">Middle Name</label>
-            </div>
-    
-            <div class="form-floating mb-3">
-                <input type="lastname" class="form-control" id="lastname" placeholder="Enter Last Name" name="lastname">
-                <label for="floatingInput">Last Name</label>
-            </div>
-
-            <div class="form-floating mb-3">
-              <!-- <input type="text" class="form-control" id="mobileno" placeholder="Enter Mobile No." name="mobileno"> -->
-              <select class="form-control" id="suffixname">
-                <option value=""></option>
-                <option value="Sr.">Sr.</option>
-                <option value="Jr.">Jr.</option>
-                <option value="II">II</option>
-                <option value="III">III</option>
-                <option value="IV">IV</option>
-                <option value="V">V</option>
-              </select>
-              <label for="floatingInput">Suffix</label>
-            </div>
-    
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="address" placeholder="Enter Address" name="address">
-                <label for="floatingInput">Address</label>
-            </div>
-
-            <div class="form-floating mb-3">
-              <div class="col-sm-9">
-                <label for="colFormLabel" class="col-sm-3 col-form-label">Birthdate</label>
-                  <input type="date" class="form-control" id="birthdate" placeholder="">
-              </div>
-            </div>
-
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="birthplace" placeholder="Enter Birth Place" name="birthplace">
-                <label for="floatingInput">Birth Place</label>
-            </div>
-
-            <div class="form-floating mb-3">
-              <!-- <input type="text" class="form-control" id="mobileno" placeholder="Enter Mobile No." name="mobileno"> -->
-              <select class="form-control" id="civilstatus">
-                <option value=""></option>
-                <option value="Single">Single</option>
-                <option value="Married">Married</option>
-                <option value="Divorced">Divorced</option>
-                <option value="Separated">Separated</option>
-                <option value="Widowed">Widowed</option>
-              </select>
-              <label for="floatingInput">Civil Status</label>
-            </div>
-    
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="mobileno" placeholder="Enter Mobile No." name="mobileno">
-                <label for="floatingInput">Mobile No.</label>
-            </div>
-    
-            <!-- <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="precinctno" placeholder="Enter Precinct No." name="precinctno">
-                <label for="floatingInput">Precinct No.</label>
-            </div> -->
-            <div class="form-floating mb-3">
-              <!-- <input type="text" class="form-control" id="mobileno" placeholder="Enter Mobile No." name="mobileno"> -->
-              <select class="form-control" id="precinctno">
-                <!-- <option value=""></option>
-                <option value="Sr.">Sr.</option>
-                <option value="Jr.">Jr.</option>
-                <option value="II">II</option>
-                <option value="III">III</option>
-                <option value="IV">IV</option>
-                <option value="V">V</option> -->
-            </select>
-              <label for="floatingInput">Precint No.</label>
-            </div>
-            
-
-            <div class="border-button">
-                <button id="signup" class="" style="width: 100%;">Register</button>
-            </div>
-            <div class="mt-3 text-center">
-                <a href="#" id="register_form_back" class="text-primary text-decoration-none" style="position: relative; z-index: 2;">Back</a>
-            </div>
-        </div>
-        <div class="forgot_password_card" style="display: none;">
-          <h2 style="position: relative; z-index: 2;">Forgot Password</h2>
   
-          <div id="errormsg_forgot" class="alert alert-danger alert-dismissible fade show mt-2" role="alert" style="display:none">
-              <strong>Invalid field!</strong></br>
-              <span id="errortxt_forgot" ></span>
-              <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
-          </div>
-  
-          <div class="form-floating mt-5 mb-3" style="position: relative; z-index: 2;">
-              <input type="email" class="form-control" id="email_forgot" placeholder="name@example.com">
-              <label for="floatingInput">Email</label>
-          </div>
-  
-          <div class="border-button">
-            <button id="reset_password" class="" style="width: 100%;">Reset Password</button>
-          </div>
-      </div>
-    </div>
-</div>
 
   <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
     <div class="container">
@@ -376,39 +185,32 @@
           <div class="section-heading">
             <h4>About <em>What We Do</em> &amp; Who We Are</h4>
             <img src="./assets/images/heading-line-dec.png" alt="">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eismod tempor incididunt ut labore et dolore magna.</p>
+            <p>This is Barangay Batis Services Website. This website was established to give its constituents the services that they need:</p>
           </div>
           <div class="row">
             <div class="col-lg-6">
               <div class="box-item">
-                <h4><a href="#">Maintance Problems</a></h4>
-                <p>Lorem Ipsum Text</p>
+                <h4><a href="#">Request Documents</a></h4>
+                <p>Request Barangay Documents such as Certificates, IDs, and Permits.</p>
               </div>
             </div>
             <div class="col-lg-6">
               <div class="box-item">
-                <h4><a href="#">24/7 Support &amp; Help</a></h4>
-                <p>Lorem Ipsum Text</p>
+                <h4><a href="#">View Announcements</a></h4>
+                <p>Read important announcements and posts from Barangay Batis Information Team. </p>
               </div>
             </div>
             <div class="col-lg-6">
               <div class="box-item">
-                <h4><a href="#">Fixing Issues About</a></h4>
-                <p>Lorem Ipsum Text</p>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="box-item">
-                <h4><a href="#">Co. Development</a></h4>
-                <p>Lorem Ipsum Text</p>
+                <h4><a href="#">Chat Support &amp; Help</a></h4>
+                <p>Reach us easily with the in web messaging feature.</p>
               </div>
             </div>
             <div class="col-lg-12">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eismod tempor idunte ut labore et dolore adipiscing  magna.</p>
               <div class="gradient-button">
-                <a href="#">Start 14-Day Free Trial</a>
+                <a href="./register.html">Register Now!</a>
               </div>
-              <span>*No Credit Card Required</span>
+              <span>*Only registered barangay batis residents are allowed to register. For concerns please contact the Barangay or Go to the Barangay hall.</span>
             </div>
           </div>
         </div>
@@ -421,7 +223,7 @@
     </div>
   </div>
 
-  <div id="clients" class="the-clients">
+  <!-- <div id="clients" class="the-clients">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 offset-lg-2">
@@ -664,9 +466,9 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
-  <div id="pricing" class="pricing-tables">
+  <!-- <div id="pricing" class="pricing-tables">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 offset-lg-2">
@@ -738,89 +540,41 @@
         </div>
       </div>
     </div>
-  </div> 
+  </div>  -->
 
   <footer id="newsletter">
     <div class="container">
       <div class="row">
-        <!-- <div class="col-lg-8 offset-lg-2">
-          <div class="section-heading">
-            <h4>Join our mailing list to receive the news &amp; latest trends</h4>
-          </div>
-        </div>
-        <div class="col-lg-6 offset-lg-3">
-          <form id="search" action="#" method="GET">
-            <div class="row">
-              <div class="col-lg-6 col-sm-6">
-                <fieldset>
-                  <input type="address" name="address" class="email" placeholder="Email Address..." autocomplete="on" required>
-                </fieldset>
-              </div>
-              <div class="col-lg-6 col-sm-6">
-                <fieldset>
-                  <button type="submit" class="main-button">Subscribe Now <i class="fa fa-angle-right"></i></button>
-                </fieldset>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div> -->
-      <div class="row">
         <div class="col-lg-3">
           <div class="footer-widget">
-            <h4>Contact Us</h4>
-            <p>Rio de Janeiro - RJ, 22795-008, Brazil</p>
-            <p><a href="#">010-020-0340</a></p>
-            <p><a href="#">info@company.co</a></p>
+            
           </div>
         </div>
         <div class="col-lg-3">
           <div class="footer-widget">
             <h4>About Us</h4>
             <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Services</a></li>
-              <li><a href="#">About</a></li>
-              <li><a href="#">Testimonials</a></li>
-              <li><a href="#">Pricing</a></li>
+              <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+              <li class="scroll-to-section"><a href="#services" class="active">Services</a></li>
             </ul>
             <ul>
-              <li><a href="#">About</a></li>
-              <li><a href="#">Testimonials</a></li>
-              <li><a href="#">Pricing</a></li>
+              <li class="scroll-to-section"><a href="#about" class="active">About</a></li>
+              <li><a href="./login.html">Login</a></li>
+              <li><a href="./register.html">Register</a></li>
             </ul>
           </div>
         </div>
         <div class="col-lg-3">
           <div class="footer-widget">
-            <h4>Useful Links</h4>
-            <ul>
-              <li><a href="#">Free Apps</a></li>
-              <li><a href="#">App Engine</a></li>
-              <li><a href="#">Programming</a></li>
-              <li><a href="#">Development</a></li>
-              <li><a href="#">App News</a></li>
-            </ul>
-            <ul>
-              <li><a href="#">App Dev Team</a></li>
-              <li><a href="#">Digital Web</a></li>
-              <li><a href="#">Normal Apps</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-lg-3">
-          <div class="footer-widget">
-            <h4>About Our Company</h4>
-            <div class="logo">
-              <img src="./assets/images/white-logo.png" alt="">
-            </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+            <h4>Contact Us</h4>
+            <p>420 F. Manalo St., Brgy. Batis 1500</p>
+            <p><a href="#">(02) 7744 0737</a></p>
+            <p><a href="#">batis.sanjuan@gmail.com</a></p>
           </div>
         </div>
         <div class="col-lg-12">
           <div class="copyright-text">
-            <p>Copyright © 2022 Chain App Dev Company. All Rights Reserved. 
-          <br>Design: <a href="https://templatemo.com/" target="_blank" title="css templates">TemplateMo</a></p>
+            <p>Copyright © 2022 eProseso. All Rights Reserved.
           </div>
         </div>
       </div>
