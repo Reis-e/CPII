@@ -661,6 +661,17 @@ document.getElementById("proceedDeny").addEventListener("click", (e) => {
   let fullname = localStorage.getItem("fullname");
   let transactionId = localStorage.getItem("transactionId");
   let remarks = document.getElementById("transactionRemarks").value;
+
+  let valid = true;
+  $('[required]').each(function() {
+    if ($(this).is(':invalid') || !$(this).val()) valid = false;
+  })
+
+  if (!valid) {
+    $("#transactionRemarks").addClass("is-invalid");
+  } else {
+
+
   try {
     const transactionDBRef = doc(db, "transactions", transactionId);
     setDoc(
@@ -680,6 +691,9 @@ document.getElementById("proceedDeny").addEventListener("click", (e) => {
   } catch (error) {
     console.log(error);
   }
+
+  $("#remarksModal").modal("hide");
+}
 });
 
 document.getElementById("backDeny").addEventListener("click", (e) => {
