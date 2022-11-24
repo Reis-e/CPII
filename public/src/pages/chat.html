@@ -210,7 +210,7 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between">
-                        <h1 class="h3 mb-0 text-gray-800">Chat</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Chat Support</h1>
                     </div>
 
                     <div class="alert alert-danger alert-dismissible fade show" id="errormsg" role="alert" style="display: none;">
@@ -236,7 +236,7 @@
                         <div class="container py-4" id="chatbot-response-table" style="display: none;">
                             <!-- DataTales Example -->
                             <div class="mb-4" id="addResponse_button">
-                                <button class="btn btn-info shadow-sm" id="addResponse" onclick="addResponse()">Add Response</button>
+                                <button class="btn btn-md btn-info shadow-sm" id="addResponse" onclick="addResponse()"><i class="fas fa-plus fa-sm text-white-50"></i>  Add Response</button>
                             </div>
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
@@ -464,9 +464,9 @@
             if (role === "admin" || role === "staff") {
                 document.getElementById("chat-admin").innerHTML = `
                 <div class="row">
-                    <div class="col-12 col-lg-5 col-xl-3 border-right" id="contact-container" style="height: 576px;overflow: auto;">
+                    <div class="col-12 col-lg-5 col-xl-3 border-right" id="contact-container" style="height: 576px;overflow: auto; padding-right: 0px !important">
 
-                        <div class="px-4 d-none d-md-block">
+                        <div class="px-4 d-none d-md-block" style="background-color: #4e73df;color: white;">
                             <div class="d-flex align-items-center">
                                 <div class="flex-grow-1">
                                     <h2 class="p-3">Messages</h2>
@@ -478,7 +478,7 @@
 
                         <hr class="d-block d-lg-none mt-1 mb-0">
                     </div>
-                    <div class="col-12 col-lg-7 col-xl-9" id="chat-thread" >
+                    <div class="col-12 col-lg-7 col-xl-9" id="chat-thread" style="display: block;padding-left: 0px !important;">
                         <div class="py-2 px-4 border-bottom d-none d-lg-block">
                             <div class="d-flex align-items-center py-1" id="chat-header">
                             </div>

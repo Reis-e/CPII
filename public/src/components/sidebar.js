@@ -52,8 +52,8 @@ switch (role) {
 
         <li class="nav-item" id="chat">
             <a class="nav-link" href="../pages/chat.html">
-                <i class="fas fa-fw fa-comments"></i>
-                <span>Chat</span></a>
+                <i class="fas fa-fw fa-comment-alt"></i>
+                <span>Chat Support</span></a>
         </li>
 
         <!-- Divider -->
@@ -112,8 +112,8 @@ switch (role) {
     
                         <li class="nav-item" id="chat">
                             <a class="nav-link" href="../pages/chat.html">
-                                <i class="fas fa-fw fa-comments"></i>
-                                <span>Chat</span></a>
+                                <i class="fas fa-fw fa-comment-alt"></i>
+                                <span>Chat Support</span></a>
                         </li>
     
                         <!-- Divider -->
@@ -178,8 +178,8 @@ switch (role) {
 
             <li class="nav-item" id="chat">
                 <a class="nav-link" href="../pages/chat.html">
-                    <i class="fas fa-fw fa-comments"></i>
-                    <span>Chat</span></a>
+                    <i class="fas fa-fw fa-comment-alt"></i>
+                    <span>Chat Support</span></a>
             </li>
 
             <!-- Divider -->
