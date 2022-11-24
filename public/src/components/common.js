@@ -6,7 +6,9 @@ import {
 import { db } from "../firebaseConfig/firebaseConfig.js";
 import {
   getDocs,
-  collection
+  collection,
+  query,
+  where,
 } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
 
 const auth = getAuth();
@@ -15,7 +17,8 @@ let responseObj = null;
 onAuthStateChanged(auth, async (user) => {
   if(user){
     let newResponseObj = {};
-    const responses = await getDocs(collection(db, "chatResponses"));
+    const responsesQ = query(collection(db, "chatResponses"), where("status", "==", "Active"));
+    const responses = await getDocs(responsesQ);
     responses.forEach((response) => {
       let responseData = response.data();
       delete responseData.status;
@@ -123,7 +126,7 @@ const getChatbotResponse = (userInput) => {
     //   }
     // });
     for (const key of arrKeys) {
-      if (userInput.includes(key)) {
+      if (userInput.includes(key) || key.includes(userInput)) {
         response = responseObj[key];
         break;
       } else {

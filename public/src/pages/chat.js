@@ -6,7 +6,9 @@ import {
   collection,
   arrayUnion,
   setDoc,
+  addDoc,
   updateDoc,
+  deleteDoc,
   Timestamp,
 } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
 import {
@@ -66,64 +68,38 @@ onAuthStateChanged(auth, async (user) => {
 
       document.getElementById("contacts-list").innerHTML = contactList
 
-      document.getElementById("addResponse_button").innerHTML = '<button class="btn btn-primary shadow-sm" id="addResponse">Add Response</button>'
+      $("#chatbot-response-table").css("display", "block")
 
-      document.getElementById("chatbot-responseCard").innerHTML = `
-      <div class="card shadow mb-4">
-          <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-gray-500">Chatbot Response</h6>
-          </div>
-          <div class="card-body">
-              <div class="table-responsive" id="chatbotResponseTable">
-              </div>
-          </div>
-      </div>
-      `;
+      // document.getElementById("addResponse_button").innerHTML = '<button class="btn btn-primary shadow-sm" id="addResponse">Add Response</button>'
 
-      document.getElementById("chatbotResponseTable").innerHTML = `
-      <table class="table table-bordered" id="dataTableChatbotResponse" width="100%" cellspacing="0">
-        <thead id="table_head">
-            <tr>
-                <th>Chat Key</th>
-                <th>Chatbot Response</th>
-                <th>Status</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-      </table>`;
+      // document.getElementById("chatbot-responseCard").innerHTML = `
+      // <div class="card shadow mb-4">
+      //     <div class="card-header py-3">
+      //         <h6 class="m-0 font-weight-bold text-gray-500">Chatbot Response</h6>
+      //     </div>
+      //     <div class="card-body">
+      //         <div class="table-responsive" id="chatbotResponseTable">
+      //         </div>
+      //     </div>
+      // </div>
+      // `;
 
-      const responsesQ = await getDocs(collection(db, "chatResponses"));
+      // document.getElementById("chatbotResponseTable").innerHTML = `
+      // <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+      //   <thead id="table_head">
+      //       <tr>
+      //           <th>Chat Key</th>
+      //           <th>Chatbot Response</th>
+      //           <th>Status</th>
+      //           <th>Action</th>
+      //       </tr>
+      //   </thead>
+      // </table>`;
+
       
-      const responsesArr = [];
-      responsesQ.forEach((response) => {
-        var objBotresponse = response.data();
-        responsesArr.push(objBotresponse);
-      });
-      console.log(responsesArr);
-
-      $("#dataTableChatbotResponse").DataTable({
-        data:responsesArr,
-        columns:[
-          
-          { data: "" },
-
-          { data: "" },
-
-          { data: "" },
-
-          { data: null }
-        ]
-      });
-
-
-
-
-
-
 
     } else {
       
-
       inbox = user.uid;
 
       getDoc(doc(db, "messages", inbox)).then(chatData => {
@@ -234,4 +210,134 @@ window.sendMessage = (txtInput) => {
       console.error('Error writing new message to Firebase Database', error);
     }
   });
+}
+
+const responsesQ = await getDocs(collection(db, "chatResponses"));
+      
+const responsesArr = [];
+responsesQ.forEach((response) => {
+  var objBotresponse = response.data();
+  Object.assign(objBotresponse, { responseId: response.id });
+  responsesArr.push(objBotresponse);
+});
+
+$("#dataTable").DataTable({
+  data: responsesArr,
+  autoWidth: false,
+  columns: [
+    { data: null,
+      render: function (data, type) {
+        let newObj = Object.fromEntries(Object.entries(data).filter(([key]) => key !== "status"));
+        let keys = Object.keys(newObj)
+        return keys[0];
+      }, 
+    },
+    { data: null,
+      render: function (data, type) {
+        let newObj = Object.fromEntries(Object.entries(data).filter(([key]) => key !== "status"));
+        let keys = Object.keys(newObj)
+        let key = keys[0]
+        return newObj[key];
+      }, 
+    },
+    { data: "status",
+      render: function (data, type) {
+        if (data === "Active") {
+          return `<label class='text-success'>` + data + `</label>`;
+        } else {
+          return `<label class='text-danger'>` + data + `</label>`;
+        }
+      }, 
+    },
+    { data: null,
+      render: function (data, type, row) {
+        return (
+          `<button type="button" class='btn btn-primary btn-circle' data-toggle="tooltip" data-placement="top" title="Edit Response" onclick='editResponse(` +
+          JSON.stringify(data) +
+          `)'><i class='fas fa-edit'></i></button>`
+        );
+      }
+    },
+  ],
+});
+
+window.saveResponse = () => {
+  $("#addResponseModal").modal("hide")
+  try {
+    let responseKey = $("#add_response_key").val()
+    let responseMessage = $("#add_response_message").val()
+
+    addDoc(collection(db, "chatResponses"), {
+      [responseKey]: responseMessage,
+      status: "Active",
+    }).then((value) => {
+      console.log(value)
+      $("#success_modal").modal("show");
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+window.updateResponse = () => {
+  $("#editResponseModal").modal("hide")
+  try {
+    let responseId = $("#edit_uid").val()
+    let responseKey = $("#response_key").val()
+    let responseMessage = $("#response_message").val()
+
+    deleteDoc(doc(db, "chatResponses", responseId))
+
+    const chatResponseDBRef = doc(db, "chatResponses", responseId);
+    setDoc(
+      chatResponseDBRef,
+      {
+        [responseKey]: responseMessage,
+        status: "Active",
+      },
+      { merge: true }
+    ).then((value) => {
+      $("#success_modal").modal("show");
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+window.archiveResponse = () => {
+  try {
+    let responseId = $("#edit_uid").val()
+
+    const chatResponseDBRef = doc(db, "chatResponses", responseId);
+    setDoc(
+      chatResponseDBRef,
+      {
+        status: "Archived",
+      },
+      { merge: true }
+    ).then((value) => {
+      $("#success_modal").modal("show");
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+window.unarchiveResponse = () => {
+  try {
+    let responseId = $("#edit_uid").val()
+
+    const chatResponseDBRef = doc(db, "chatResponses", responseId);
+    setDoc(
+      chatResponseDBRef,
+      {
+        status: "Active",
+      },
+      { merge: true }
+    ).then((value) => {
+      $("#success_modal").modal("show");
+    });
+  } catch (error) {
+    console.log(error);
+  }
 }
