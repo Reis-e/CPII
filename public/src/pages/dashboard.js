@@ -3,6 +3,7 @@ import {
   doc,
   getDoc,
   getDocs,
+  orderBy,
   collection,
   query,
   where,
@@ -61,8 +62,10 @@ onAuthStateChanged(auth, async (user) => {
       Object.assign(objAnnouncement, { "announcementId": announcement.id });
       arrAnnouncements.push(objAnnouncement);
     });
-
+    
     let announcement = []
+    
+    arrAnnouncements.sort((a,b) => new Date(a.when.seconds * 1000 + a.when.nanoseconds/1000000) - new Date(b.when.seconds * 1000 + b.when.nanoseconds/1000000));
 
     for (let i = 0; i < arrAnnouncements.length; i++) {
       let posted_date = arrAnnouncements[i].postedDate

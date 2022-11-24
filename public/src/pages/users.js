@@ -65,6 +65,7 @@ usersList.forEach((user) => {
 // console.log(arrUsers);
 $("#dataTable").DataTable({
   data: arrUsers,
+  autoWidth: false,
   columns: [
     { data: "fname" },
     { data: "lname" },

@@ -74,6 +74,7 @@ onAuthStateChanged(auth, async (user) => {
     
     $("#dataTable").DataTable({
       data: arrAnnouncements,
+      autoWidth: false,
       columns: [
         { data: "announcementId",
           render: function (data, type) {
@@ -168,6 +169,7 @@ onAuthStateChanged(auth, async (user) => {
 
       $("#dataTableArchives").DataTable({
         data: archivesQSnapArr,
+        autoWidth: false,
         columns: [
           { data: "announcementId",
             render: function (data, type) {
