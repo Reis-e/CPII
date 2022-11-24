@@ -122,7 +122,7 @@ const getChatbotResponse = (userInput) => {
         response = responseObj[key];
         break;
       } else {
-        response = "Please try something else";
+        response = "Sorry, I didn't understand that. Please direct your message to our Chat Support.";
       }
     }
     return response;
