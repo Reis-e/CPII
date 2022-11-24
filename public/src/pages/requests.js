@@ -241,27 +241,79 @@ onAuthStateChanged(auth, async (user) => {
 });
 
 
+let valid = true;
 document.getElementById("submitId").addEventListener("click", (e) => {
-  $("#requestId").modal("hide");
-  $("#invoice_modal").modal("show");
+
+  $('[required]').each(function() {
+    if ($(this).is(':invalid') || !$(this).val()) valid = false;
+  })
+
+  if (!valid) {
+    $("#id_emergency_name").addClass("is-invalid");
+    $("#id_emergency_rel").addClass("is-invalid");
+    $("#id_emergency_contact").addClass("is-invalid");
+  } else {
+    $("#requestId").modal("hide");
+    $("#invoice_modal").modal("show");
+  }
 });
 
 document.getElementById("submitCert").addEventListener("click", (e) => {
-  $("#requestCertificate").modal("hide");
-  $("#invoice_modal").modal("show");
+
+  $('[required]').each(function() {
+    if ($(this).is(':invalid') || !$(this).val()) valid = false;
+  })
+
+  if (!valid) {
+    $("#cert_purpose").addClass("is-invalid");
+  } else {
+    $("#requestCertificate").modal("hide");
+    $("#invoice_modal").modal("show");
+  }
 });
 
 document.getElementById("submitClearance").addEventListener("click", (e) => {
-  $("#requestClearance").modal("hide");
-  $("#invoice_modal").modal("show");
+
+  $('[required]').each(function() {
+    if ($(this).is(':invalid') || !$(this).val()) valid = false;
+  })
+
+  if (!valid) {
+    $("#clearance_purpose").addClass("is-invalid");
+  } else {
+    $("#requestClearance").modal("hide");
+    $("#invoice_modal").modal("show");
+  }
 });
 
 document.getElementById("submitPermit").addEventListener("click", (e) => {
-  $("#requestPermit").modal("hide");
-  $("#invoice_modal").modal("show");
+
+  $('[required]').each(function() {
+    if ($(this).is(':invalid') || !$(this).val()) valid = false;
+  })
+
+  if (!valid) {
+    $("#permit_business_name").addClass("is-invalid");
+    $("#permit_business_owner").addClass("is-invalid");
+    $("#permit_business_phone").addClass("is-invalid");
+    $("#permit_business_nature").addClass("is-invalid");
+    $("#permit_business_address").addClass("is-invalid");
+  } else {
+    $("#requestPermit").modal("hide");
+    $("#invoice_modal").modal("show");
+  }
 });
 
 document.getElementById("submitIndigency").addEventListener("click", (e) => {
-  $("#requestIndigency").modal("hide");
-  $("#invoice_modal").modal("show");
+
+  $('[required]').each(function() {
+    if ($(this).is(':invalid') || !$(this).val()) valid = false;
+  })
+
+  if (!valid) {
+    $("#indigency_purpose").addClass("is-invalid");
+  } else {
+    $("#requestIndigency").modal("hide");
+    $("#invoice_modal").modal("show");
+  }
 });
