@@ -23,7 +23,7 @@ const auth = getAuth();
 onAuthStateChanged(auth, async (user) => {
   console.log(user)
   if (user) {
-    location.href = "../../public/src/pages/dashboard.html";
+    location.href = "./src/pages/dashboard.html";
   } 
 });
 

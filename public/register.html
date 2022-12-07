@@ -100,17 +100,17 @@
                   <div class="row">
                     <div class="col-sm-12 col-xl-6">
                       <div class="form-floating mb-3">
-                        <input type="firstname" class="form-control" id="firstname" placeholder="Enter First Name" name="firstname" required>
+                        <input type="firstname" class="form-control" id="firstname" placeholder="Enter First Name" name="firstname" onkeyup="this.value = toCapitalize(this.value)" required>
                         <label for="floatingInput">First Name</label>
                       </div>
                       <div class="form-floating mb-3">
-                        <input type="lastname" class="form-control" id="lastname" placeholder="Enter Last Name" name="lastname" required>
+                        <input type="lastname" class="form-control" id="lastname" placeholder="Enter Last Name" name="lastname" onkeyup="this.value = toCapitalize(this.value)" required>
                         <label for="floatingInput">Last Name</label>
                       </div>
                       <div class="row">
                         <div class="col-md-12 col-lg-9">
                           <div class="form-floating mb-3">
-                            <input type="firstname" class="form-control" id="middlename" placeholder="Enter Middle Name" name="middlename">
+                            <input type="firstname" class="form-control" id="middlename" placeholder="Enter Middle Name" onkeyup="this.value = toCapitalize(this.value)" name="middlename">
                             <label for="floatingInput">Middle Name</label>
                           </div>
                         </div>
@@ -147,17 +147,17 @@
                     </div>
                     <div class="col-sm-12 col-xl-6">
                       <div class="form-floating mb-3">
-                          <input type="text" class="form-control" id="address" placeholder="Enter Address" name="address" required>
+                          <input type="text" class="form-control" id="address" placeholder="Enter Address" name="address" onkeyup="this.value = toCapitalize(this.value)" required>
                           <label for="floatingInput">Home Address</label>
                       </div>
 
                       <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="birthplace" placeholder="Enter Birthd Place" name="birthplace" required>
+                        <input type="text" class="form-control" id="birthplace" placeholder="Enter Birthd Place" name="birthplace" onkeyup="this.value = toCapitalize(this.value)" required>
                         <label for="floatingInput">Birth Place</label>
                       </div>
 
                       <div class="form-floating mb-3">
-                        <input type="date" class="form-control" id="birthdate" placeholder="Enter Birthdate" name="birthdate" required>
+                        <input type="date" class="form-control" id="birthdate" placeholder="Enter Birthdate" name="birthdate" onkeydown="return false" required>
                         <label for="floatingInput">Birthdate</label>
                       </div>
           
@@ -499,6 +499,15 @@
         }
         return true;
     };
+
+    toCapitalize = (val) => {
+      const words = val.split(" ");
+      for(var i = 0; i < words.length; i++){
+        var j = words[i].charAt(0).toUpperCase();
+        words[i] = j + words[i].substr(1);
+      }
+      return words.join(" ");
+    }
 
   </script>
 
