@@ -43,19 +43,68 @@ onAuthStateChanged(auth, async (user) => {
         let message = $("#message").val().replaceAll("'", "&apos;")
         $("#js-preloader").addClass("loaded");
 
-        addDoc(collection(db, "announcements"), {
-          title: title,
-          who: who,
-          when: Timestamp.fromDate(new Date(when)),
-          where: where,
-          message: message,
-          postedBy: userdata.data().fname + " " + userdata.data().lname + " " + userdata.data().suffixname,
-          postedDate: Timestamp.fromDate(new Date()),
-          status: "Active",
-        }).then((value) => {
-          console.log(value)
-          $("#success_modal").modal("show");
-        });
+        var valid = [];
+        //title validation
+        if (title == "") {
+          $("#title").addClass("is-invalid");
+          valid.push(false);
+        } else {
+          $("#title").removeClass("is-invalid");
+          valid.push(true);
+        }
+
+        //who validation
+        if (who == "") {
+          $("#who").addClass("is-invalid");
+          valid.push(false);
+        } else {
+          $("#who").removeClass("is-invalid");
+          valid.push(true);
+        }
+
+        //when validation
+        if (when == "") {
+          $("#when").addClass("is-invalid");
+          valid.push(false);
+        } else {
+          $("#when").removeClass("is-invalid");
+          valid.push(true);
+        }
+
+        //where validation
+        if (where == "") {
+          $("#where").addClass("is-invalid");
+          valid.push(false);
+        } else {
+          $("#where").removeClass("is-invalid");
+          valid.push(true);
+        }
+
+        //message validation
+        if (message == "") {
+          $("#message").addClass("is-invalid");
+          valid.push(false);
+        } else {
+          $("#message").removeClass("is-invalid");
+          valid.push(true);
+        }
+
+        if(!valid.includes(false)) {
+          addDoc(collection(db, "announcements"), {
+            title: title,
+            who: who,
+            when: Timestamp.fromDate(new Date(when)),
+            where: where,
+            message: message,
+            postedBy: userdata.data().fname + " " + userdata.data().lname + " " + userdata.data().suffixname,
+            postedDate: Timestamp.fromDate(new Date()),
+            status: "Active",
+          }).then((value) => {
+            console.log(value)
+            $("#addAnnouncement").modal("hide");
+            $("#success_modal").modal("show");
+          });
+        }
       })
       $("#js-preloader").addClass("loaded");
     }
