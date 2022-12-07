@@ -31,6 +31,7 @@ onAuthStateChanged(auth, async (user) => {
     let dd = date.getDate();
     let yyyy = date.getFullYear();
     let view_date = mm + " " + dd + ", " + yyyy;
+    
     document.getElementById("id_birthdate").value = view_date;
     document.getElementById("id_birthplace").value = userdata.data().birthplace;
     document.getElementById("id_civilstatus").value = userdata.data().civilstatus;
@@ -145,6 +146,9 @@ onAuthStateChanged(auth, async (user) => {
           lastName: userdata.data().lname,
           suffixName: userdata.data().suffixname,
           address: userdata.data().add,
+          birthDate: userdata.data().birthdate,
+          birthPlace: userdata.data().birthplace,
+          civilStatus: userdata.data().civilstatus,
           precinct: userdata.data().precinct,
           purpose: cert_purpose,
           remarks: cert_remarks,
@@ -168,6 +172,9 @@ onAuthStateChanged(auth, async (user) => {
           lastName: userdata.data().lname,
           suffixName: userdata.data().suffixname,
           address: userdata.data().add,
+          birthDate: userdata.data().birthdate,
+          birthPlace: userdata.data().birthplace,
+          civilStatus: userdata.data().civilstatus,
           precinct: userdata.data().precinct,
           purpose: indigency_purpose,
           remarks: indigency_remarks,
@@ -243,92 +250,139 @@ onAuthStateChanged(auth, async (user) => {
 
 
 document.getElementById("submitId").addEventListener("click", (e) => {
-  var fail = false;
-  $('#requestId').find("select, input, textarea").each(function() {
-    if($(this).prop("required")){;
-      if(!$(this).val()){
-        fail = true;
-      }
-    }
-  })
-  if(!fail){
+  var id_emergencyname = document.getElementById("id_emergency_name").value;
+  var id_emergencyrel = document.getElementById("id_emergency_rel").value;
+  var id_emergencyphone = document.getElementById("id_emergency_contact").value;
+  var valid = [];
+
+  //emergency name validation
+  if (id_emergencyname == "") {
+    $("#id_emergency_name").addClass("is-invalid");
+    valid.push(false);
+  } else {
+    $("#id_emergency_name").removeClass("is-invalid");
+    valid.push(true);
+  }
+
+  //emergency relationship validation
+  if (id_emergencyrel == "") {
+    $("#id_emergency_rel").addClass("is-invalid");
+    valid.push(false);
+  } else {
+    $("#id_emergency_rel").removeClass("is-invalid");
+    valid.push(true);
+  }
+
+  //emergency contact validation
+  if (id_emergencyphone == "") {
+    $("#id_emergency_contact").addClass("is-invalid");
+    valid.push(false);
+  } else {
+    $("#id_emergency_contact").removeClass("is-invalid");
+    valid.push(true);
+  }
+
+  if(!valid.includes(false)) {
     $("#requestId").modal("hide");
     $("#invoice_modal").modal("show");
-  }else{
-    $("#id_emergency_name").addClass("is-invalid");
-    $("#id_emergency_rel").addClass("is-invalid");
-    $("#id_emergency_contact").addClass("is-invalid");
   }
 });
 
 document.getElementById("submitCert").addEventListener("click", (e) => {
-  var fail = false;
-  $('#requestCertificate').find("textarea").each(function() {
-    if($(this).prop("required")){;
-      if(!$(this).val()){
-        fail = true;
-      }
-    }
-  })
-  if(!fail){
-      $("#requestCertificate").modal("hide");
-      $("#invoice_modal").modal("show");
-  }else{
+  var cert_purpose = document.getElementById("cert_purpose").value;
+
+  //certificate purpose validation
+  if (cert_purpose == "") {
     $("#cert_purpose").addClass("is-invalid");
+  } else {
+    $("#cert_purpose").removeClass("is-invalid");
+    $("#requestCertificate").modal("hide");
+    $("#invoice_modal").modal("show");
   }
+  
 });
 
 document.getElementById("submitClearance").addEventListener("click", (e) => {
-  var fail = false;
-  $('#requestClearance').find("select, input, textarea").each(function() {
-    if($(this).prop("required")){;
-      if(!$(this).val()){
-        fail = true;
-      }
-    }
-  })
-  if(!fail){
+  var clearance_purpose = document.getElementById("clearance_purpose").value;
+
+  //clearance purpose validation
+  if (clearance_purpose == "") {
+    $("#clearance_purpose").addClass("is-invalid");
+  } else {
+    $("#clearance_purpose").removeClass("is-invalid");
     $("#requestClearance").modal("hide");
     $("#invoice_modal").modal("show");
-  }else{
-    $("#clearance_purpose").addClass("is-invalid");
   }
 });
 
 document.getElementById("submitPermit").addEventListener("click", (e) => {
-  var fail = false;
-  $('#requestPermit').find("select, input, textarea").each(function() {
-    if($(this).prop("required")){;
-      if(!$(this).val()){
-        fail = true;
-      }
-    }
-  })
-  if(!fail){
+  var permit_business_name = document.getElementById("permit_business_name").value;
+  var permit_business_owner = document.getElementById("permit_business_owner").value;
+  var permit_business_phone = document.getElementById("permit_business_phone").value;
+  var permit_business_nature = document.getElementById("permit_business_nature").value;
+  var permit_business_address = document.getElementById("permit_business_address").value;
+  var valid = [];
+
+  //business name validation
+  if (permit_business_name == "") {
+    $("#permit_business_name").addClass("is-invalid");
+    valid.push(false);
+  } else {
+    $("#permit_business_name").removeClass("is-invalid");
+    valid.push(true);
+  }
+
+  //business owner validation
+  if (permit_business_owner == "") {
+    $("#permit_business_owner").addClass("is-invalid");
+    valid.push(false);
+  } else {
+    $("#permit_business_owner").removeClass("is-invalid");
+    valid.push(true);
+  }
+
+  //business phone validation
+  if (permit_business_phone == "") {
+    $("#permit_business_phone").addClass("is-invalid");
+    valid.push(false);
+  } else {
+    $("#permit_business_phone").removeClass("is-invalid");
+    valid.push(true);
+  }
+
+  //business nature validation
+  if (permit_business_nature == "") {
+    $("#permit_business_nature").addClass("is-invalid");
+    valid.push(false);
+  } else {
+    $("#permit_business_nature").removeClass("is-invalid");
+    valid.push(true);
+  }
+
+  //business address validation
+  if (permit_business_address == "") {
+    $("#permit_business_address").addClass("is-invalid");
+    valid.push(false);
+  } else {
+    $("#permit_business_address").removeClass("is-invalid");
+    valid.push(true);
+  }
+
+  if(!valid.includes(false)) {
     $("#requestPermit").modal("hide");
     $("#invoice_modal").modal("show");
-  }else{
-    $("#permit_business_name").addClass("is-invalid");
-    $("#permit_business_owner").addClass("is-invalid");
-    $("#permit_business_phone").addClass("is-invalid");
-    $("#permit_business_nature").addClass("is-invalid");
-    $("#permit_business_address").addClass("is-invalid");
   }
 });
 
 document.getElementById("submitIndigency").addEventListener("click", (e) => {
-  var fail = false;
-  $('#requestIndigency').find("textarea").each(function() {
-    if($(this).prop("required")){;
-      if(!$(this).val()){
-        fail = true;
-      }
-    }
-  })
-  if(!fail){
+  var indigency_purpose = document.getElementById("indigency_purpose").value;
+
+  //indigency purpose validation
+  if (indigency_purpose == "") {
+    $("#indigency_purpose").addClass("is-invalid");
+  } else {
+    $("#indigency_purpose").removeClass("is-invalid");
     $("#requestIndigency").modal("hide");
     $("#invoice_modal").modal("show");
-  }else{
-    $("#indigency_purpose").addClass("is-invalid");
   }
 });
