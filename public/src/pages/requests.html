@@ -448,13 +448,13 @@
                             <div class="form-group row mt-3">
                                 <label for="colFormLabel" class="col-sm-3 col-form-label">Name</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="id_emergency_name" placeholder="" required>
+                                    <input type="text" class="form-control" id="id_emergency_name" placeholder="" onkeyup="this.value = toCapitalize(this.value)" required>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="colFormLabel" class="col-sm-3 col-form-label">Relationship</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="id_emergency_rel" placeholder="" required>
+                                    <input type="text" class="form-control" id="id_emergency_rel" placeholder="" onkeyup="this.value = toCapitalize(this.value)" required>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -546,7 +546,7 @@
                         <div class="form-group row">
                             <label for="colFormLabel" class="col-sm-3 col-form-label">Purpose</label>
                             <div class="col-sm-9">
-                                <textarea type="text" class="form-control certificate" id="cert_purpose" placeholder="" required></textarea>
+                                <textarea type="text" class="form-control certificate" id="cert_purpose" placeholder="" onkeyup="this.value = toCapitalize(this.value)" required></textarea>
                             </div>
                         </div>
                     </div>
@@ -656,7 +656,7 @@
                             <div class="form-group row">
                                 <label for="colFormLabel" class="col-sm-3 col-form-label">Purpose</label>
                                 <div class="col-sm-9">
-                                    <textarea type="text" class="form-control" id="clearance_purpose" placeholder="" required></textarea>
+                                    <textarea type="text" class="form-control" id="clearance_purpose" placeholder="" onkeyup="this.value = toCapitalize(this.value)" required></textarea>
                                 </div>
                             </div>
                         </div>
@@ -748,13 +748,13 @@
                             <div class="form-group row mt-4">
                                 <label for="colFormLabel" class="col-sm-3 col-form-label">Business Name</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="permit_business_name" placeholder="" required>
+                                    <input type="text" class="form-control" id="permit_business_name" placeholder="" onkeyup="this.value = toCapitalize(this.value)" required>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="colFormLabel" class="col-sm-3 col-form-label">Busines Owner</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="permit_business_owner" placeholder="" required>
+                                    <input type="text" class="form-control" id="permit_business_owner" placeholder="" onkeyup="this.value = toCapitalize(this.value)" required>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -766,13 +766,13 @@
                             <div class="form-group row">
                                 <label for="colFormLabel" class="col-sm-3 col-form-label">Business Nature</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="permit_business_nature" placeholder="" required>
+                                    <input type="text" class="form-control" id="permit_business_nature" placeholder="" onkeyup="this.value = toCapitalize(this.value)" required>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="colFormLabel" class="col-sm-3 col-form-label">Business Address</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="permit_business_address" placeholder="" required>
+                                    <input type="text" class="form-control" id="permit_business_address" placeholder="" onkeyup="this.value = toCapitalize(this.value)" required>
                                 </div>
                             </div>
                         </div>
@@ -858,7 +858,7 @@
                         <div class="form-group row">
                             <label for="colFormLabel" class="col-sm-3 col-form-label">Purpose</label>
                             <div class="col-sm-9">
-                                <textarea type="text" class="form-control" id="indigency_purpose" placeholder="" required></textarea>
+                                <textarea type="text" class="form-control" id="indigency_purpose" placeholder="" onkeyup="this.value = toCapitalize(this.value)" required></textarea>
                             </div>
                         </div>
                     </div>
@@ -912,6 +912,14 @@
             }
             return true;
         };
+        toCapitalize = (val) => {
+            const words = val.split(" ");
+            for(var i = 0; i < words.length; i++){
+                var j = words[i].charAt(0).toUpperCase();
+                words[i] = j + words[i].substr(1);
+            }
+            return words.join(" ");
+        }
     </script>
 
 </body>
