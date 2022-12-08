@@ -166,7 +166,7 @@
                     </div>
                     <div class="col-sm-12 col-xl-6">
                       <div class="form-floating mb-3">
-                          <input type="text" class="form-control" id="address" placeholder="Enter Address" name="address" onkeyup="this.value = toCapitalize(this.value)" required>
+                          <input type="text" class="form-control" id="address" placeholder="Enter Address" name="address" pattern="(/^[A-Za-z]+$/)" onkeyup="this.value = toCapitalizeAdd(this.value)" required>
                           <label for="floatingInput">Home Address</label>
                       </div>
 
@@ -520,6 +520,17 @@
     };
 
     toCapitalize = (val) => {
+      var letters =  /[!"`'#%&,:;<>=@{}~\$\(\)\*\+\/\\\?\[\]\^\|]+/;
+      const newVal = val.replace(letters, "");
+      const words = newVal.split(" ");
+      for(var i = 0; i < words.length; i++){
+        var j = words[i].charAt(0).toUpperCase();
+        words[i] = j + words[i].substr(1).toLowerCase();
+      }
+      return words.join(" ");
+    }
+
+    toCapitalizeAdd = (val) => {
       const words = val.split(" ");
       for(var i = 0; i < words.length; i++){
         var j = words[i].charAt(0).toUpperCase();
@@ -527,6 +538,8 @@
       }
       return words.join(" ");
     }
+
+    
 
   </script>
 
