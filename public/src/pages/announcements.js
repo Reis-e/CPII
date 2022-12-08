@@ -124,6 +124,7 @@ onAuthStateChanged(auth, async (user) => {
     $("#dataTable").DataTable({
       data: arrAnnouncements,
       autoWidth: false,
+      order: [[3, "desc"]],
       columns: [
         { data: "announcementId",
           render: function (data, type) {
@@ -139,7 +140,7 @@ onAuthStateChanged(auth, async (user) => {
             let dd = date.getDate();
             let yyyy = date.getFullYear();
             date = mm + " " + dd + ", " + yyyy;
-            return date
+            return type === "sort" ? data : date;
           }
         },
         { data: "updatedBy",

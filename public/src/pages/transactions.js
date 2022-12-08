@@ -335,6 +335,7 @@ onAuthStateChanged(auth, async (user) => {
       });
       $("#dataTableArchives").DataTable({
         data: archivesQSnapArr,
+        order: [6, "desc"],
         columns: [
           {
             data: "transactionId",
@@ -382,7 +383,7 @@ onAuthStateChanged(auth, async (user) => {
               let dd = date.getDate();
               let yyyy = date.getFullYear();
               date = mm + " " + dd + ", " + yyyy;
-              return date;
+              return type === "sort" ? data : date;
             },
           },
           {
@@ -405,7 +406,7 @@ onAuthStateChanged(auth, async (user) => {
                 let dd = date.getDate();
                 let yyyy = date.getFullYear();
                 date = mm + " " + dd + ", " + yyyy;
-                return date;
+                return type === "sort" ? data : date;
               } else {
                 return "Pending";
               }

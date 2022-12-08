@@ -62,15 +62,18 @@ onAuthStateChanged(auth, async (user) => {
       Object.assign(objAnnouncement, { "announcementId": announcement.id });
       arrAnnouncements.push(objAnnouncement);
     });
+
+    const now = Date.now()
+    const filteredArrAnnouncements = arrAnnouncements.filter(a => new Date(a.when.seconds * 1000 + a.when.nanoseconds/1000000) > now)
     
     let announcement = []
     
-    arrAnnouncements.sort((a,b) => new Date(a.when.seconds * 1000 + a.when.nanoseconds/1000000) - new Date(b.when.seconds * 1000 + b.when.nanoseconds/1000000));
+    filteredArrAnnouncements.sort((a,b) => new Date(a.when.seconds * 1000 + a.when.nanoseconds/1000000) - new Date(b.when.seconds * 1000 + b.when.nanoseconds/1000000));
 
-    for (let i = 0; i < arrAnnouncements.length; i++) {
-      let posted_date = arrAnnouncements[i].postedDate
-      let updated_date = arrAnnouncements[i].updatedDate
-      let when_timestamp = arrAnnouncements[i].when
+    for (let i = 0; i < filteredArrAnnouncements.length; i++) {
+      let posted_date = filteredArrAnnouncements[i].postedDate
+      let updated_date = filteredArrAnnouncements[i].updatedDate
+      let when_timestamp = filteredArrAnnouncements[i].when
       
       let display_posted_date = new Date(posted_date.seconds * 1000 + posted_date.nanoseconds/1000000)
       let mm = display_posted_date.toLocaleString("default", { month: "long" });
@@ -93,20 +96,20 @@ onAuthStateChanged(auth, async (user) => {
         let updated_date_dd = display_updated_date.getDate();
         let updated_date_yyyy = display_updated_date.getFullYear();
         display_updated_date = updated_date_mm + " " + updated_date_dd + ", " + updated_date_yyyy;
-        display_updated_by = arrAnnouncements[i].updatedBy
+        display_updated_by = filteredArrAnnouncements[i].updatedBy
       }
 
       announcement += `<div class="col-lg-9 mb-4" id="profileDetails">
           <div class="card shadow mb-2 border-bottom-primary">
 
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h5 class="m-0 font-weight-bold text-primary">` + arrAnnouncements[i].title + `</h5>
+                  <h5 class="m-0 font-weight-bold text-primary">` + filteredArrAnnouncements[i].title + `</h5>
                   <div class="dropdown no-arrow">
                       <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
                       </a>
                       <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink" style="">
-                          <div class="dropdown-header">Posted By:&nbsp;` + arrAnnouncements[i].postedBy + `</div>
+                          <div class="dropdown-header">Posted By:&nbsp;` + filteredArrAnnouncements[i].postedBy + `</div>
                           <div class="dropdown-header">Posted Date:&nbsp;` + display_posted_date + `</div>
                           <div class="dropdown-divider"></div>
                           <div class="dropdown-header">Updated By:&nbsp;` + display_updated_by + `</div>
@@ -121,7 +124,7 @@ onAuthStateChanged(auth, async (user) => {
                       <div class="col-md-3">
                           Who:
                       </div>
-                      <div class="col-md-9" id="email">` + arrAnnouncements[i].who + `</div>
+                      <div class="col-md-9" id="email">` + filteredArrAnnouncements[i].who + `</div>
                   </div>
                   <div class="row mb-2">
                       <div class="col-md-3">
@@ -133,13 +136,13 @@ onAuthStateChanged(auth, async (user) => {
                       <div class="col-md-3">
                           Where:
                       </div>
-                      <div class="col-md-9" id="birthplace">` + arrAnnouncements[i].where + `</div>
+                      <div class="col-md-9" id="birthplace">` + filteredArrAnnouncements[i].where + `</div>
                   </div>
                   <div class="row mb-2">
                       <div class="col-md-3">
                           Message:
                       </div>
-                      <div class="col-md-9" id="birthplace">` + arrAnnouncements[i].message + `</div>
+                      <div class="col-md-9" id="birthplace">` + filteredArrAnnouncements[i].message + `</div>
                   </div>
               </div>
           </div>

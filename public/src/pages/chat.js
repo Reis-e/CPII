@@ -47,20 +47,28 @@ onAuthStateChanged(auth, async (user) => {
 
     var inbox = "";
     if (role === "admin"||role === "staff") {
-      
 
       if (localStorage.getItem("sender") === null || localStorage.getItem("sender") === ""){
         $("#chat-thread").css("display", "none")
       }
 
       const messagesList = await getDocs(collection(db, "messages"));
-      var contactList = "";
+
+      let sortable = []
       messagesList.forEach((message) => {
-        contactList += `<button class="list-group-item list-group-item-action border-0" onclick="displayChat('`+message.id+`', '`+message.data().fullname+`')">
+        sortable.push({"id": message.id, "sentAt": message.data().message.at(-1).sentAt, "fullname": message.data().fullname});
+      })
+      
+      sortable.sort((a,b) => new Date(b.sentAt.seconds * 1000 + b.sentAt.nanoseconds/1000000) - new Date(a.sentAt.seconds * 1000 + a.sentAt.nanoseconds/1000000));
+      console.log(sortable)
+
+      var contactList = "";
+      sortable.forEach((message) => {
+        contactList += `<button class="list-group-item list-group-item-action border-0" onclick="displayChat('`+ message.id +`', '`+ message.fullname +`')">
             <div class="d-flex align-items-start">
-                <img src="https://ui-avatars.com/api/?background=random&name=`+ message.data().fullname +`" class="rounded-circle mr-1" alt="`+ message.data().fullname +`" width="40" height="40">
+                <img src="https://ui-avatars.com/api/?background=random&name=`+ message.fullname +`" class="rounded-circle mr-1" alt="`+ message.fullname +`" width="40" height="40">
                 <div class="flex-grow-1 ml-3">
-                    ` + message.data().fullname + `
+                    ` + message.fullname + `
                 </div>
             </div>
         </button>`
