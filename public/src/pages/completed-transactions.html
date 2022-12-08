@@ -171,7 +171,7 @@
                                         <div class="col mr-2">
                                             <div class="font-weight-bold text-primary text-uppercase mb-1">
                                                 All Requests</div>
-                                            <div class="h2 mb-0 font-weight-bold text-gray-800" id="submitted_requests"></div>
+                                            <div class="h2 mb-0 font-weight-bold text-gray-800" id="active_requests"></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-file-alt fa-2x text-gray-500"></i>
@@ -220,9 +220,23 @@
 
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-gray-500">Active Requests</h6>
+                            <h6 class="m-0 font-weight-bold text-gray-500">Completed Requests</h6>
                         </div>
                         <div class="card-body">
+                            <div class="col-lg-4 col-sm-12">
+                                <div class="form-group row">
+                                    <label for="colFormLabel" class="col-sm-4 col-form-label">Minimum Date</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="min" name="min" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="colFormLabel" class="col-sm-4 col-form-label">Maximum Date</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="max" name="max" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
                             <div class="table-responsive" id="table">
                             </div>
                         </div>

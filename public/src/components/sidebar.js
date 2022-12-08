@@ -45,9 +45,22 @@ switch (role) {
         </li>
 
         <li class="nav-item" id="transactions">
-            <a class="nav-link" href="../pages/transactions.html">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                aria-expanded="true" aria-controls="collapseUtilities">
                 <i class="fas fa-fw fa-file"></i>
-                <span>Transactions</span></a>
+                <span>Transactions</span>
+            </a>
+            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Requests:</h6>
+                    <a class="collapse-item" id="active" href="../pages/active-transactions.html">Active</a>
+                    <a class="collapse-item" id="submitted" href="../pages/submitted-transactions.html">Submitted</a>
+                    <a class="collapse-item" id="onprocess" href="../pages/onprocess-transactions.html">On Process</a>
+                    <a class="collapse-item" id="completed" href="../pages/completed-transactions.html">Completed</a>
+                    <a class="collapse-item" id="denied" href="../pages/denied-transactions.html">Denied</a>
+                </div>
+            </div>
         </li>
 
         <li class="nav-item" id="chat">
@@ -203,6 +216,11 @@ var request = document.getElementById("request");
 var transactions = document.getElementById("transactions");
 var chat = document.getElementById("chat");
 var role = localStorage.getItem("role")
+var active = document.getElementById("active");
+var submitted = document.getElementById("submitted");
+var onprocess = document.getElementById("onprocess");
+var completed = document.getElementById("completed");
+var denied = document.getElementById("denied");
 
 if (sidenav.includes("dashboard")) {
   dashboard.classList.add("active");
@@ -272,6 +290,38 @@ if (sidenav.includes("dashboard")) {
   if (role === "admin" || role === "staff"){
     users.classList.remove("active");
     announcements.classList.remove("active");
+
+    if (sidenav.includes("active")){
+      active.classList.add("active");
+      submitted.classList.remove("active");
+      onprocess.classList.remove("active");
+      completed.classList.remove("active");
+      denied.classList.remove("active");
+    } else if (sidenav.includes("submitted")){
+      active.classList.remove("active");
+      submitted.classList.add("active");
+      onprocess.classList.remove("active");
+      completed.classList.remove("active");
+      denied.classList.remove("active");
+    } else if (sidenav.includes("onprocess")){
+      active.classList.remove("active");
+      submitted.classList.remove("active");
+      onprocess.classList.add("active");
+      completed.classList.remove("active");
+      denied.classList.remove("active");
+    } else if (sidenav.includes("completed")){
+      active.classList.remove("active");
+      submitted.classList.remove("active");
+      onprocess.classList.remove("active");
+      completed.classList.add("active");
+      denied.classList.remove("active");
+    } else if (sidenav.includes("denied")){
+      active.classList.remove("active");
+      submitted.classList.remove("active");
+      onprocess.classList.remove("active");
+      completed.classList.remove("active");
+      denied.classList.add("active");
+    }
   }
   if (role === "user"){
     request.classList.remove("active");

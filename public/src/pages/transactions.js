@@ -29,21 +29,29 @@ onAuthStateChanged(auth, async (user) => {
       role_name = role_name;
     }
 
+    var url = window.location.toString();
+
     document.getElementById("profile_name").innerHTML = fullname;
     document.getElementById("profile_role").innerHTML = role_name;
 
     const transactionDBRef = doc(db, "transactions", user.uid);
     // const transactionData = await getDoc(transactionDBRef);
     const transactions = await getDocs(collection(db, "transactions"));
+    var activeQ = null;
     var submittedQ = null;
     var onprocessQ = null;
     var completedQ = null;
+    var deniedQ = null;
+    var activeQSnap = null;
     var submittedQSnap = null;
     var onprocessQSnap = null;
     var completedQSnap = null;
+    var deniedQSnap = null;
+    var activeQSnapArr = [];
     var submittedQSnapArr = [];
     var onprocessQSnapArr = [];
     var completedQSnapArr = [];
+    var deniedQSnapArr = [];
 
     // Data Table
 
@@ -64,9 +72,14 @@ onAuthStateChanged(auth, async (user) => {
         </thead>
       </table>`;
 
-      submittedQ = query(
+      activeQ = query(
         collection(db, "transactions"),
         where("transactionStatus", "in", ["Submitted", "On Process", "Completed", "Denied"]),
+        where("status", "==", "Active")
+      );
+      submittedQ = query(
+        collection(db, "transactions"),
+        where("transactionStatus", "==", "Submitted"),
         where("status", "==", "Active")
       );
       onprocessQ = query(
@@ -79,26 +92,49 @@ onAuthStateChanged(auth, async (user) => {
         where("transactionStatus", "==", "Completed"),
         where("status", "==", "Active")
       );
+      deniedQ = query(
+        collection(db, "transactions"),
+        where("transactionStatus", "==", "Denied"),
+        where("status", "==", "Active")
+      );
 
+      activeQSnap = await getDocs(activeQ);
       submittedQSnap = await getDocs(submittedQ);
       onprocessQSnap = await getDocs(onprocessQ);
       completedQSnap = await getDocs(completedQ);
+      deniedQSnap = await getDocs(deniedQ);
+      activeQSnapArr = [];
       submittedQSnapArr = [];
       onprocessQSnapArr = [];
       completedQSnapArr = [];
+      deniedQSnapArr = [];
+      activeQSnap.forEach((doc) => {
+        var objTrans = doc.data();
+        Object.assign(objTrans, { transactionId: doc.id });
+        activeQSnapArr.push(objTrans);
+      });
       submittedQSnap.forEach((doc) => {
         var objTrans = doc.data();
         Object.assign(objTrans, { transactionId: doc.id });
         submittedQSnapArr.push(objTrans);
       });
       onprocessQSnap.forEach((doc) => {
-        onprocessQSnapArr.push(doc.data());
+        var objTrans = doc.data();
+        Object.assign(objTrans, { transactionId: doc.id });
+        onprocessQSnapArr.push(objTrans);
       });
       completedQSnap.forEach((doc) => {
-        completedQSnapArr.push(doc.data());
+        var objTrans = doc.data();
+        Object.assign(objTrans, { transactionId: doc.id });
+        completedQSnapArr.push(objTrans);
       });
-      document.getElementById("submitted_requests").innerHTML =
-        submittedQSnapArr.length;
+      deniedQSnap.forEach((doc) => {
+        var objTrans = doc.data();
+        Object.assign(objTrans, { transactionId: doc.id });
+        deniedQSnapArr.push(objTrans);
+      });
+      document.getElementById("active_requests").innerHTML =
+        activeQSnapArr.length;
       document.getElementById("onprocess_requests").innerHTML =
         onprocessQSnapArr.length;
       document.getElementById("completed_requests").innerHTML =
@@ -131,9 +167,26 @@ onAuthStateChanged(auth, async (user) => {
         format: 'MMMM Do YYYY'
       });
 
+      let data = null;
+      let order = [4, "asc"];
+      if (url.includes("active")) {
+        data = activeQSnapArr
+      } else if (url.includes("submitted")) {
+        data = submittedQSnapArr
+      } else if (url.includes("onprocess")) {
+        data = onprocessQSnapArr
+      } else if (url.includes("completed")) {
+        data = completedQSnapArr
+        order = [6, "desc"]
+      } else if (url.includes("denied")) {
+        data = deniedQSnapArr
+        order = [4, "desc"];
+      }
+
       var table = $("#dataTable").DataTable({
-        data: submittedQSnapArr,
-        dom: 'Bfrtip',
+        data: data,
+        dom: 'Bflrtip',
+        order: [order],
         lengthMenu: [
           [10, 25, 50, -1],
           ['10 rows', '25 rows', '50 rows', 'Show all']
@@ -193,7 +246,7 @@ onAuthStateChanged(auth, async (user) => {
               let dd = date.getDate();
               let yyyy = date.getFullYear();
               date = mm + " " + dd + ", " + yyyy;
-              return date;
+              return type === "sort" ? data : date;
             },
           },
           {
@@ -216,7 +269,7 @@ onAuthStateChanged(auth, async (user) => {
                 let dd = date.getDate();
                 let yyyy = date.getFullYear();
                 date = mm + " " + dd + ", " + yyyy;
-                return date;
+                return type === "sort" ? data : date;
               } else {
                 return "Pending";
               }
@@ -432,7 +485,7 @@ onAuthStateChanged(auth, async (user) => {
       $("#dataTable").DataTable({
         data: submittedQSnapArr,
         // columnDefs: [ { type: 'date', 'targets': [3] } ],
-        // order: [[ 3, 'asc' ]],
+        order: [[3, 'asc']],
         columns: [
           {
             data: "transactionId",
@@ -491,7 +544,7 @@ onAuthStateChanged(auth, async (user) => {
               let dd = date.getDate();
               let yyyy = date.getFullYear();
               date = mm + " " + dd + ", " + yyyy;
-              return date;
+              return type === "sort" ? data : date;
             },
           },
           {
