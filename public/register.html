@@ -23,6 +23,20 @@
     <link rel="stylesheet" href="./assets/css/animated.css">
     <link rel="stylesheet" href="./assets/css/owl.css">
 
+    <style>
+      .form-text {
+        margin-top: 0.25rem;
+        font-size: .75em;
+        color: #6c757d;
+        text-align: left !important;
+      }
+      .formerr-text {
+        margin-top: 0.25rem;
+        font-size: .75em;
+        color: #dc3545;
+        text-align: left !important;
+      }
+    </style>
   </head>
 
 <body>
@@ -138,12 +152,17 @@
                       <div class="form-floating mb-3">
                           <input type="password" class="form-control" id="password_register" placeholder="Enter Password" type="password" required>
                           <label for="floatingPassword">Password</label>
+                          <small id="passwordHelpBlock" class="form-text">
+                            Password must be between 8 to 15 characters and include at least one lowercase letter, one uppercase letter, one numeric digit, and one special character.
+                          </small>                          
                       </div>
-              
+
                       <div class="form-floating mb-3" style="position: relative; z-index: 2;">
                           <input type="password" class="form-control" id="confirmpassword" placeholder="Enter Confirm Password" name="confirmpassword" required>
                           <label for="floatingPassword">Confirm Password</label>
+                          <p id="confpasswordHelpBlock" class="formerr-text" style="display:none" ></p>
                       </div>
+
                     </div>
                     <div class="col-sm-12 col-xl-6">
                       <div class="form-floating mb-3">

@@ -85,8 +85,6 @@ document.getElementById("signup").addEventListener("click", (e) => {
   var passwordValidation =  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
   if(!password.match(passwordValidation)){
     $("#password_register").addClass("is-invalid");
-    document.getElementById("errormsg").style.display = "block";
-    document.getElementById("errormsg").innerHTML = "Password must be between 8 to 15 characters which contain at least one lowercase letter, one uppercase letter, one numeric digit, and one special character";
     valid.push(false);
   }else{
     $("#password_register").removeClass("is-invalid");
@@ -101,8 +99,8 @@ document.getElementById("signup").addEventListener("click", (e) => {
   } else {
     if (confirmpassword !== password) {
       $("#confirmpassword").addClass("is-invalid");
-      document.getElementById("errormsg").style.display = "block";
-      document.getElementById("errormsg").innerHTML = "Confirm Password Does not match with Password";
+      document.getElementById("confpasswordHelpBlock").style.display = "block";
+      document.getElementById("confpasswordHelpBlock").innerHTML = "Confirm Password Does not match with Password";
       valid.push(false);
     } else {
       $("#confirmpassword").removeClass("is-invalid");
