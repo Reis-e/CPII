@@ -1,27 +1,6 @@
-/*59:00/
-
-/*Fonts*/
-@import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Catamaran:wght@100;300;400;500&family=EB+Garamond&family=Manrope:wght@200&family=Slabo+27px&display=swap');
-*{
-    box-sizing: border-box;
-}
-
 header,
 section{
     overflow-x: hidden;
-}
-
-:root{ /*variables*/
-    --Aboreto:"Aboreto",cursive;
-    --Catamaran:"Catamaran",sans-serif; /*fonts too thin orz*/
-    --EB-Garamond:"EB Garamond",serif;
-    --Manrope:"Manrope",sans-serif;
-    --Slabo-27px:"Slabo 27px",serif;
-    --bggradient: linear-gradient(
-        to bottom,
-        #7EA1AC, #C5C5C2, #D6A89F, #C88A84, #7A7989
-    );
-    --light-gray: rgba(255, 255, 255, 0.695);
 }
 
 /*
@@ -37,8 +16,11 @@ header a{
 }
 
 header{
-    background: #dd2476;
-    background: var(--bggradient)
+    /* background: #dd2476;
+    background: var(--bggradient) */
+    background-image: url("../assets/bg-image.jpg");
+    background-position: center;
+    background-size: cover;
 }
 
 .dropdown-content{

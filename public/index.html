@@ -1,350 +1,283 @@
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
+
+  <head>
+
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>e-Proseso</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/styles.css" > <!-- root path-->
-    <link rel="stylesheet" href="./css/mobile-style.css"> <!--link html to responnsive stylesheet-->
-    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
-    <link rel="stylesheet" href="css/swiper-bundle.min.css"> <!--stylesheet for cards-->
-    <script src="./src/main.js" defer></script> <!--sticky menu working, pero magulo-->
-    <script src="./index.js" defer></script> 
-</head>
-<body oncontextmenu="return false">
-    
-    <header>
-        <div class="container-fluid p-0">
-            <nav class="navbar navbar-expand-lg"> <!--removed bg-light-->
-                <div class="container-fluid">
-                  <a class="navbar-brand" href="#">E-Proseso
-                    <img src="./assets/placeholder2.png" alt="" width="30" height="24"> 
-                  </a>
-                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
-                  <div class="collapse navbar-collapse" id="navbarNav">
-                    <div class="ms-auto"></div> <!--aligns bar to right side 13:56-->
-                    <ul class="navbar-nav">
-                        <!--
-                        <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                      </li>
-                      -->
-                      <li class="nav-item">
-                        <a class="nav-link" href="#Top">Home</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#about">About Us</a>
-                      </li>
-                      <li class="nav-item"> <!--<a class="nav-link disabled">Disabled</a>-->
-                        <a class="nav-link" href="#gallery">Gallery</a>
-                      </li>
-                      <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Request Documents
-                          </a>
-                          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                            <li><a class="dropdown-item" href="./src/login.html">Login</a></li>
-                            <li><a class="dropdown-item" href="./src/register.html">Register</a></li>
-                          </ul>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                  <!--new-->
-                  <!--
-                  <form class="d-flex" role="search">
-                    <button class="btn btn-outline-success" type="submit">Login</button>
-                    <button class="btn btn-outline-success" type="submit">Register</button>
-                  </form>
-                  -->
-                </div>
-              </nav>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 
+    <title>eProseso: Barangay service at your fingertips</title>
 
+    <!-- Bootstrap core CSS -->
+    <link href="./vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/templatemo-chain-app-dev.css">
+    <link rel="stylesheet" href="./assets/css/animated.css">
+    <link rel="stylesheet" href="./assets/css/owl.css">
+
+  </head>
+
+<body>
+
+  <!-- ***** Preloader Start ***** -->
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Preloader End ***** -->
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="main-nav">
+            <!-- ***** Logo Start ***** -->
+            <a href="index.html" class="logo fw-bold" style="font-size: 35px;">
+              <!-- <img src="./assets/images/logo_batis.png" alt=""> -->
+              eProseso
+            </a>
+            <!-- ***** Logo End ***** -->
+            <!-- ***** Menu Start ***** -->
+            <ul class="nav">
+              <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+              <li class="scroll-to-section"><a href="#services">Services</a></li>
+              <li class="scroll-to-section"><a href="#about">About</a></li>
+              <li><div class="gradient-button"><a id="modal_trigger" href="./login.html"><i class="fa fa-sign-in-alt"></i> Log In Now</a></div></li> 
+            </ul>        
+            <a class='menu-trigger'>
+                <span>Menu</span>
+            </a>
+            <!-- ***** Menu End ***** -->
+          </nav>
         </div>
+      </div>
+    </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
+  
+  
 
-        <!--container to contain elements lol 19:47-->
-        <div class="container text-center">
-            <div class="row">
-                <div class="col-md-7 col-sm-12">
-                    <h1>Welcome to eProseso!</h1>
-                    <h3>Barangay Batis Document Processing</h3>
-                </div>
-                <div class="col-md-5 col-sm-12 h-25">
-                    <img src="./assets/p1.jpg" alt="Placeholder"> <!--pic on side, not bg-->
-                </div>
-            </div>
-            
-        </div>
-    </header>
-
-    <main> <!--about us-->
-        <section class="section-1" id="about"> <!--lmk if this works-->
- 
-            <div class="container text-center">
+  <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="row">
+            <div class="col-lg-6 align-self-center">
+              <div class="left-content show-up header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
                 <div class="row">
-                    <div class="col-md-6">
-                        <div class="pray">
-                            <img src="./assets/5.jpg" alt="Prayge">
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="panel text-left">
-                            <h1>About Us</h1>
-                            <p class="pt-4">
-                                Welcome to e-Proseso! This application aims to make
-                                requesting barangay documents easier by allowing the 
-                                residents to do it from their own homes thru their 
-                                web browsers. 
-                            </p>
-                            <p class="pt-4">
-                                
-                            </p>
-                           <!--<p>
-                                Insert Text Here
-                            </p>
-                            --> 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!--bg 24:38, 26:56-->
-        <section class="section-2 container-fluid p-0" id="gallery">
-            <div class="cover">
-                <div class="content text-center">
-                    <h1>Gallery</h1>
-                </div>
-            </div>
-            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img src="./assets/E2.png" class="d-block w-100" alt="..">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="./assets/E1.png" class="d-block w-100" alt="..">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="./assets/E2.png" class="d-block w-100" alt="..">
+                  <div class="col-lg-12">
+                    <h2>eProseso:<br>Barangay service at your fingertips</h2>
+                    <p>Barangay document processing made more than simple and easy.</p>
                   </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
               </div>
-        </section>
-
-        <!--
-        <staff
-        <section class="section-4">
-            <div class="slide-container swiper">
-                <div class="slide-content">
-                    <div class="card-wrapper swiper-wrapper">
-                        <div class="card swiper-slide">
-                            <div class="image-content">
-                                <span class="overlay"></span>
-    
-                                <div class="card-image">
-                                    <img src="images/profile1.jpg" alt="" class="card-img">
-                                </div>
-                            </div>
-                            
-                            <-start --
-                            <div class="card-content">
-                                <h2 class="name">David Dell</h2>
-                                <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
-    
-                                <button class="button">View More</button>
-                            </div>
-                        </div>
-                        <div class="card swiper-slide">
-                            <div class="image-content">
-                                <span class="overlay"></span>
-    
-                                <div class="card-image">
-                                    <img src="images/profile2.jpg" alt="" class="card-img">
-                                </div>
-                            </div>
-                            <!end ->
-    
-                            <div class="card-content">
-                                <h2 class="name">David Dell</h2>
-                                <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
-    
-                                <button class="button">View More</button>
-                            </div>
-                        </div>
-                        <div class="card swiper-slide">
-                            <div class="image-content">
-                                <span class="overlay"></span>
-    
-                                <div class="card-image">
-                                    <img src="images/profile3.jpg" alt="" class="card-img">
-                                </div>
-                            </div>
-    
-                            <div class="card-content">
-                                <h2 class="name">David Dell</h2>
-                                <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
-    
-                                <button class="button">View More</button>
-                            </div>
-                        </div>
-                        <div class="card swiper-slide">
-                            <div class="image-content">
-                                <span class="overlay"></span>
-    
-                                <div class="card-image">
-                                    <img src="images/profile4.jpg" alt="" class="card-img">
-                                </div>
-                            </div>
-    
-                            <div class="card-content">
-                                <h2 class="name">David Dell</h2>
-                                <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
-    
-                                <button class="button">View More</button>
-                            </div>
-                        </div>
-                        <div class="card swiper-slide">
-                            <div class="image-content">
-                                <span class="overlay"></span>
-    
-                                <div class="card-image">
-                                    <img src="images/profile5.jpg" alt="" class="card-img">
-                                </div>
-                            </div>
-    
-                            <div class="card-content">
-                                <h2 class="name">David Dell</h2>
-                                <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
-    
-                                <button class="button">View More</button>
-                            </div>
-                        </div>
-                        <div class="card swiper-slide">
-                            <div class="image-content">
-                                <span class="overlay"></span>
-    
-                                <div class="card-image">
-                                    <img src="images/profile6.jpg" alt="" class="card-img">
-                                </div>
-                            </div>
-    
-                            <div class="card-content">
-                                <h2 class="name">David Dell</h2>
-                                <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
-    
-                                <button class="button">View More</button>
-                            </div>
-                        </div>
-                        <div class="card swiper-slide">
-                            <div class="image-content">
-                                <span class="overlay"></span>
-    
-                                <div class="card-image">
-                                    <img src="images/profile7.jpg" alt="" class="card-img">
-                                </div>
-                            </div>
-    
-                            <div class="card-content">
-                                <h2 class="name">David Dell</h2>
-                                <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
-    
-                                <button class="button">View More</button>
-                            </div>
-                        </div>
-                        <div class="card swiper-slide">
-                            <div class="image-content">
-                                <span class="overlay"></span>
-    
-                                <div class="card-image">
-                                    <img src="images/profile8.jpg" alt="" class="card-img">
-                                </div>
-                            </div>
-    
-                            <div class="card-content">
-                                <h2 class="name">David Dell</h2>
-                                <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
-    
-                                <button class="button">View More</button>
-                            </div>
-                        </div>
-                        <div class="card swiper-slide">
-                            <div class="image-content">
-                                <span class="overlay"></span>
-    
-                                <div class="card-image">
-                                    <img src="images/profile9.jpg" alt="" class="card-img">
-                                </div>
-                            </div>
-    
-                            <div class="card-content">
-                                <h2 class="name">David Dell</h2>
-                                <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
-    
-                                <button class="button">View More</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="swiper-button-next swiper-navBtn"></div>
-                <div class="swiper-button-prev swiper-navBtn"></div>
-                <div class="swiper-pagination"></div>
             </div>
-        </section>
-    </main>
-    -->
-    
-
-
-    <!--51:30-->
-    <footer>
-        <div class="container-fluid p-0">
-            <div class="row text-left">
-                <div class="col-md-5"> <!--about-->
-                    <h1 class="text-light">E-Proseso</h1>
-                    <p class="text-muted">For inquiries, please contact **</p>
-                    <p class="pt-4 text-muted">
-                        Copyright ©2022 All rights reserved
-                    </p>
-                    <a href="#">Privacy Policy</a>
-                </div>
-
-                <!--newsletter-->
-                <div class="col-md-5"></div>
-
-                <!--socials-->
-                <div class="col-md-2 col-sm-12">
-                    <h4 class="text-light">Stay Connected!</h4>
-                    <p class="text-muted">Follow our socials</p>
-                    <div class="column">
-                        <a class="btn btn-social text-white btn-facebook"><i class="fa fa-facebook"></i> Facebook</a>
-                    </div>
-                </div>
+            <div class="col-lg-6">
+              <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+                <img src="./assets/images/community.jpg" alt="">
+              </div>
             </div>
+          </div>
         </div>
-    </footer>
+      </div>
+    </div>
+  </div>
 
+  <div id="services" class="services section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+          <div class="section-heading  wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s">
+            <h4>Amazing <em>Services</em> for you</h4>
+            <img src="./assets/images/heading-line-dec.png" alt="">
+            <!-- <p>If you need the greatest collection of HTML templates for your business, please visit <a rel="nofollow" href="https://www.toocss.com/" target="_blank">TooCSS</a> Blog. If you need to have a contact form PHP script, go to <a href="https://templatemo.com/contact" target="_parent">our contact page</a> for more information.</p> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-md-4">
+          <div class="service-item fourth-service">
+            <div class="icon"></div>
+            <h2>Barangay Certificate</h2>
+            <!-- <p>You are not allowed to redistribute this template ZIP file on any other website.</p> -->
+            <!-- <div class="text-button">
+              <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
+            </div> -->
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service-item fourth-service">
+            <div class="icon"></div>
+            <h2>Barangay ID</h2>
+            <!-- <p>You are allowed to use the Chain App Dev HTML template. Feel free to modify or edit this layout.</p> -->
+            <!-- <div class="text-button">
+              <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
+            </div> -->
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service-item fourth-service">
+            <div class="icon"></div>
+            <h2>Barangay Clearance</h2>
+            <!-- <p>If this template is beneficial for your work, please support us <a rel="nofollow" href="https://paypal.me/templatemo" target="_blank">a little via PayPal</a>. Thank you.</p> -->
+            <!-- <div class="text-button">
+              <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
+            </div> -->
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="service-item fourth-service">
+            <div class="icon"></div>
+            <h2>Business Permit</h2>
+            <!-- <p>You are not allowed to redistribute this template ZIP file on any other website.</p> -->
+            <!-- <div class="text-button">
+              <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
+            </div> -->
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service-item fourth-service">
+            <div class="icon"></div>
+            <h2>Certificate of Indigency</h2>
+            <!-- <p>You are allowed to use the Chain App Dev HTML template. Feel free to modify or edit this layout.</p> -->
+            <!-- <div class="text-button">
+              <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
+            </div> -->
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service-item fourth-service">
+            <div class="icon"></div>
+            <h2>Help Support</h2  >
+            <!-- <p>If this template is beneficial for your work, please support us <a rel="nofollow" href="https://paypal.me/templatemo" target="_blank">a little via PayPal</a>. Thank you.</p> -->
+            <!-- <div class="text-button">
+              <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
-    <script type='text/javascript'></script>
-    <script src="js/swiper-bundle.min.js"></script>
-    <script src="js/script.js"></script>
+  <div id="about" class="about-us section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 align-self-center">
+          <div class="section-heading">
+            <h4>About <em>What We Do</em> &amp; Who We Are</h4>
+            <img src="./assets/images/heading-line-dec.png" alt="">
+            <p>This is Barangay Batis Services Website. This website was established to give its constituents the services that they need:</p>
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="box-item">
+                <h4><a href="#">Request Documents</a></h4>
+                <p>Request Barangay Documents such as Certificates, IDs, and Permits.</p>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="box-item">
+                <h4><a href="#">View Announcements</a></h4>
+                <p>Read important announcements and posts from Barangay Batis Information Team. </p>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="box-item">
+                <h4><a href="#">Chat Support &amp; Help</a></h4>
+                <p>Reach us easily with the in web messaging feature.</p>
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <div class="gradient-button">
+                <a href="./register.html">Register Now!</a>
+              </div>
+              <span>*Only registered barangay batis residents are allowed to register. For concerns please contact the Barangay or Go to the Barangay hall.</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="right-image" style="border-radius: 50px;">
+            <img src="./assets/images/batis_team.jpg" alt="" style="border-radius: 50px; box-shadow: 0px 2px 15px 0px rgba(0,0,0,2);">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer id="newsletter">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="footer-widget">
+            
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="footer-widget">
+            <h4>About Us</h4>
+            <ul>
+              <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+              <li class="scroll-to-section"><a href="#services" class="active">Services</a></li>
+            </ul>
+            <ul>
+              <li class="scroll-to-section"><a href="#about" class="active">About</a></li>
+              <li><a href="./login.html">Login</a></li>
+              <li><a href="./register.html">Register</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="footer-widget">
+            <h4>Contact Us</h4>
+            <p>420 F. Manalo St., Brgy. Batis 1500</p>
+            <p><a href="#">(02) 7744 0737</a></p>
+            <p><a href="#">batis.sanjuan@gmail.com</a></p>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="copyright-text">
+            <p>Copyright © 2022 eProseso. All Rights Reserved.
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Custom Scripts -->
+  <script type = "module" src = "./index.js"></script>
+
+  <!-- Scripts -->
+  <script src="./vendor/jquery/jquery.min.js"></script>
+  <script src="./vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="./assets/js/owl-carousel.js"></script>
+  <script src="./assets/js/animation.js"></script>
+  <script src="./assets/js/imagesloaded.js"></script>
+  <script src="./assets/js/popup.js"></script>
+  <script src="./assets/js/custom.js"></script>
+
+  <!-- Bootstrap js -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 </body>
 </html>
