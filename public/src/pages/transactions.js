@@ -141,11 +141,19 @@ onAuthStateChanged(auth, async (user) => {
         completedQSnapArr.length;
 
       var minDate, maxDate;
+      
       $.fn.dataTable.ext.search.push(
         function( settings, data, dataIndex ) {
+          let dateFilter = null;
+          if(url.includes("submitted") || url.includes("active")){
+            dateFilter = data[4]
+          }else{
+            dateFilter = data[6]
+          }
+
           var min = minDate.val();
           var max = maxDate.val();
-          var date = new Date( data[6] );
+          var date = new Date( dateFilter );
           date.setHours(8,0,0,0)
       
           if (
@@ -175,12 +183,13 @@ onAuthStateChanged(auth, async (user) => {
         data = submittedQSnapArr
       } else if (url.includes("onprocess")) {
         data = onprocessQSnapArr
+        order = [6, "desc"]
       } else if (url.includes("completed")) {
         data = completedQSnapArr
         order = [6, "desc"]
       } else if (url.includes("denied")) {
         data = deniedQSnapArr
-        order = [4, "desc"];
+        order = [6, "desc"];
       }
 
       var table = $("#dataTable").DataTable({
@@ -192,14 +201,10 @@ onAuthStateChanged(auth, async (user) => {
           ['10 rows', '25 rows', '50 rows', 'Show all']
         ],
         buttons: [
-          // { 
-          //   extend: "pageLength",
-          //   className: "btn btn-primary no-arrow",
-          // },
           {
             extend: "pdfHtml5",
             text: "Generate Report",
-            className: "btn btn-secondary",
+            className: "btn btn-primary",
             exportOptions: {
               columns: [0, 1, 2, 3, 4, 5, 6]
             }
