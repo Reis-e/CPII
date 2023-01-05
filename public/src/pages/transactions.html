@@ -23,6 +23,8 @@
     <link href="../assets/css/common.css" rel="stylesheet">
 
     <link href="https://cdn.datatables.net/datetime/1.2.0/css/dataTables.dateTime.min.css" rel="stylesheet">
+    
+
 
     <style>
         .img_logo {
@@ -632,6 +634,7 @@
     <!-- <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.print.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
     <script src="https://cdn.datatables.net/datetime/1.2.0/js/dataTables.dateTime.min.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
 
     <script type="text/javascript">
         // $(document).ready(function() {
@@ -672,6 +675,7 @@
         }
 
         requestDetails = (data) => {
+            console.log(data.email)
             resetFields();
             $("#requestDetailsModal").modal("show")
             localStorage.setItem("transactionId", data.transactionId)
@@ -772,7 +776,7 @@
                         $("#buttonGroup").html(`
                             <button class="btn btn-danger" type="button" data-dismiss="modal" onclick="archiveRequest('` + data.transactionId + `')">Archive</button>
                             <button class="btn btn-warning" type="button" data-dismiss="modal" onclick="denyRequest('` + data.transactionId + `')">Deny</button>
-                            <button class="btn btn-primary" type="button" data-dismiss="modal" onclick="acceptRequest('` + data.transactionId + `')">Accept</button>`
+                            <button class="btn btn-primary" type="button" data-dismiss="modal" onclick="acceptRequest('` + data.transactionId + `,` + data.email + `')">Accept</button>`
                         )
                     } else if (data.transactionStatus === "On Process"){
                         $("#buttonGroup").html(`

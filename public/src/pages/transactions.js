@@ -592,7 +592,7 @@ onAuthStateChanged(auth, async (user) => {
   $("#js-preloader").addClass("loaded");
 });
 
-window.acceptRequest = (transactionId) => {
+window.acceptRequest = (transactionId, email) => {
   let fullname = localStorage.getItem("fullname");
   try {
     const transactionDBRef = doc(db, "transactions", transactionId);
@@ -605,6 +605,19 @@ window.acceptRequest = (transactionId) => {
       },
       { merge: true }
     ).then((value) => {
+      let subject = 'Transaction Status Accepted';
+      let body = 'Your requested document with transaction ID '  + transactionId.substring(0,10) + ' has been accepted by Barangay Official ' + fullname;
+
+      Email.send({
+          SecureToken : "ec78f15c-bb6d-45ed-abf5-fef96cb620f4",
+          To : email,
+          From : "eproseso.barangaybatis@gmail.com",
+          Subject : subject,
+          Body : body
+      }).then(
+        message => console.log(message)
+      );
+
       $("#successImage").attr("src", "../assets/img/accepted.jpg");
       $("#successModalTitle").html("Request Accepted!");
       $("#successModal").modal("show");
@@ -614,7 +627,7 @@ window.acceptRequest = (transactionId) => {
   }
 };
 
-window.completeRequest = (transactionId) => {
+window.completeRequest = (transactionId, email) => {
   let fullname = localStorage.getItem("fullname");
   try {
     const transactionDBRef = doc(db, "transactions", transactionId);
@@ -627,6 +640,19 @@ window.completeRequest = (transactionId) => {
       },
       { merge: true }
     ).then((value) => {
+      let subject = 'Transaction Status Update';
+      let body = 'Your requested document with transaction ID '  + transactionId.substring(0,10) + ' has been completed by Barangay Official ' + fullname + ', Please claim your documents in the barangay hall. Thank you! ';
+
+      Email.send({
+          SecureToken : "ec78f15c-bb6d-45ed-abf5-fef96cb620f4",
+          To : email,
+          From : "eproseso.barangaybatis@gmail.com",
+          Subject : subject,
+          Body : body
+      }).then(
+        message => console.log(message)
+      );
+
       $("#successImage").attr("src", "../assets/img/completed.jpg");
       $("#successModalTitle").html("Request Completed!");
       $("#successModal").modal("show");
@@ -711,7 +737,7 @@ document.getElementById("proceedCancel").addEventListener("click", (e) => {
   }
 });
 
-document.getElementById("proceedDeny").addEventListener("click", (e) => {
+document.getElementById("proceedDeny").addEventListener("click", async(e) => {
   let fullname = localStorage.getItem("fullname");
   let transactionId = localStorage.getItem("transactionId");
   let remarks = document.getElementById("transactionRemarks").value;
@@ -728,6 +754,7 @@ document.getElementById("proceedDeny").addEventListener("click", (e) => {
 
   try {
     const transactionDBRef = doc(db, "transactions", transactionId);
+    const transactionDoc = await getDoc(transactionDBRef);
     setDoc(
       transactionDBRef,
       {
@@ -738,6 +765,19 @@ document.getElementById("proceedDeny").addEventListener("click", (e) => {
       },
       { merge: true }
     ).then((value) => {
+      let subject = 'Transaction Status Denied';
+      let body = 'Your requested document with transaction ID '  + transactionId.substring(0,10) + ' has been Denied by Barangay Official ' + fullname + ', Due to ' + remarks + '. Kindly fix these issue/s and file another request thank you!';
+
+      Email.send({
+          SecureToken : "ec78f15c-bb6d-45ed-abf5-fef96cb620f4",
+          To : transactionDoc.data().email,
+          From : "eproseso.barangaybatis@gmail.com",
+          Subject : subject,
+          Body : body
+      }).then(
+        message => console.log(message)
+      );
+
       $("#successImage").attr("src", "../assets/img/deny.jpg");
       $("#successModalTitle").html("Request Denied!");
       $("#successModal").modal("show");

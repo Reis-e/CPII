@@ -113,6 +113,7 @@ onAuthStateChanged(auth, async (user) => {
       if (request === "id") {
         addDoc(collection(db, "transactions"), {
           userId: user.uid,
+          email: userdata.data().email,
           firstName: userdata.data().fname,
           middleName: userdata.data().middlename,
           lastName: userdata.data().lname,
@@ -132,6 +133,20 @@ onAuthStateChanged(auth, async (user) => {
           createdDate: Timestamp.fromDate(new Date()),
           status: "Active",
         }).then((value) => {
+
+          let subject = 'Barangay ID Request Submitted';
+          let body = 'You have successfully requested Barangay ID. Kindly wait for the barangay officials to review your request thank you!';
+
+          Email.send({
+              SecureToken : "ec78f15c-bb6d-45ed-abf5-fef96cb620f4",
+              To : userdata.data().email,
+              From : "eproseso.barangaybatis@gmail.com",
+              Subject : subject,
+              Body : body
+          }).then(
+            message => console.log(message)
+          );
+
           $("#transactionId").html((value.id).substring(0, 10));
           $("#invoice_modal").modal("hide");
           $("#success_modal").modal("show");
@@ -141,6 +156,7 @@ onAuthStateChanged(auth, async (user) => {
       if (request === "certificate") {
         addDoc(collection(db, "transactions"), {
           userId: user.uid,
+          email: userdata.data().email,
           firstName: userdata.data().fname,
           middleName: userdata.data().middlename,
           lastName: userdata.data().lname,
@@ -158,6 +174,20 @@ onAuthStateChanged(auth, async (user) => {
           createdDate: Timestamp.fromDate(new Date()),
           status: "Active",
         }).then((value) => {
+
+          let subject = 'Barangay Certificate Request Submitted';
+          let body = 'You have successfully requested Barangay Certificate. Kindly wait for the barangay officials to review your request thank you!';
+
+          Email.send({
+              SecureToken : "ec78f15c-bb6d-45ed-abf5-fef96cb620f4",
+              To : userdata.data().email,
+              From : "eproseso.barangaybatis@gmail.com",
+              Subject : subject,
+              Body : body
+          }).then(
+            message => console.log(message)
+          );
+
           $("#transactionId").html((value.id).substring(0, 10));
           $("#invoice_modal").modal("hide");
           $("#success_modal").modal("show");
@@ -167,6 +197,7 @@ onAuthStateChanged(auth, async (user) => {
       if (request === "indigency") {
         addDoc(collection(db, "transactions"), {
           userId: user.uid,
+          email: userdata.data().email,
           firstName: userdata.data().fname,
           middleName: userdata.data().middlename,
           lastName: userdata.data().lname,
@@ -184,6 +215,19 @@ onAuthStateChanged(auth, async (user) => {
           createdDate: Timestamp.fromDate(new Date()),
           status: "Active",
         }).then((value) => {
+          let subject = 'Certificate of Indigency Request Submitted';
+          let body = 'You have successfully requested Certificate of  Indigency. Kindly wait for the barangay officials to review your request thank you!';
+
+          Email.send({
+              SecureToken : "ec78f15c-bb6d-45ed-abf5-fef96cb620f4",
+              To : userdata.data().email,
+              From : "eproseso.barangaybatis@gmail.com",
+              Subject : subject,
+              Body : body
+          }).then(
+            message => console.log(message)
+          );
+
           $("#transactionId").html((value.id).substring(0, 10));
           $("#invoice_modal").modal("hide");
           $("#success_modal").modal("show");
@@ -193,6 +237,7 @@ onAuthStateChanged(auth, async (user) => {
       if (request === "clearance") {
         addDoc(collection(db, "transactions"), {
           userId: user.uid,
+          email: userdata.data().email,
           firstName: userdata.data().fname,
           middleName: userdata.data().middlename,
           lastName: userdata.data().lname,
@@ -210,6 +255,18 @@ onAuthStateChanged(auth, async (user) => {
           createdDate: Timestamp.fromDate(new Date()),
           status: "Active",
         }).then((value) => {
+          let subject = 'Barangay Clearance Request Submitted';
+          let body = 'You have successfully requested Barangay Clearance. Kindly wait for the barangay officials to review your request thank you!';
+
+          Email.send({
+              SecureToken : "ec78f15c-bb6d-45ed-abf5-fef96cb620f4",
+              To : userdata.data().email,
+              From : "eproseso.barangaybatis@gmail.com",
+              Subject : subject,
+              Body : body
+          }).then(
+            message => console.log(message)
+          );
           $("#transactionId").html((value.id).substring(0, 10));
           $("#invoice_modal").modal("hide");
           $("#success_modal").modal("show");
@@ -219,6 +276,7 @@ onAuthStateChanged(auth, async (user) => {
       if (request === "permit") {
         addDoc(collection(db, "transactions"), {
           userId: user.uid,
+          email: userdata.data().email,
           firstName: userdata.data().fname,
           middleName: userdata.data().middlename,
           lastName: userdata.data().lname,
@@ -237,6 +295,18 @@ onAuthStateChanged(auth, async (user) => {
           createdDate: Timestamp.fromDate(new Date()),
           status: "Active",
         }).then((value) => {
+          let subject = 'Barangay Business Permit Request Submitted';
+          let body = 'You have successfully requested Barangay Business Permit. Kindly wait for the barangay officials to review your request thank you!';
+
+          Email.send({
+              SecureToken : "ec78f15c-bb6d-45ed-abf5-fef96cb620f4",
+              To : userdata.data().email,
+              From : "eproseso.barangaybatis@gmail.com",
+              Subject : subject,
+              Body : body
+          }).then(
+            message => console.log(message)
+          );
           $("#transactionId").html((value.id).substring(0, 10));
           $("#invoice_modal").modal("hide");
           $("#success_modal").modal("show");
@@ -285,6 +355,8 @@ document.getElementById("submitId").addEventListener("click", (e) => {
   if(!valid.includes(false)) {
     $("#requestId").modal("hide");
     $("#invoice_modal").modal("show");
+
+    document.getElementById('review').innerHTML = `<h5>`+document.getElementById("cert_firstname").value+`</h5>`
   }
 });
 
