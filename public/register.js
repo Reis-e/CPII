@@ -131,8 +131,20 @@ document.getElementById("signup").addEventListener("click", (e) => {
     $("#birthdate").addClass("is-invalid");
     valid.push(false);
   } else {
-    $("#birthdate").removeClass("is-invalid");
-    valid.push(true);
+    let today = new Date(Date.now());
+    let adult = new Date(new Date(today).getDate() + "/" + (new Date(today).getMonth() + 1) + "/" + (new Date(today).getFullYear() - 18));
+    let userBday = new Date(birthdate);
+    let result = adult > userBday 
+    if(!result){
+      $("#birthdate").addClass("is-invalid");
+      valid.push(false);
+      document.getElementById("errormsg").style.display = "block";
+      document.getElementById("errormsg").innerHTML = "Only 18 years old and above can register.";
+    } else{
+      $("#birthdate").removeClass("is-invalid");
+      document.getElementById("errormsg").style.display = "none";
+      valid.push(true);
+    }
   }
 
   // Civilstatus validation
