@@ -682,14 +682,14 @@
             let role = localStorage.getItem("role")
             let date = ""
 
-            if (data.transactionName === "Barangay ID" || data.transactionName === "Barangay Clearance"){
+            // if (data.transactionName === "Barangay ID" || data.transactionName === "Barangay Clearance"){
                 let birthdate = data.birthDate
                 date = new Date(birthdate.seconds * 1000 + birthdate.nanoseconds/1000000)
                 let mm = date.toLocaleString("default", { month: "long" });
                 let dd = date.getDate();
                 let yyyy = date.getFullYear();
                 date = mm + " " + dd + ", " + yyyy;
-            }
+            // }
 
             if (data.transactionName === "Barangay ID"){
                 $("#div_business_permit").css("display", "none")

@@ -693,7 +693,7 @@
             let role = localStorage.getItem("role")
             let date = ""
 
-            if (data.transactionName === "Barangay ID" || data.transactionName === "Barangay Clearance"){
+            if(data.birthDate){
                 let birthdate = data.birthDate
                 date = new Date(birthdate.seconds * 1000 + birthdate.nanoseconds/1000000)
                 let mm = date.toLocaleString("default", { month: "long" });

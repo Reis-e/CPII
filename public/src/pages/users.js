@@ -71,6 +71,50 @@ $("#dataTable").DataTable({
     { data: "lname" },
     { data: "email" },
     {
+      data: "street",
+      render: function (data, type) {
+        if (typeof data !== "undefined" && data) {
+          return data;
+        } else {
+          return " ";
+        }
+        return data;
+      },
+    },
+    {
+      data: "barangay",
+      render: function (data, type) {
+        if (typeof data !== "undefined" && data) {
+          return data;
+        } else {
+          return " ";
+        }
+        return data;
+      },
+    },
+    {
+      data: "city",
+      render: function (data, type) {
+        if (typeof data !== "undefined" && data) {
+          return data;
+        } else {
+          return " ";
+        }
+        return data;
+      },
+    },
+    {
+      data: "province",
+      render: function (data, type) {
+        if (typeof data !== "undefined" && data) {
+          return data;
+        } else {
+          return " ";
+        }
+        return data;
+      },
+    },
+    {
       data: "role",
       render: function (data, type) {
         if (data === "admin") {

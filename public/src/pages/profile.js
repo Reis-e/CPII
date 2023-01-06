@@ -34,7 +34,15 @@ onAuthStateChanged(auth, async (user) => {
     var lastname = userdata.data().lname ? userdata.data().lname : "N/A";
     var suffix = userdata.data().suffixname ? userdata.data().suffixname : "";
     var email = userdata.data().email ? userdata.data().email : "N/A";
+    
+    var housenum = userdata.data().housenum ? userdata.data().housenum : "N/A";
+    var street = userdata.data().street ? userdata.data().street : "N/A";
+    var barangay = userdata.data().barangay ? userdata.data().barangay : "N/A";
+    var city = userdata.data().city ? userdata.data().city : "N/A";
+    var province = userdata.data().province ? userdata.data().province : "N/A";
+    var country = userdata.data().country ? userdata.data().country : "N/A";
     var address = userdata.data().add ? userdata.data().add : "N/A";
+
     var birthplace = userdata.data().birthplace ? userdata.data().birthplace : "N/A";
 
     let date = userdata.data().birthdate.toDate();
@@ -94,7 +102,14 @@ onAuthStateChanged(auth, async (user) => {
       document.getElementById("edit_middlename").value = middlename;
       document.getElementById("edit_lastname").value = lastname;
       document.getElementById("edit_suffix").value = suffix;
-      document.getElementById("edit_address").value = address;
+
+      document.getElementById("edit_housenum").value = housenum;
+      document.getElementById("edit_street").value = street;
+      document.getElementById("edit_barangay").value = barangay;
+      document.getElementById("edit_city").value = city;
+      document.getElementById("edit_province").value = province;
+      document.getElementById("edit_country").value = country;
+
       document.getElementById("edit_birthplace").value = birthplace;
       document.getElementById("edit_birthdate").value = edit_birthdate;
       document.getElementById("edit_civilstatus").value = civilstatus;
@@ -129,7 +144,14 @@ document.getElementById("edit_profile").addEventListener("click", (e) => {
     var middlename = document.getElementById("edit_middlename").value;
     var lastname = document.getElementById("edit_lastname").value;
     var suffix = document.getElementById("edit_suffix").value;
-    var address = document.getElementById("edit_address").value;
+
+    var housenum = document.getElementById("edit_housenum").value;
+    var street = document.getElementById("edit_street").value;
+    var barangay = document.getElementById("edit_barangay").value;
+    var city = document.getElementById("edit_city").value;
+    var province = document.getElementById("edit_province").value;
+    var country = document.getElementById("edit_country").value;
+    
     var birthplace = document.getElementById("edit_birthplace").value;
     var birthdate = document.getElementById("edit_birthdate").value;
     var civilstatus = document.getElementById("edit_civilstatus").value;
@@ -150,7 +172,13 @@ document.getElementById("edit_profile").addEventListener("click", (e) => {
         middlename: middlename,
         lname: lastname,
         suffixname: suffix,
-        add: address,
+        add: housenum + " " + street + ", " + barangay + ", " + city + ", " + province + ", " + country,
+        housenum: housenum,
+        street: street,
+        barangay: barangay,
+        city: city,
+        province: province,
+        country: country,
         birthplace: birthplace,
         birthdate: Timestamp.fromDate(new Date(birthdate)),
         civilstatus: civilstatus,

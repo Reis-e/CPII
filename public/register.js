@@ -44,7 +44,14 @@ document.getElementById("signup").addEventListener("click", (e) => {
   const email = document.getElementById("email_register").value;
   const password = document.getElementById("password_register").value;
   const confirmpassword = document.getElementById("confirmpassword").value;
-  const address = document.getElementById("address").value;
+
+  const housenum = document.getElementById("housenum").value;
+  const street = document.getElementById("street").value;
+  const barangay = document.getElementById("barangay").value;
+  const city = document.getElementById("city").value;
+  const province = document.getElementById("province").value;
+  const country = document.getElementById("country").value;
+
   const birthplace = document.getElementById("birthplace").value;
   const birthdate = document.getElementById("birthdate").value;
   const civilstatus = document.getElementById("civilstatus").value;
@@ -109,11 +116,58 @@ document.getElementById("signup").addEventListener("click", (e) => {
   }
 
   // Adress validation
-  if (address == "") {
-    $("#address").addClass("is-invalid");
+
+  //housenum
+  if (housenum == "") {
+    $("#housenum").addClass("is-invalid");
     valid.push(false);
   } else {
-    $("#address").removeClass("is-invalid");
+    $("#housenum").removeClass("is-invalid");
+    valid.push(true); 
+  }
+
+  //street
+  if (street == "") {
+    $("#street").addClass("is-invalid");
+    valid.push(false);
+  } else {
+    $("#street").removeClass("is-invalid");
+    valid.push(true); 
+  }
+
+  //barangay
+  if (barangay == "") {
+    $("#barangay").addClass("is-invalid");
+    valid.push(false);
+  } else {
+    $("#barangay").removeClass("is-invalid");
+    valid.push(true); 
+  }
+
+  //city
+  if (city == "") {
+    $("#city").addClass("is-invalid");
+    valid.push(false);
+  } else {
+    $("#city").removeClass("is-invalid");
+    valid.push(true); 
+  }
+
+  //province
+  if (province == "") {
+    $("#province").addClass("is-invalid");
+    valid.push(false);
+  } else {
+    $("#province").removeClass("is-invalid");
+    valid.push(true); 
+  }
+  
+  //Country
+  if (country == "") {
+    $("#country").addClass("is-invalid");
+    valid.push(false);
+  } else {
+    $("#country").removeClass("is-invalid");
     valid.push(true); 
   }
 
@@ -189,7 +243,13 @@ document.getElementById("signup").addEventListener("click", (e) => {
             middlename: middlename,
             suffixname: suffixname,
             email: email,
-            add: address,
+            add: housenum + " " + street + ", " + barangay + ", " + city + ", " + province + ", " + country,
+            housenum: housenum,
+            street: street,
+            barangay: barangay,
+            city: city,
+            province: province,
+            country: country,
             birthplace: birthplace,
             birthdate: Timestamp.fromDate(new Date(birthdate)),
             civilstatus: civilstatus,
