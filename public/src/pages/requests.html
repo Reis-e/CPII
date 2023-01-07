@@ -361,7 +361,9 @@
             </div> -->
           </div>
         </div>
-      </div>
+    </div>
+
+    
 
     <!-- Request Brgy ID -->
     <div class="modal fade" id="requestId" tabindex="-1" role="dialog" aria-labelledby="requestId"
@@ -474,7 +476,7 @@
                             <h5>Remarks</h5>
                             <div class="form-group row mt-3">
                                 <div class="col">
-                                    <textarea type="text" class="form-control" id="id_remarks" placeholder="(e.g. 2 copies)"></textarea>
+                                    <textarea type="text" class="form-control" id="id_remarks" placeholder="Notes"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -484,6 +486,134 @@
                 <input id="edit_uid" hidden/>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+                    <button id="revId" class="btn btn-primary">Review</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Review Brgy ID -->
+    <div class="modal fade" id="reviewId" tabindex="-1" role="dialog" aria-labelledby="reviewId"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!-- <h5 class="modal-title" id="exampleModalLabel">Barangay ID</h5> -->
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <div class="col-md-3 col">
+                            <img class="img-profile rounded-circle"
+                                    src="../assets/img/logo_batis.png" style="width: 7rem;">
+                        </div>
+                        <div class="col-md-9 col-auto d-flex align-items-center">
+                            <h2>Review Barangay ID</h2>
+                            <!-- <h2 id="request_fullname"></h2>
+                            <h6 id="request_status"></h6> -->
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col mt-3">
+                            <div class="form-group row">
+                                <label for="colFormLabel" class="col-sm-3 col-form-label">First Name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="revid_firstname" placeholder="" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="colFormLabel" class="col-sm-3 col-form-label">Middle Name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="revid_middlename" placeholder="" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="colFormLabel" class="col-sm-3 col-form-label">Last Name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="revid_lastname" placeholder="" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="colFormLabel" class="col-sm-3 col-form-label">Suffix</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="revid_suffix" placeholder="" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="colFormLabel" class="col-sm-3 col-form-label">Address</label>
+                                <div class="col-sm-9">
+                                    <textarea type="text" class="form-control" id="revid_address" placeholder="" readonly ></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="colFormLabel" class="col-sm-3 col-form-label">Birthdate</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="revid_birthdate" placeholder="" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="colFormLabel" class="col-sm-3 col-form-label">Birth Place</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="revid_birthplace" placeholder="" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="colFormLabel" class="col-sm-3 col-form-label">Civil Status</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="revid_civilstatus" placeholder="" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="colFormLabel" class="col-sm-3 col-form-label">Precinct No.</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="revid_precinctno" placeholder="" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col mt-3">
+                            <h5>Emergency Contact</h5>
+                            <div class="form-group row mt-3">
+                                <label for="colFormLabel" class="col-sm-3 col-form-label">Name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="revid_emergency_name" placeholder="" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="colFormLabel" class="col-sm-3 col-form-label">Relationship</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="revid_emergency_rel" placeholder="" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="colFormLabel" class="col-sm-3 col-form-label">Contact No.</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="revid_emergency_contact" placeholder="" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col mt-3">
+                            <h5>Remarks</h5>
+                            <div class="form-group row mt-3">
+                                <div class="col">
+                                    <textarea type="text" class="form-control" id="revid_remarks" placeholder="" readonly></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <input id="edit_uid" hidden/>
+                <div class="modal-footer">
+                    <button id="backId" class="btn btn-secondary" type="button" >Back</button>
                     <button id="submitId" class="btn btn-primary">Submit</button>
                 </div>
             </div>
@@ -569,8 +699,94 @@
             </div>
             <input id="edit_uid" hidden/>
             <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
-                <button id="submitCert" class="btn btn-primary">Submit</button>
+                <button class="btn btn-secondary" type="button" data-dismiss="modal" >Close</button>
+                <button id="reviewCert" class="btn btn-primary">Review</button>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+    <!-- Review Cert -->
+    <div class="modal fade" id="reviewCertificate" tabindex="-1" role="dialog" aria-labelledby="reviewCertificate"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!-- <h5 class="modal-title" id="exampleModalLabel">Barangay Certificate</h5> -->
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row mb-3">
+                    <div class="col-md-3 col">
+                        <img class="img-profile rounded-circle"
+                                src="../assets/img/logo_batis.png" style="width: 7rem;">
+                    </div>
+                    <div class="col-md-9 col-auto d-flex align-items-center">
+                        <h2>Review Barangay Certificate</h2>
+                        <!-- <h2 id="request_fullname"></h2>
+                        <h6 id="request_status"></h6> -->
+                    </div>
+                </div>
+                <div class="row mb-3" >
+                    <div class="col mt-3">
+                        <div class="form-group row">
+                            <label for="colFormLabel" class="col-sm-3 col-form-label">First Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="revcert_firstname" placeholder="" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="colFormLabel" class="col-sm-3 col-form-label">Middle Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="revcert_middlename" placeholder="" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="colFormLabel" class="col-sm-3 col-form-label">Last Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="revcert_lastname" placeholder="" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="colFormLabel" class="col-sm-3 col-form-label">Suffix</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="revcert_suffix" placeholder="" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="colFormLabel" class="col-sm-3 col-form-label">Address</label>
+                            <div class="col-sm-9">
+                                <textarea type="text" class="form-control" id="revcert_address" placeholder="" readonly ></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="colFormLabel" class="col-sm-3 col-form-label">Purpose</label>
+                            <div class="col-sm-9">
+                                <textarea type="text" class="form-control certificate" id="revcert_purpose" placeholder="" readonly></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col mt-3">
+                        <h5>Remarks</h5>
+                        <div class="form-group row mt-3">
+                            <div class="col">
+                                <textarea type="text" class="form-control" id="revcert_remarks" placeholder="" readonly></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <input id="edit_uid" hidden/>
+            <div class="modal-footer">
+                <button id="backCert" class="btn btn-secondary" type="button" >Back</button>
+                <button id="submitCert" class="btn btn-primary" >Submit</button>
             </div>
         </div>
     </div>
@@ -680,6 +896,116 @@
                 <input id="edit_uid" hidden/>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+                    <button id="revClearance" class="btn btn-primary">Review</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Review Brgy Clearance -->
+    <div class="modal fade" id="reviewClearance" tabindex="-1" role="dialog" aria-labelledby="reviewClearance"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!-- <h5 class="modal-title" id="exampleModalLabel">Barangay Clearance</h5> -->
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <div class="col-md-3 col">
+                            <img class="img-profile rounded-circle"
+                                    src="../assets/img/logo_batis.png" style="width: 7rem;">
+                        </div>
+                        <div class="col-md-9 col-auto d-flex align-items-center">
+                            <h2>Review Barangay Clearance</h2>
+                            <!-- <h2 id="request_fullname"></h2>
+                            <h6 id="request_status"></h6> -->
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col mt-3">
+                            <div class="form-group row">
+                                <label for="colFormLabel" class="col-sm-3 col-form-label">First Name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="revclearance_firstname" placeholder="" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="colFormLabel" class="col-sm-3 col-form-label">Middle Name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="revclearance_middlename" placeholder="" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="colFormLabel" class="col-sm-3 col-form-label">Last Name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="revclearance_lastname" placeholder="" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="colFormLabel" class="col-sm-3 col-form-label">Suffix</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="revclearance_suffix" placeholder="" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="colFormLabel" class="col-sm-3 col-form-label">Address</label>
+                                <div class="col-sm-9">
+                                    <textarea type="text" class="form-control" id="revclearance_address" placeholder="" readonly ></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="colFormLabel" class="col-sm-3 col-form-label">Birthdate</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="revclearance_birthdate" placeholder="" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="colFormLabel" class="col-sm-3 col-form-label">Birth Place</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="revclearance_birthplace" placeholder="" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="colFormLabel" class="col-sm-3 col-form-label">Civil Status</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="revclearance_civilstatus" placeholder="" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="colFormLabel" class="col-sm-3 col-form-label">Precinct No.</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="revclearance_precinctno" placeholder="" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="colFormLabel" class="col-sm-3 col-form-label">Purpose</label>
+                                <div class="col-sm-9">
+                                    <textarea type="text" class="form-control" id="revclearance_purpose" readonly></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col mt-3">
+                            <h5>Remarks</h5>
+                            <div class="form-group row mt-3">
+                                <div class="col">
+                                    <textarea type="text" class="form-control" id="revclearance_remarks" placeholder="" readonly></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <input id="edit_uid" hidden/>
+                <div class="modal-footer">
+                    <button id="backClearance" class="btn btn-secondary" type="button" >Back</button>
                     <button id="submitClearance" class="btn btn-primary">Submit</button>
                 </div>
             </div>
@@ -796,6 +1122,122 @@
                 <input id="edit_uid" hidden/>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+                    <button id="revPermit" class="btn btn-primary">Review</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Review Business Permit -->
+    <div class="modal fade" id="reviewPermit" tabindex="-1" role="dialog" aria-labelledby="reviewPermit"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!-- <h5 class="modal-title" id="exampleModalLabel">Barangay Business Permit</h5> -->
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <div class="col-md-3 col">
+                            <img class="img-profile rounded-circle"
+                                    src="../assets/img/logo_batis.png" style="width: 7rem;">
+                        </div>
+                        <div class="col-md-9 col-auto d-flex align-items-center">
+                            <h2>Review Barangay Business Permit</h2>
+                            <!-- <h2 id="request_fullname"></h2>
+                            <h6 id="request_status"></h6> -->
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mt-3">
+                            <div class="form-group row">
+                                <label for="colFormLabel" class="col-sm-3 col-form-label">First Name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="revpermit_firstname" placeholder="" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="colFormLabel" class="col-sm-3 col-form-label">Middle Name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="revpermit_middlename" placeholder="" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="colFormLabel" class="col-sm-3 col-form-label">Last Name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="revpermit_lastname" placeholder="" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="colFormLabel" class="col-sm-3 col-form-label">Suffix</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="revpermit_suffix" placeholder="" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="colFormLabel" class="col-sm-3 col-form-label">Owner's Address</label>
+                                <div class="col-sm-9">
+                                    <textarea type="text" class="form-control" id="revpermit_address" placeholder="" readonly ></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col mt-3">
+                            <h5>Business Details</h5>
+                            <div class="form-group row mt-4">
+                                <label for="colFormLabel" class="col-sm-3 col-form-label">Business Name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="revpermit_business_name" placeholder="" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="colFormLabel" class="col-sm-3 col-form-label">Busines Owner</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="revpermit_business_owner" placeholder="" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="colFormLabel" class="col-sm-3 col-form-label">Business Phone No.</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="revpermit_business_phone" placeholder="" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="colFormLabel" class="col-sm-3 col-form-label">Business Nature</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="revpermit_business_nature" placeholder="" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="colFormLabel" class="col-sm-3 col-form-label">Business Address</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="revpermit_business_address" placeholder="" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col mt-3">
+                            <h5>Remarks</h5>
+                            <div class="form-group row mt-3">
+                                <div class="col">
+                                    <textarea type="text" class="form-control" id="revpermit_remarks" placeholder="" readonly></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <input id="edit_uid" hidden/>
+                <div class="modal-footer">
+                    <button id="backPermit" class="btn btn-secondary" type="button" >Back</button>
                     <button id="submitPermit" class="btn btn-primary">Submit</button>
                 </div>
             </div>
@@ -882,7 +1324,93 @@
             <input id="edit_uid" hidden/>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
-                <button id="submitIndigency" class="btn btn-primary">Submit</button>
+                <button id="revIndigency" class="btn btn-primary" >Review</button>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+    <!-- Review Certificate Indigency -->
+    <div class="modal fade" id="reviewIndigency" tabindex="-1" role="dialog" aria-labelledby="reviewIndigency"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!-- <h5 class="modal-title" id="exampleModalLabel">Barangay Certificate of Indigency</h5> -->
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row mb-3">
+                    <div class="col-md-3 col">
+                        <img class="img-profile rounded-circle"
+                                src="../assets/img/logo_batis.png" style="width: 7rem;">
+                    </div>
+                    <div class="col-md-9 col-auto d-flex align-items-center">
+                        <h2>Review Certificate of Indigency</h2>
+                        <!-- <h2 id="request_fullname"></h2>
+                        <h6 id="request_status"></h6> -->
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col mt-3">
+                        <div class="form-group row">
+                            <label for="colFormLabel" class="col-sm-3 col-form-label">First Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="revindigency_firstname" placeholder="" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="colFormLabel" class="col-sm-3 col-form-label">Middle Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="revindigency_middlename" placeholder="" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="colFormLabel" class="col-sm-3 col-form-label">Last Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="revindigency_lastname" placeholder="" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="colFormLabel" class="col-sm-3 col-form-label">Suffix</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="revindigency_suffix" placeholder="" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="colFormLabel" class="col-sm-3 col-form-label">Address</label>
+                            <div class="col-sm-9">
+                                <textarea type="text" class="form-control" id="revindigency_address" placeholder="" readonly ></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="colFormLabel" class="col-sm-3 col-form-label">Purpose</label>
+                            <div class="col-sm-9">
+                                <textarea type="text" class="form-control" id="revindigency_purpose" placeholder="" readonly></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col mt-3">
+                        <h5>Remarks</h5>
+                        <div class="form-group row mt-3">
+                            <div class="col">
+                                <textarea class="form-control" id="revindigency_remarks" placeholder="" readonly></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <input id="edit_uid" hidden/>
+            <div class="modal-footer">
+                <button id="backIndigency" class="btn btn-secondary" type="button" >Back</button>
+                <button id="submitIndigency" class="btn btn-primary" >Submit</button>
             </div>
         </div>
     </div>
@@ -926,6 +1454,76 @@
             }
             return words.join(" ");
         }
+    </script>
+    <script>
+        $('#reviewCertificate').on('hidden.bs.modal', function (e) {
+    
+          $('body').addClass('modal-open');
+    
+        });
+    </script>
+    <script>
+        $('#requestCertificate').on('hidden.bs.modal', function (e) {
+    
+          $('body').addClass('modal-open');
+    
+        });
+    </script>
+    <script>
+        $('#requestId').on('hidden.bs.modal', function (e) {
+    
+          $('body').addClass('modal-open');
+    
+        });
+    </script>
+    <script>
+        $('#reviewId').on('hidden.bs.modal', function (e) {
+    
+          $('body').addClass('modal-open');
+    
+        });
+    </script>
+    <script>
+        $('#requestClearance').on('hidden.bs.modal', function (e) {
+    
+          $('body').addClass('modal-open');
+    
+        });
+    </script>
+    <script>
+        $('#reviewClearance').on('hidden.bs.modal', function (e) {
+    
+          $('body').addClass('modal-open');
+    
+        });
+    </script>
+     <script>
+        $('#requestPermit').on('hidden.bs.modal', function (e) {
+    
+          $('body').addClass('modal-open');
+    
+        });
+    </script>
+    <script>
+        $('#reviewPermit').on('hidden.bs.modal', function (e) {
+    
+          $('body').addClass('modal-open');
+    
+        });
+    </script>
+     <script>
+        $('#requestIndigency').on('hidden.bs.modal', function (e) {
+    
+          $('body').addClass('modal-open');
+    
+        });
+    </script>
+    <script>
+        $('#reviewIndigency').on('hidden.bs.modal', function (e) {
+    
+          $('body').addClass('modal-open');
+    
+        });
     </script>
 
 </body>

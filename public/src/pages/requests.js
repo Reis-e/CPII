@@ -21,7 +21,7 @@ onAuthStateChanged(auth, async (user) => {
     const userdata = await getDoc(userDBRef);
 
     document.getElementById("id_firstname").value = userdata.data().fname;
-    document.getElementById("id_middlename").value = userdata.data().middlename;
+    document.getElementById("id_middlename").value = userdata.data().middlename ? userdata.data().middlename : "N/A";
     document.getElementById("id_lastname").value = userdata.data().lname;
     document.getElementById("id_suffix").value = userdata.data().suffixname ? userdata.data().suffixname : "N/A";
     document.getElementById("id_address").value = userdata.data().add;
@@ -37,11 +37,28 @@ onAuthStateChanged(auth, async (user) => {
     document.getElementById("id_civilstatus").value = userdata.data().civilstatus;
     document.getElementById("id_precinctno").value = userdata.data().precinct;
 
+    //review ID
+    document.getElementById("revid_firstname").value = userdata.data().fname;
+    document.getElementById("revid_middlename").value = userdata.data().middlename ? userdata.data().middlename : "N/A";
+    document.getElementById("revid_lastname").value = userdata.data().lname;
+    document.getElementById("revid_suffix").value = userdata.data().suffixname ? userdata.data().suffixname : "N/A";
+    document.getElementById("revid_address").value = userdata.data().add;
+    document.getElementById("revid_birthdate").value = view_date;
+    document.getElementById("revid_birthplace").value = userdata.data().birthplace;
+    document.getElementById("revid_civilstatus").value = userdata.data().civilstatus;
+    document.getElementById("revid_precinctno").value = userdata.data().precinct;
+
     document.getElementById("cert_firstname").value = userdata.data().fname;
     document.getElementById("cert_middlename").value = userdata.data().middlename ? userdata.data().middlename : "N/A";
     document.getElementById("cert_lastname").value = userdata.data().lname;
     document.getElementById("cert_suffix").value = userdata.data().suffixname ? userdata.data().suffixname : "N/A";
     document.getElementById("cert_address").value = userdata.data().add;
+
+    document.getElementById("revcert_firstname").value = userdata.data().fname;
+    document.getElementById("revcert_middlename").value = userdata.data().middlename ? userdata.data().middlename : "N/A";
+    document.getElementById("revcert_lastname").value = userdata.data().lname;
+    document.getElementById("revcert_suffix").value = userdata.data().suffixname ? userdata.data().suffixname : "N/A";
+    document.getElementById("revcert_address").value = userdata.data().add;
 
     document.getElementById("clearance_firstname").value =
       userdata.data().fname;
@@ -56,11 +73,30 @@ onAuthStateChanged(auth, async (user) => {
     document.getElementById("clearance_precinctno").value =
       userdata.data().precinct;
 
+      document.getElementById("revclearance_firstname").value =
+      userdata.data().fname;
+    document.getElementById("revclearance_middlename").value =
+      userdata.data().middlename ? userdata.data().middlename : "N/A";
+    document.getElementById("revclearance_lastname").value = userdata.data().lname;
+    document.getElementById("revclearance_suffix").value = userdata.data().suffixname ? userdata.data().suffixname : "N/A";
+    document.getElementById("revclearance_address").value = userdata.data().add;
+    document.getElementById("revclearance_birthdate").value = view_date;
+    document.getElementById("revclearance_birthplace").value = userdata.data().birthplace;
+    document.getElementById("revclearance_civilstatus").value = userdata.data().civilstatus;
+    document.getElementById("revclearance_precinctno").value =
+      userdata.data().precinct;
+
     document.getElementById("permit_firstname").value = userdata.data().fname;
     document.getElementById("permit_middlename").value = userdata.data().middlename ? userdata.data().middlename : "N/A";
     document.getElementById("permit_lastname").value = userdata.data().lname;
     document.getElementById("permit_suffix").value = userdata.data().suffixname ? userdata.data().suffixname : "N/A";
     document.getElementById("permit_address").value = userdata.data().add;
+
+    document.getElementById("revpermit_firstname").value = userdata.data().fname;
+    document.getElementById("revpermit_middlename").value = userdata.data().middlename ? userdata.data().middlename : "N/A";
+    document.getElementById("revpermit_lastname").value = userdata.data().lname;
+    document.getElementById("revpermit_suffix").value = userdata.data().suffixname ? userdata.data().suffixname : "N/A";
+    document.getElementById("revpermit_address").value = userdata.data().add;
 
     document.getElementById("indigency_firstname").value =
       userdata.data().fname;
@@ -68,6 +104,13 @@ onAuthStateChanged(auth, async (user) => {
     document.getElementById("indigency_lastname").value = userdata.data().lname;
     document.getElementById("indigency_suffix").value = userdata.data().suffixname ? userdata.data().suffixname : "N/A";
     document.getElementById("indigency_address").value = userdata.data().add;
+
+    document.getElementById("revindigency_firstname").value =
+      userdata.data().fname;
+    document.getElementById("revindigency_middlename").value = userdata.data().middlename ? userdata.data().middlename : "N/A";
+    document.getElementById("revindigency_lastname").value = userdata.data().lname;
+    document.getElementById("revindigency_suffix").value = userdata.data().suffixname ? userdata.data().suffixname : "N/A";
+    document.getElementById("revindigency_address").value = userdata.data().add;
 
     // Proceed Request Function
     document.getElementById("proceedSubmit").addEventListener("click", (e) => {
@@ -321,8 +364,8 @@ onAuthStateChanged(auth, async (user) => {
 });
 
 
-
-document.getElementById("submitId").addEventListener("click", (e) => {
+//barangay ID
+document.getElementById("revId").addEventListener("click", (e) => {
   var id_emergencyname = document.getElementById("id_emergency_name").value;
   var id_emergencyrel = document.getElementById("id_emergency_rel").value;
   var id_emergencyphone = document.getElementById("id_emergency_contact").value;
@@ -357,13 +400,26 @@ document.getElementById("submitId").addEventListener("click", (e) => {
 
   if(!valid.includes(false)) {
     $("#requestId").modal("hide");
-    $("#invoice_modal").modal("show");
-
-    document.getElementById('review').innerHTML = `<h5>`+document.getElementById("cert_firstname").value+`</h5>`
+    document.getElementById("revid_emergency_name").value = document.getElementById("id_emergency_name").value;
+    document.getElementById("revid_emergency_rel").value = document.getElementById("id_emergency_rel").value;
+    document.getElementById("revid_emergency_contact").value = document.getElementById("id_emergency_contact").value;
+    document.getElementById("revid_remarks").value = document.getElementById("id_remarks").value;
+    $("#reviewId").modal("show");
   }
 });
 
-document.getElementById("submitCert").addEventListener("click", (e) => {
+document.getElementById("backId").addEventListener("click", (e) => {
+  $("#reviewId").modal("hide");
+  $("#requestId").modal("show");
+});
+
+document.getElementById("submitId").addEventListener("click", (e) => {
+  $("#reviewId").modal("hide");
+  $("#invoice_modal").modal("show");
+});
+
+//barangay certificate
+document.getElementById("reviewCert").addEventListener("click", (e) => {
   var cert_purpose = document.getElementById("cert_purpose").value;
 
   //certificate purpose validation
@@ -372,12 +428,25 @@ document.getElementById("submitCert").addEventListener("click", (e) => {
   } else {
     $("#cert_purpose").removeClass("is-invalid");
     $("#requestCertificate").modal("hide");
-    $("#invoice_modal").modal("show");
+    document.getElementById("revcert_purpose").value = document.getElementById("cert_purpose").value;
+    document.getElementById("revcert_remarks").value = document.getElementById("cert_remarks").value;
+    $("#reviewCertificate").modal("show");
   }
-  
 });
 
-document.getElementById("submitClearance").addEventListener("click", (e) => {
+
+document.getElementById("submitCert").addEventListener("click", (e) => {
+  $("#reviewCertificate").modal("hide");
+  $("#invoice_modal").modal("show");
+});
+
+document.getElementById("backCert").addEventListener("click", (e) => {
+  $("#reviewCertificate").modal("hide");
+  $("#requestCertificate").modal("show");
+});
+
+//barangay clearance
+document.getElementById("revClearance").addEventListener("click", (e) => {
   var clearance_purpose = document.getElementById("clearance_purpose").value;
 
   //clearance purpose validation
@@ -386,11 +455,23 @@ document.getElementById("submitClearance").addEventListener("click", (e) => {
   } else {
     $("#clearance_purpose").removeClass("is-invalid");
     $("#requestClearance").modal("hide");
-    $("#invoice_modal").modal("show");
+    document.getElementById("revclearance_purpose").value = document.getElementById("clearance_purpose").value;
+    document.getElementById("revclearance_remarks").value = document.getElementById("clearance_remarks").value;
+    $("#reviewClearance").modal("show");
   }
 });
 
-document.getElementById("submitPermit").addEventListener("click", (e) => {
+document.getElementById("backClearance").addEventListener("click", (e) => {
+  $("#reviewClearance").modal("hide");
+  $("#requestClearance").modal("show");
+});
+
+document.getElementById("submitClearance").addEventListener("click", (e) => {
+  $("#reviewClearance").modal("hide");
+  $("#invoice_modal").modal("show");
+});
+
+document.getElementById("revPermit").addEventListener("click", (e) => {
   var permit_business_name = document.getElementById("permit_business_name").value;
   var permit_business_owner = document.getElementById("permit_business_owner").value;
   var permit_business_phone = document.getElementById("permit_business_phone").value;
@@ -445,11 +526,28 @@ document.getElementById("submitPermit").addEventListener("click", (e) => {
 
   if(!valid.includes(false)) {
     $("#requestPermit").modal("hide");
-    $("#invoice_modal").modal("show");
+    document.getElementById("revpermit_business_name").value = document.getElementById("permit_business_name").value;
+    document.getElementById("revpermit_business_owner").value = document.getElementById("permit_business_owner").value;
+    document.getElementById("revpermit_business_phone").value = document.getElementById("permit_business_phone").value;
+    document.getElementById("revpermit_business_nature").value = document.getElementById("permit_business_nature").value;
+    document.getElementById("revpermit_business_address").value = document.getElementById("permit_business_address").value;
+    document.getElementById("revpermit_remarks").value = document.getElementById("permit_remarks").value;
+    $("#reviewPermit").modal("show");
   }
 });
 
-document.getElementById("submitIndigency").addEventListener("click", (e) => {
+document.getElementById("backPermit").addEventListener("click", (e) => {
+  $("#reviewPermit").modal("hide");
+  $("#requestPermit").modal("show");
+});
+
+document.getElementById("submitPermit").addEventListener("click", (e) => {
+  $("#reviewPermit").modal("hide");
+  $("#invoice_modal").modal("show");
+});
+
+
+document.getElementById("revIndigency").addEventListener("click", (e) => {
   var indigency_purpose = document.getElementById("indigency_purpose").value;
 
   //indigency purpose validation
@@ -458,6 +556,18 @@ document.getElementById("submitIndigency").addEventListener("click", (e) => {
   } else {
     $("#indigency_purpose").removeClass("is-invalid");
     $("#requestIndigency").modal("hide");
-    $("#invoice_modal").modal("show");
+    document.getElementById("revindigency_purpose").value = document.getElementById("indigency_purpose").value;
+    document.getElementById("revindigency_remarks").value = document.getElementById("indigency_remarks").value;
+    $("#reviewIndigency").modal("show");
   }
+});
+
+document.getElementById("backIndigency").addEventListener("click", (e) => {
+  $("#reviewIndigency").modal("hide");
+  $("#requestIndigency").modal("show");
+});
+
+document.getElementById("submitIndigency").addEventListener("click", (e) => {
+  $("#reviewIndigency").modal("hide");
+  $("#invoice_modal").modal("show");
 });
